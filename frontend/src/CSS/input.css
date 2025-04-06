@@ -1,0 +1,17 @@
+@import "tailwindcss";
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+/* For Common Styles */
+@theme {
+
+}
+
+/* For Custom Styles */
+@utility {
+
+}

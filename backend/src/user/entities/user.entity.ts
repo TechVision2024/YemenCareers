@@ -30,19 +30,19 @@ export class UserEntity extends BaseEntity {
     @Column({length: 255})
     address: string
 
-    @Column({length: 255})
+    @Column({length: 255, nullable: true})
     website: string;
 
-    @Column({length: 255})
+    @Column({length: 255, nullable: true})
     social_url_1: string;
 
-    @Column({length: 255})
+    @Column({length: 255, nullable: true})
     social_url_2: string;
 
-    @Column({length: 255})
+    @Column({length: 255, nullable: true})
     social_url_3: string;
 
-    @Column({length: 255})
+    @Column({length: 255, nullable: true})
     social_url_4: string;
 
     @Column({type: 'text'})
@@ -51,7 +51,7 @@ export class UserEntity extends BaseEntity {
     @Column({type: 'text'})
     salt: string;
 
-    @Column({type: 'text'})
+    @Column({type: 'text', nullable: true})
     profile_image_url: string;
 
     @Column({enum: UserRoleEnum, default: UserRoleEnum.USER})

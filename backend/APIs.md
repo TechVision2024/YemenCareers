@@ -55,16 +55,14 @@ This file contains a detailed description of the API design.
         "name": "Tech Vision",
         "decription": "Compnay decription.",
         "email": "techvision@techvision.org",
-        "type": "Compnay type",
+        "company_type": "Compnay type",
         "phone": "+967 01-000-000",
-        "location": "Compnat Location",
-        "siteURL": "https://techvision.org",
-        "social": [
-            "Link 1",
-            "Link 2",
-            "Link 3",
-            "Link 4"
-        ],
+        "address": "Compnat Location",
+        "website": "https://techvision.org",
+        "social_url_1": "Link 1",
+        "social_url_2": "Link 2",
+        "social_url_3": "Link 3",
+        "social_url_4": "Link 4",
         "password": "Mohaned2023+",
         "confirmation": "Mohaned2023+"
         "profileImage": (binary file data of the image)
@@ -84,7 +82,7 @@ This file contains a detailed description of the API design.
             - Type: string.
             - Length: Between 5 and 255 characters.
             - It must be a valid email address.
-        - type:
+        - company_type:
             - Required.
             - Type: string.
             - Length: Between 3 and 100 characters.
@@ -92,33 +90,18 @@ This file contains a detailed description of the API design.
             - Required.
             - Type: string.
             - It must be a valid phone number.
-        - location:
+        - address:
             - Required.
             - Type: string.
             - Length: Between 3 and 255 characters.
-        - siteURL:
+        - website:
             - Optional.
             - Type: string.
             - It must be a valid URL.
-        - social:
+        - social URLs:
             - Optional.
             - Type: array of 4 strings.
             - Each link should be a valid URL.
-            - example:
-            ```json
-            "social": [
-                "Link 1",
-                "",
-                "",
-                ""
-            ]
-            "social": [
-                "Link 1",
-                "Link 2",
-                "Link 3",
-                "Link 4"
-            ]
-            ```
         - password:
             - Required.
             - Type: string.
@@ -147,17 +130,15 @@ This file contains a detailed description of the API design.
             "name": "Tech Vision",
             "decription": "Compnay decription.",
             "email": "techvision@techvision.org",
-            "type": "Compnay type",
+            "company_type": "Compnay type",
             "phone": "+967 01-000-000",
-            "location": "Compnat Location",
-            "siteURL": "https://techvision.org",
-            "social": [
-                "Link 1",
-                "Link 2",
-                "Link 3",
-                "Link 4"
-            ],
-            "profileImage": "http://backend:3000/uploads/1743937572726.png"
+            "address": "Compnat Location",
+            "website": "https://techvision.org",
+            "social_url_1": "Link 1",
+            "social_url_2": "Link 2",
+            "social_url_3": "Link 3",
+            "social_url_4": "Link 4",
+            "profile_image_url": "http://backend:3000/uploads/1743937572726.png"
         }
     }
     ```
@@ -210,17 +191,15 @@ This file contains a detailed description of the API design.
             "name": "Tech Vision",
             "decription": "Compnay decription.",
             "email": "techvision@techvision.org",
-            "type": "Compnay type",
+            "company_type": "Compnay type",
             "phone": "+967 01-000-000",
-            "location": "Compnat Location",
-            "siteURL": "https://techvision.org",
-            "social": [
-                "Link 1",
-                "Link 2",
-                "Link 3",
-                "Link 4"
-            ],
-            "profileImage": "http://backend:3000/uploads/1743937572726.png"
+            "address": "Compnat Location",
+            "website": "https://techvision.org",
+            "social_url_1": "Link 1",
+            "social_url_2": "Link 2",
+            "social_url_3": "Link 3",
+            "social_url_4": "Link 4",
+            "profile_image_url": "http://backend:3000/uploads/1743937572726.png"
         }
     }
     ```
@@ -250,17 +229,15 @@ This file contains a detailed description of the API design.
             "name": "Tech Vision",
             "decription": "Compnay decription.",
             "email": "techvision@techvision.org",
-            "type": "Compnay type",
+            "company_type": "Compnay type",
             "phone": "+967 01-000-000",
-            "location": "Compnat Location",
-            "siteURL": "https://techvision.org",
-            "social": [
-                "Link 1",
-                "Link 2",
-                "Link 3",
-                "Link 4"
-            ],
-            "profileImage": "http://backend:3000/uploads/1743937572726.png"
+            "address": "Compnat Location",
+            "website": "https://techvision.org",
+            "social_url_1": "Link 1",
+            "social_url_2": "Link 2",
+            "social_url_3": "Link 3",
+            "social_url_4": "Link 4",
+            "profile_image_url": "http://backend:3000/uploads/1743937572726.png"
         }
     }
     ```
@@ -288,17 +265,15 @@ This file contains a detailed description of the API design.
         "name": "Tech Vision",
         "decription": "Compnay decription.",
         "email": "techvision@techvision.org",
-        "type": "Compnay type",
+        "company_type": "Compnay type",
         "phone": "+967 01-000-000",
-        "location": "Compnat Location",
-        "siteURL": "https://techvision.org",
-        "social": [
-            "Link 1",
-            "Link 2",
-            "Link 3",
-            "Link 4"
-        ],
-        "profileImage": "http://backend:3000/uploads/1743937572726.png"
+        "address": "Compnat Location",
+        "website": "https://techvision.org",
+        "social_url_1": "Link 1",
+        "social_url_2": "Link 2",
+        "social_url_3": "Link 3",
+        "social_url_4": "Link 4",
+        "profile_image_url": "http://backend:3000/uploads/1743937572726.png"
     }
     ```
     - Status codes:
@@ -326,11 +301,15 @@ This file contains a detailed description of the API design.
 		- name.
 		- decription.
 		- email.
-		- type.
+		- company_type.
 		- phone.
-		- location.
-		- siteURL.
-		- social.
+		- address.
+		- website.
+		- social:
+            - social_url_1
+            - social_url_2
+            - social_url_3
+            - social_url_4
         - profileImage.
     - type: `JSON`
     - Example:
@@ -339,16 +318,14 @@ This file contains a detailed description of the API design.
         "name": "Tech Vision",
         "decription": "Compnay decription.",
         "email": "techvision@techvision.org",
-        "type": "Compnay type",
+        "company_type": "Compnay type",
         "phone": "+967 01-000-000",
-        "location": "Compnat Location",
-        "siteURL": "https://techvision.org",
-        "social": [
-            "Link 1",
-            "Link 2",
-            "Link 3",
-            "Link 4"
-        ],
+        "address": "Compnat Location",
+        "website": "https://techvision.org",
+        "social_url_1": "Link 1",
+        "social_url_2": "Link 2",
+        "social_url_3": "Link 3",
+        "social_url_4": "Link 4",
         "profileImage": (binary file data of the image)
     }
     ```
@@ -366,7 +343,7 @@ This file contains a detailed description of the API design.
             - Type: string.
             - Length: Between 5 and 255 characters.
             - It must be a valid email address.
-        - type:
+        - company_type:
             - Required.
             - Type: string.
             - Length: Between 3 and 100 characters.
@@ -374,28 +351,18 @@ This file contains a detailed description of the API design.
             - Required.
             - Type: string.
             - It must be a valid phone number.
-        - location:
+        - address:
             - Required.
             - Type: string.
             - Length: Between 3 and 255 characters.
-        - siteURL:
+        - website:
             - Optional.
             - Type: string.
             - It must be a valid URL.
-        - social:
-            - Required.
+        - social URLs:
+            - Optional.
             - Type: array of 4 strings.
             - Each link should be a valid URL.
-            - `NOTE` sand all links in the form without any excerions.
-            - example:
-                ```json
-                "social": [
-                    "Old Link 1",
-                    "Old Link 2",
-                    "New Link 3",
-                    "Old Link 4"
-                ]
-                ```
 - Response:
     - Type: `JSON`
     - Example:

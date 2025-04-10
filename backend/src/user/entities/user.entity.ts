@@ -6,6 +6,7 @@ import {
     UpdateDateColumn 
 } from 'typeorm';
 import { UserRoleEnum } from '../enums/role.enum';
+import { UserStatus } from '../enums/status.enum';
 
 @Entity({name: 'users'})
 export class UserEntity extends BaseEntity {
@@ -18,7 +19,7 @@ export class UserEntity extends BaseEntity {
     @Column({type: 'text'})
     description: string;
 
-    @Column({length: 255})
+    @Column({length: 255, unique: true})
     email: string;
 
     @Column({length: 255})
@@ -47,6 +48,9 @@ export class UserEntity extends BaseEntity {
 
     @Column({type: 'text'})
     password: string;
+
+    @Column({enum: UserStatus, default: UserStatus.INACTIVE})
+    status: UserStatus;
 
     @Column({type: 'text'})
     salt: string;

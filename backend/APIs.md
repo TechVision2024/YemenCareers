@@ -53,7 +53,7 @@ This file contains a detailed description of the API design.
     ```json
     {
         "name": "Tech Vision",
-        "decription": "Compnay decription.",
+        "description": "Compnay description.",
         "email": "techvision@techvision.org",
         "company_type": "Compnay type",
         "phone": "+967 01-000-000",
@@ -128,7 +128,7 @@ This file contains a detailed description of the API design.
         "user":    {
             "id": 203,
             "name": "Tech Vision",
-            "decription": "Compnay decription.",
+            "description": "Compnay description.",
             "email": "techvision@techvision.org",
             "company_type": "Compnay type",
             "phone": "+967 01-000-000",
@@ -189,7 +189,7 @@ This file contains a detailed description of the API design.
         "user":    {
             "id": 203,
             "name": "Tech Vision",
-            "decription": "Compnay decription.",
+            "description": "Compnay description.",
             "email": "techvision@techvision.org",
             "company_type": "Compnay type",
             "phone": "+967 01-000-000",
@@ -227,7 +227,7 @@ This file contains a detailed description of the API design.
         "user":    {
             "id": 203,
             "name": "Tech Vision",
-            "decription": "Compnay decription.",
+            "description": "Compnay description.",
             "email": "techvision@techvision.org",
             "company_type": "Compnay type",
             "phone": "+967 01-000-000",
@@ -263,7 +263,7 @@ This file contains a detailed description of the API design.
     {
         "id": 203,
         "name": "Tech Vision",
-        "decription": "Compnay decription.",
+        "description": "Compnay description.",
         "email": "techvision@techvision.org",
         "company_type": "Compnay type",
         "phone": "+967 01-000-000",
@@ -299,7 +299,7 @@ This file contains a detailed description of the API design.
 - Request body:
     - you can update one or more of:
 		- name.
-		- decription.
+		- description.
 		- email.
 		- company_type.
 		- phone.
@@ -316,7 +316,7 @@ This file contains a detailed description of the API design.
     ```json
     {
         "name": "Tech Vision",
-        "decription": "Compnay decription.",
+        "description": "Compnay description.",
         "email": "techvision@techvision.org",
         "company_type": "Compnay type",
         "phone": "+967 01-000-000",
@@ -372,7 +372,7 @@ This file contains a detailed description of the API design.
         "user":    {
             "id": 203,
             "name": "Tech Vision",
-            "decription": "Compnay decription.",
+            "description": "Compnay description.",
             "email": "techvision@techvision.org",
             "type": "Compnay type",
             "phone": "+967 01-000-000",

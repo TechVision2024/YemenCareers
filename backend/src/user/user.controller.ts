@@ -1,4 +1,5 @@
 import { 
+    Body,
     Controller, 
     Delete, 
     Get, 
@@ -9,24 +10,43 @@ import {
     Post, 
     Req, 
     Res,
-    UseGuards
+    UploadedFile,
+    UseGuards,
+    UseInterceptors,
+    ValidationPipe
 } from '@nestjs/common';
 import { Request, Response } from 'express';
 import { JwtAuthGuard } from 'src/auth/jwt.guard';
 import { GetUser } from './decorators/get-user.decorator';
 import { UserEntity } from './entities/user.entity';
+import { FileInterceptor } from '@nestjs/platform-express';
+import { CreateUserDto } from './dtos/create.dto';
+import { UserService } from './user.service';
+import { refreshTokenCookieConfig } from 'src/config/cookies.config';
+import { omitObjectKeys } from 'src/utils/omit.util';
 
 @Controller('user')
 export class UserController {
     private readonly logger: Logger = new Logger('UserController', {timestamp: true});
     private readonly API_BASE: string = "api/v1/user";
 
+    constructor(
+        private userService: UserService
+    ) {}
+
     @Post('register')
-    create(
+    @UseInterceptors(FileInterceptor('profileImage'))
+    async create(
+        @Body(ValidationPipe) createUserDto: CreateUserDto,
+        @UploadedFile() profileImage: Express.Multer.File,
         @Res() res: Response
     ) {
         this.logger.log(`POST '${this.API_BASE}/register'`);
-        res.send('register');
+        const userData = await this.userService.create(createUserDto, profileImage);
+        res.cookie('refrshToken', userData.refreshToken, refreshTokenCookieConfig);
+        return res.json(
+            omitObjectKeys(userData, ['refreshToken'])
+        ).status(201);
     }
 
     @Post('login')

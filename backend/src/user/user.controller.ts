@@ -44,7 +44,7 @@ export class UserController {
     ) {
         this.logger.log(`POST '${this.API_BASE}/register'`);
         const userData = await this.userService.create(createUserDto, profileImage);
-        res.cookie('refrshToken', userData.refreshToken, refreshTokenCookieConfig);
+        res.cookie('refreshToken', userData.refreshToken, refreshTokenCookieConfig);
         return res.json(
             omitObjectKeys(userData, ['refreshToken'])
         ).status(201);
@@ -57,19 +57,22 @@ export class UserController {
     ) {
         this.logger.log(`POST '${this.API_BASE}/login'`);
         const userData = await this.userService.login(loginDto);
-        res.cookie('refrshToken', userData.refreshToken, refreshTokenCookieConfig);
+        res.cookie('refreshToken', userData.refreshToken, refreshTokenCookieConfig);
         return res.json(
             omitObjectKeys(userData, ['refreshToken'])
         ).status(200);
     }
 
     @Get('refresh')
-    refresh(
+    async refresh(
         @Req() req: Request,
         @Res() res: Response
     ) {
         this.logger.log(`POST '${this.API_BASE}/refresh'`);
-        res.send('refresh');
+        const { refreshToken } = req.cookies;
+        const userData = await this.userService.refresh(refreshToken);
+        res.cookie('refreshToken', userData.refreshToken, refreshTokenCookieConfig );
+        res.status(200).json(omitObjectKeys(userData, ['refreshToken']));
     }
 
     @Post('logout')

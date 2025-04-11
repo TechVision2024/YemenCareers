@@ -24,6 +24,7 @@ import { CreateUserDto } from './dtos/create.dto';
 import { UserService } from './user.service';
 import { refreshTokenCookieConfig } from 'src/config/cookies.config';
 import { omitObjectKeys } from 'src/utils/omit.util';
+import { LoginDto } from './dtos/login.dto';
 
 @Controller('user')
 export class UserController {
@@ -50,11 +51,16 @@ export class UserController {
     }
 
     @Post('login')
-    login(
+    async login(
+        @Body(ValidationPipe) loginDto: LoginDto,
         @Res() res: Response
     ) {
         this.logger.log(`POST '${this.API_BASE}/login'`);
-        res.send('login');
+        const userData = await this.userService.login(loginDto);
+        res.cookie('refrshToken', userData.refreshToken, refreshTokenCookieConfig);
+        return res.json(
+            omitObjectKeys(userData, ['refreshToken'])
+        ).status(200);
     }
 
     @Get('refresh')

@@ -89,7 +89,7 @@ export class UserController {
         @Param('id', ParseIntPipe) id: number
     ) {
         this.logger.log(`POST '${this.API_BASE}/info/${id}'`);
-        return `info/${id}`;
+        return this.userService.inforamtion(id);
     }
 
     @UseGuards(JwtAuthGuard)

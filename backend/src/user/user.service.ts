@@ -82,6 +82,16 @@ export class UserService {
         }
     }
 
+    async inforamtion(id: number): Promise<UserEntity> {
+        const user = await this.userRepository.findOne({where: {id}});
+        if (!user || user.status == UserStatus.INACTIVE ) 
+            throw new NotFoundException(`User with id '${id}' NOT found!`);
+        return omitObjectKeys(
+            user, 
+            ['password', 'salt', 'role', 'status', 'created_at', 'update_at']
+        ) as UserEntity;
+    }
+
     private formatUserData( user: UserEntity ): FullUserData {
         const payload: JwtPayloadInterface = { id: user.id, email: user.email };
         const expiresIn: string = this.configService.get<string>("YEMENCAREERS_JWT_LONG_EXPIRESIN", '3d');

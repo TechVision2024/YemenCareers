@@ -80,7 +80,8 @@ export class UserController {
         @Res() res: Response
     ) {
         this.logger.log(`POST '${this.API_BASE}/logout'`);
-        res.send('logout');
+        res.cookie('refreshToken', "", {maxAge: 1000, httpOnly: true})
+        res.status(200).send();
     }
 
     @Get('info/:id')

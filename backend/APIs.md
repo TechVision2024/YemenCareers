@@ -53,7 +53,7 @@ This file contains a detailed description of the API design.
     ```json
     {
         "name": "Tech Vision",
-        "decription": "Compnay decription.",
+        "description": "Compnay description.",
         "email": "techvision@techvision.org",
         "company_type": "Compnay type",
         "phone": "+967 01-000-000",
@@ -128,7 +128,7 @@ This file contains a detailed description of the API design.
         "user":    {
             "id": 203,
             "name": "Tech Vision",
-            "decription": "Compnay decription.",
+            "description": "Compnay description.",
             "email": "techvision@techvision.org",
             "company_type": "Compnay type",
             "phone": "+967 01-000-000",
@@ -189,7 +189,7 @@ This file contains a detailed description of the API design.
         "user":    {
             "id": 203,
             "name": "Tech Vision",
-            "decription": "Compnay decription.",
+            "description": "Compnay description.",
             "email": "techvision@techvision.org",
             "company_type": "Compnay type",
             "phone": "+967 01-000-000",
@@ -204,14 +204,15 @@ This file contains a detailed description of the API design.
     }
     ```
     - Status codes:
-        | Status | Name                | Description                                   |
-        |--------|---------------------|-----------------------------------------------|
-        | 200    | OK                  | User loged in.                                |
-        | 400    | BadRequest          | Request body is missing some fields.          |
-        | 401    | Unauthorized        | Invalid password.                             |
-        | 404    | NotFound            | User not found, not registered.               |
-        | 429    | TooManyRequests     | More than 3req/1s or 10req/20s or 30req/1m.   |
-        | 500    | InternalServerError | Backend failure -> submit an issue in github. |
+        | Status | Name                       | Description                                   |
+        |--------|----------------------------|-----------------------------------------------|
+        | 200    | OK                         | User loged in.                                |
+        | 400    | BadRequest                 | Request body is missing some fields.          |
+        | 401    | Unauthorized               | Invalid password.                             |
+        | 404    | NotFound                   | User not found, not registered.               |
+        | 429    | TooManyRequests            | More than 3req/1s or 10req/20s or 30req/1m.   |
+        | 451    | UnavailableForLegalReasons | User data under review.                       |
+        | 500    | InternalServerError        | Backend failure -> submit an issue in github. |
 ---
 #### Refresh:
 - API: `GET /api/v1/user/refresh`
@@ -227,7 +228,7 @@ This file contains a detailed description of the API design.
         "user":    {
             "id": 203,
             "name": "Tech Vision",
-            "decription": "Compnay decription.",
+            "description": "Compnay description.",
             "email": "techvision@techvision.org",
             "company_type": "Compnay type",
             "phone": "+967 01-000-000",
@@ -263,7 +264,7 @@ This file contains a detailed description of the API design.
     {
         "id": 203,
         "name": "Tech Vision",
-        "decription": "Compnay decription.",
+        "description": "Compnay description.",
         "email": "techvision@techvision.org",
         "company_type": "Compnay type",
         "phone": "+967 01-000-000",
@@ -299,7 +300,7 @@ This file contains a detailed description of the API design.
 - Request body:
     - you can update one or more of:
 		- name.
-		- decription.
+		- description.
 		- email.
 		- company_type.
 		- phone.
@@ -316,7 +317,7 @@ This file contains a detailed description of the API design.
     ```json
     {
         "name": "Tech Vision",
-        "decription": "Compnay decription.",
+        "description": "Compnay description.",
         "email": "techvision@techvision.org",
         "company_type": "Compnay type",
         "phone": "+967 01-000-000",
@@ -372,7 +373,7 @@ This file contains a detailed description of the API design.
         "user":    {
             "id": 203,
             "name": "Tech Vision",
-            "decription": "Compnay decription.",
+            "description": "Compnay description.",
             "email": "techvision@techvision.org",
             "type": "Compnay type",
             "phone": "+967 01-000-000",

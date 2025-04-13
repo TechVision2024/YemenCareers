@@ -6,6 +6,7 @@ import { JwtPayloadInterface } from "./interface";
 import { InjectRepository } from "@nestjs/typeorm";
 import { UserEntity } from "src/user/entities/user.entity";
 import { Repository } from "typeorm";
+import { UserStatus } from "src/user/enums/status.enum";
 
 @Injectable()
 export class JwtStrategy extends PassportStrategy(Strategy) {
@@ -23,7 +24,7 @@ export class JwtStrategy extends PassportStrategy(Strategy) {
     async validate( payload: JwtPayloadInterface ) {
         const { email } = payload;
         const user = await this.userRepository.findOne({where: {email}});
-        if ( !user )
+        if ( !user || user.status == UserStatus.INACTIVE )
             throw new UnauthorizedException("User NOT found!");
         return user;
     }

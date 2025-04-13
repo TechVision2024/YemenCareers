@@ -1,4 +1,5 @@
 import { 
+    Body,
     Controller, 
     Delete, 
     Get, 
@@ -9,41 +10,69 @@ import {
     Post, 
     Req, 
     Res,
-    UseGuards
+    UploadedFile,
+    UseGuards,
+    UseInterceptors,
+    ValidationPipe
 } from '@nestjs/common';
 import { Request, Response } from 'express';
 import { JwtAuthGuard } from 'src/auth/jwt.guard';
 import { GetUser } from './decorators/get-user.decorator';
 import { UserEntity } from './entities/user.entity';
+import { FileInterceptor } from '@nestjs/platform-express';
+import { CreateUserDto } from './dtos/create.dto';
+import { UserService } from './user.service';
+import { refreshTokenCookieConfig } from 'src/config/cookies.config';
+import { omitObjectKeys } from 'src/utils/omit.util';
+import { LoginDto } from './dtos/login.dto';
 
 @Controller('user')
 export class UserController {
     private readonly logger: Logger = new Logger('UserController', {timestamp: true});
     private readonly API_BASE: string = "api/v1/user";
 
+    constructor(
+        private userService: UserService
+    ) {}
+
     @Post('register')
-    create(
+    @UseInterceptors(FileInterceptor('profileImage'))
+    async create(
+        @Body(ValidationPipe) createUserDto: CreateUserDto,
+        @UploadedFile() profileImage: Express.Multer.File,
         @Res() res: Response
     ) {
         this.logger.log(`POST '${this.API_BASE}/register'`);
-        res.send('register');
+        const userData = await this.userService.create(createUserDto, profileImage);
+        res.cookie('refreshToken', userData.refreshToken, refreshTokenCookieConfig);
+        return res.json(
+            omitObjectKeys(userData, ['refreshToken'])
+        ).status(201);
     }
 
     @Post('login')
-    login(
+    async login(
+        @Body(ValidationPipe) loginDto: LoginDto,
         @Res() res: Response
     ) {
         this.logger.log(`POST '${this.API_BASE}/login'`);
-        res.send('login');
+        const userData = await this.userService.login(loginDto);
+        res.cookie('refreshToken', userData.refreshToken, refreshTokenCookieConfig);
+        return res.json(
+            omitObjectKeys(userData, ['refreshToken'])
+        ).status(200);
     }
 
     @Get('refresh')
-    refresh(
+    async refresh(
         @Req() req: Request,
         @Res() res: Response
     ) {
         this.logger.log(`POST '${this.API_BASE}/refresh'`);
-        res.send('refresh');
+        const { refreshToken } = req.cookies;
+        const userData = await this.userService.refresh(refreshToken);
+        res.cookie('refreshToken', userData.refreshToken, refreshTokenCookieConfig );
+        res.status(200).json(omitObjectKeys(userData, ['refreshToken']));
     }
 
     @Post('logout')
@@ -51,7 +80,8 @@ export class UserController {
         @Res() res: Response
     ) {
         this.logger.log(`POST '${this.API_BASE}/logout'`);
-        res.send('logout');
+        res.cookie('refreshToken', "", {maxAge: 1000, httpOnly: true})
+        res.status(200).send();
     }
 
     @Get('info/:id')
@@ -59,7 +89,7 @@ export class UserController {
         @Param('id', ParseIntPipe) id: number
     ) {
         this.logger.log(`POST '${this.API_BASE}/info/${id}'`);
-        return `info/${id}`;
+        return this.userService.inforamtion(id);
     }
 
     @UseGuards(JwtAuthGuard)

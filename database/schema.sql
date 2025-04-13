@@ -136,3 +136,4 @@ ADD [user_id] INT FOREIGN KEY REFERENCES [users]([id]);
 
 
 
+  database/ERD.png

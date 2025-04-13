@@ -1,17 +1,51 @@
 @import "tailwindcss";
 
-* {
+/* * {
     padding: 0;
     margin: 0;
     box-sizing: border-box;
+} */
+
+@font-face{
+    font-family: 'Cairo-variable';
+    src:url('/src/Fonts/Cairo-VariableFont_slnt\,wght.ttf')
+}
+
+@font-face{
+    font-family: 'Cairo-bold';
+    src:url('/src/Fonts/Cairo-Bold.ttf')
+}
+
+@font-face{
+    font-family: 'Cairo-Black';
+    src:url('/src/Fonts/Cairo-Black.ttf')
+}
+
+@font-face{
+    font-family: 'Cairo-Light';
+    src:url('/src/Fonts/Cairo-Light.ttf')
+}
+
+@font-face{
+    font-family: 'Cairo-Medium';
+    src:url('/src/Fonts/Cairo-Medium.ttf')
+}
+
+@font-face{
+    font-family: 'Cairo-Regular';
+    src:url('/src/Fonts/Cairo-Regular.ttf')
 }
 
 /* For Common Styles */
 @theme {
-
+    --color-primary-color:#017598;
+    --color-secondary-color:#1ED7CD;
+   --font-Cairo-variable:"Cairo-variable";
+   --font-Cairo-bold:"Cairo-bold";
+   --font-Cairo-Black:"Cairo-Black";
 }
 
 /* For Custom Styles */
-@utility {
+/* @utility {
 
-}
+} */

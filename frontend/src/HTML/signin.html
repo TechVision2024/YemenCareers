@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="/src/CSS/output.css" />
+  </head>
+  <body class="bg-gray-100 font-Cairo-variable min-h-screen flex flex-col">
+    <!-- Header للجوال -->
+    <header class="relative w-full">
+      <div
+        class="bg-white w-[375px] h-[70px] py-4 px-4 flex justify-between items-center lg:hidden shadow relative"
+      >
+        <h1 class="text-primary-color font-Cairo-Black text-3xl lg:hidden">
+          يمن كريرز
+        </h1>
+        <!-- زر القائمة -->
+        <button
+          id="menu-toggle"
+          class="text-3xl text-gray-500 focus:outline-none z-30"
+        >
+          <span id="menu-icon">&#9776;</span>
+        </button>
+
+        <!-- تراك شفاف للخلفية -->
+        <div id="backdrop" class="fixed inset-0 bg-opacity-0 z-30 hidden"></div>
+      </div>
+
+      <!-- سهم الرجوع -->
+      <div
+        class="circle z-30 absolute lg:static mr-[335px] mt-[10px] lg:mr-[1200px] lg:mt-[50px] lg:flex items-center justify-center w-[25px] h-[25px] lg:w-[40px] lg:h-[40px] hover:bg-primary-color bg-black rounded-full transition duration-200"
+      >
+        <a
+          href="#"
+          class="back-btn text-[20px] font-bold text-white hover:text-black transition duration-300"
+          >&larr;</a
+        >
+      </div>
+
+      <!-- القائمة الجانبية -->
+      <div
+        id="mobile-menu"
+        class="fixed top-0 left-0 h-full w-64 bg-white shadow-lg transform -translate-x-full transition-transform duration-300 ease-in-out z-40 text-right"
+      >
+        <!-- رأس القائمة -->
+        <div
+          class="flex items-center justify-between p-4 border-b text-gray-300 mx-4"
+        >
+          <button id="menu-close" class="text-gray-500 text-6xl">
+            &times;
+          </button>
+          <div class="relative group">
+            <button
+              id="account-menu-button"
+              class="flex items-center w-[160px] h-[40px] mt-4 mr-6 space-x-2 bg-secondary-color px-2 py-2 rounded-full hover:bg-gray-200 transition"
+            >
+              <span class="font-Cairo-bold text-[12px] text-white"
+                >سجل لنشر اول طلب توظيف</span
+              >
+            </button>
+          </div>
+        </div>
+
+        <!-- عناصر القائمة -->
+        <nav
+          class="flex flex-col mt-6 px-4 space-y-4 text-lg items-center justify-center gap-6 font-Cairo-bold"
+        >
+          <a href="#" class="text-secondary-color font-bold">الصفحة الرئيسية</a>
+          <a href="#">البحث</a>
+        </nav>
+        <div class="text-gray-300 p-4 border-b mx-4"></div>
+        <div class="pt-8 px-4 mt-[160px] text-center">
+          <p>
+            هل لديك وظيفة شاغرة تريد الإعلان عنها؟ قم بإنشاء حساب واعلن عن
+            الوظائف المتاحة لتنمية فريقك أو شركتك!
+          </p>
+          <div
+            class="bg-secondary-color w-[160px] h-[40px] mr-8 mt-[10px] rounded-full p-2 text-center font-Cairo-bold"
+          >
+            <a href="/src/HTML/register.html">انشئ حسابك الآن</a>
+          </div>
+        </div>
+
+        <!-- التذييل -->
+        <div class="absolute bottom-4 w-full text-center text-gray-500 text-sm">
+          <span class="text-secondary-color font-Cairo-bold text-xs"
+            >يمن كريرز</span
+          ><br />
+          <span
+            class="text-primary-color text-xl relative top-[5px] lg:relative lg:top-[5px]"
+            >©</span
+          >
+          جميع الحقوق محفوظة ليمن كريرز
+        </div>
+      </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="gap-4 lg:flex-grow flex flex-col lg:flex-row justify-center">
+      <!-- Right Section -->
+      <div
+        class="w-full lg:w-1/2 flex flex-col items-center justify-center lg:px-20"
+      >
+        <!-- صورة شفافة للجوال -->
+        <img
+          src="/src/Images/banner-thumb-7 1 1.png"
+          alt="صورة توضيحية"
+          class="absolute opacity-30 lg:hidden w-[350px] my-4"
+        />
+        <div class="lg:relative lg:max-w-xl z-10 mt-14 lg:mt-0">
+          <h1
+            class="text-xl lg:text-2xl font-Cairo-bold mb-4 leading-relaxed text-center lg:text-right"
+          >
+            مرحبًا بك في
+            <span class="text-primary-color">يمن كريرز</span> لإعلانات التوظيف!
+          </h1>
+          <p class="text-lg lg:text-ml mb-4 text-center lg:text-right">
+            شكرًا لاختيارك نشر فرص التوظيف معنا. نحن هنا لنسهّل عليك عملية
+            العثور على الكفاءات المناسبة لشركتك. سجّل دخولك الآن وابدأ في نشر
+            إعلاناتك بكل سهولة ويسر!
+          </p>
+          <p
+            class="text-lg lg:text-lg leading-relaxed mb-6 text-center lg:text-right"
+          >
+            نحن نعمل باستمرار لتحسين تجربتك وتقديم أفضل الأدوات لتحقيق النجاح في
+            العثور على الموظفين المثاليين. إذا كنت بحاجة إلى أي مساعدة، لا تتردد
+            في التواصل معنا.
+          </p>
+          <h2 class="text-xl font-Cairo-bold mb-6 text-center lg:text-right">
+            <span class="text-primary-color">نتمنى</span> لك تجربة مثمرة مع
+            منصتنا!
+          </h2>
+        </div>
+
+        <!-- صورة واضحة لسطح المكتب -->
+        <img
+          src="/src/Images/banner-thumb-7 1 1.png"
+          alt="صورة توضيحية"
+          class="hidden lg:block lg:w-[350px] lg:h-[210px]"
+        />
+      </div>
+
+      <!-- خط فاصل -->
+      <div
+        class="hidden lg:block w-[4px] h-[500px] bg-primary-color/40 rounded-full"
+      ></div>
+      <!-- Left Section -->
+      <div class="w-full lg:w-1/2 px-4 lg:flex flex-col mt-4 z-20">
+        <!-- عنوان تسجيل الدخول -->
+        <h2
+          class="text-2xl lg:text-4xl font-Cairo-bold text-center lg:pl-[270px] lg:pt-[50px]"
+        >
+          تسجيل الدخول
+        </h2>
+        <!-- الصندوق -->
+        <div
+          class="border border-gray-300 bg-gray-100 rounded-4xl shadow-lg w-full max-w-xs mx-auto lg:border-none lg:shadow-none lg:w-full lg:h-[250px] lg:max-w-md mt-2 lg:mt-8 lg:ml-[120px] lg:bg-none"
+        >
+          <form
+            action=""
+            class="flex flex-col gap-6 pt-[20px] px-4 w-full items-center"
+          >
+            <!-- "ليس لديك حساب؟ قم بالتسجيل للجوال" -->
+            <label
+              for="account"
+              class="text-sm text-black w-full text-left mb-1 lg:hidden"
+            >
+              ليس لديك حساب؟
+              <span
+                class="font-bold text-secondary-color hover:text-primary-color cursor-pointer"
+              >
+                <a href="/src/HTML/register.html">قم بالتسجيل</a>
+              </span>
+            </label>
+            <!-- حقل الحساب -->
+            <input
+              id="account"
+              type="text"
+              placeholder="الحساب"
+              required
+              class="w-full max-w-[300px] h-[50px] lg:max-w-none lg:w-full lg:h-[50px] p-2 border border-gray-300 rounded-2xl text-right placeholder-gray-400 bg-white"
+            />
+
+            <!-- حقل كلمة المرور -->
+            <input
+              id="password"
+              type="password"
+              placeholder="كلمة السر"
+              required
+              class="w-full max-w-[300px] h-[50px] lg:max-w-none lg:w-full lg:h-[50px] p-2 border border-gray-300 rounded-2xl text-right placeholder-gray-400 bg-white"
+            />
+            <!-- مجموعة التذكر والتسجيل -->
+            <div
+              class="flex flex-col lg:flex-row justify-between items-center w-full px-2 mt-2 gap-2"
+            >
+              <!-- ليس لديك حساب؟ -->
+              <label
+                for="account"
+                class="hidden lg:block lg:text-sm lg:text-left lg:text-black lg:mt-0 lg:w-auto lg:order-2"
+              >
+                ليس لديك حساب؟
+                <span
+                  class="font-bold text-secondary-color hover:text-primary-color cursor-pointer"
+                >
+                  <a href="/src/HTML/register.html">قم بالتسجيل</a>
+                </span>
+              </label>
+
+              <!-- تذكرني دائما -->
+              <div
+                class="text-sm text-gray-600 w-full lg:w-auto lg:order-1 mt-2 lg:mt-0"
+              >
+                <label class="flex items-center text-black">
+                  <input
+                    type="checkbox"
+                    class="accent-secondary-color ml-2 z-30"
+                  />
+                  تذكرني دائما
+                </label>
+              </div>
+            </div>
+            <!-- زر تسجيل الدخول -->
+            <button
+              class="bg-secondary-color text-white w-full max-w-[300px] h-[50px] lg:max-w-none lg:w-full lg:h-[60px] py-3 mb-[20px] rounded-2xl lg:rounded-md hover:opacity-90 transition hover:text-black font-Cairo-bold hover:bg-primary-color"
+            >
+              تسجيل الدخول
+            </button>
+          </form>
+        </div>
+      </div>
+    </main>
+    <!-- الفوتر في أسفل الصفحة -->
+    <footer class="w-full text-center text-gray-500 text-xs">
+      <span
+        class="text-primary-color text-xl relative top-[5px] lg:relative lg:top-[5px]"
+        >©</span
+      >
+      جميع الحقوق محفوظة ليمن كريرز
+    </footer>
+    <script src="/src/JS/SC_signin.js"></script>
+  </body>
+</html>

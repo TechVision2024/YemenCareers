@@ -25,6 +25,7 @@ import { UserService } from './user.service';
 import { refreshTokenCookieConfig } from 'src/config/cookies.config';
 import { omitObjectKeys } from 'src/utils/omit.util';
 import { LoginDto } from './dtos/login.dto';
+import { UpdateUserInformationDto } from './dtos/update-information.dto';
 
 @Controller('user')
 export class UserController {
@@ -89,17 +90,27 @@ export class UserController {
         @Param('id', ParseIntPipe) id: number
     ) {
         this.logger.log(`POST '${this.API_BASE}/info/${id}'`);
-        return this.userService.inforamtion(id);
+        return this.userService.information(id);
     }
 
     @UseGuards(JwtAuthGuard)
+    @UseInterceptors(FileInterceptor('profileImage'))
     @Patch('update/info')
-    updateInformation(
+    async updateInformation(
+        @Body(ValidationPipe) updateUserDto: UpdateUserInformationDto,
+        @UploadedFile() profileImage: Express.Multer.File,
         @GetUser() user: UserEntity,
         @Res() res: Response
     ) {
         this.logger.log(`POST '${this.API_BASE}/update/info'`);
-        res.send('update/info');
+        const userData = await this.userService
+            .updateInformation(
+                updateUserDto, 
+                user, 
+                profileImage
+            );
+        res.cookie('refreshToken', userData.refreshToken, refreshTokenCookieConfig );
+        res.status(200).json(omitObjectKeys(userData, ['refreshToken']));
     }
     
     @UseGuards(JwtAuthGuard)

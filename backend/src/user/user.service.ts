@@ -1,4 +1,5 @@
 import { 
+    BadRequestException,
     HttpException, 
     HttpStatus, 
     Injectable, 
@@ -21,6 +22,8 @@ import { promises as fsPromises } from 'fs';
 import { join } from 'path';
 import { UserStatus } from './enums/status.enum';
 import { LoginDto } from './dtos/login.dto';
+import { UpdateUserInformationDto } from './dtos/update-information.dto';
+import { deleteImage } from 'src/utils/delete-image.util';
 
 @Injectable()
 export class UserService {
@@ -45,13 +48,10 @@ export class UserService {
         try {
             return this.formatUserData( await user.save() );
         } catch(error) {
-            try {
-                // Delete the image if the register failed.
-                const filePath = join(__dirname, '../..', profileImage.path);
-                await fsPromises.unlink(filePath);
-            } catch (error) { }
+            deleteImage(profileImage.path);
             if  (error.code == '23505' )
                 throw new HttpException(`Email is already registered!`, HttpStatus.FOUND);
+            this.logger.error(error);
             throw new InternalServerErrorException();
         }
     }
@@ -82,7 +82,7 @@ export class UserService {
         }
     }
 
-    async inforamtion(id: number): Promise<UserEntity> {
+    async information(id: number): Promise<UserEntity> {
         const user = await this.userRepository.findOne({where: {id}});
         if (!user || user.status == UserStatus.INACTIVE ) 
             throw new NotFoundException(`User with id '${id}' NOT found!`);
@@ -90,6 +90,48 @@ export class UserService {
             user, 
             ['password', 'salt', 'role', 'status', 'created_at', 'update_at']
         ) as UserEntity;
+    }
+
+    async updateInformation(
+            updateUserInformationDto: UpdateUserInformationDto, 
+            user: UserEntity,
+            profileImage: Express.Multer.File,
+        ): Promise<FullUserData> {
+        if (! updateUserInformationDto ) throw new BadRequestException("Invalid body!");
+        const updateUserDtoKeys: string[] = Object.keys(updateUserInformationDto);
+        const updatefields: string[] = [ 
+            'name', 'description', 'email',
+            'company_type', 'phone', 'address',
+            'website', 'social_url_1', 'social_url_2',
+            'social_url_3', 'social_url_4'
+        ];
+        let oldProfileImage: string = "";
+        let isInvalidBody: boolean = (
+            updateUserDtoKeys.length > updatefields.length ||
+            updateUserDtoKeys.length < 1 ||
+            !updateUserDtoKeys.every( (key) => updatefields.includes(key) ) 
+        );
+
+        if ( isInvalidBody && !profileImage ) throw new BadRequestException("Invalid body!");
+        if ( !isInvalidBody ) Object.assign(user, updateUserInformationDto);
+        if (profileImage) {
+            // Update the profile_image_url
+            oldProfileImage = user.profile_image_url;
+            user.profile_image_url = `${this.UPLOADS_BASE}/${profileImage.filename}`;
+        }
+        try {
+            let newUser = await user.save() ;
+            deleteImage(
+                oldProfileImage.replace('api', '') // replace the first 'api' in the path.
+            );
+            return this.formatUserData(newUser);
+        } catch(error) {
+            if (profileImage) { deleteImage(profileImage.path); }
+            if  (error.code == '23505' )
+                throw new HttpException(`Email is already registered!`, HttpStatus.FOUND);
+            this.logger.error(error);
+            throw new InternalServerErrorException();
+        }
     }
 
     private formatUserData( user: UserEntity ): FullUserData {

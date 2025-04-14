@@ -27,6 +27,7 @@ import { omitObjectKeys } from 'src/utils/omit.util';
 import { LoginDto } from './dtos/login.dto';
 import { UpdateUserInformationDto } from './dtos/update-information.dto';
 import { UpdateUserPasswordDto } from './dtos/update-password.dto';
+import { DeleteUserDto } from './dtos/delete.dto';
 
 @Controller('user')
 export class UserController {
@@ -126,12 +127,14 @@ export class UserController {
     
     @UseGuards(JwtAuthGuard)
     @Delete('delete')
-    delete(
+    async delete(
+        @Body(ValidationPipe) deleteUserDto: DeleteUserDto,
         @GetUser() user: UserEntity,
-        @Req() req: Request,
         @Res() res: Response
     ) {
         this.logger.log(`POST '${this.API_BASE}/delete'`);
-        res.send('delete');
+        await this.userService.delete(deleteUserDto, user);
+        res.cookie('refreshToken', "", {maxAge: 1000, httpOnly: true})
+        res.send().status(200);
     }
 }

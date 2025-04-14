@@ -18,13 +18,12 @@ import { FullUserData } from './interfaces';
 import { omitObjectKeys } from 'src/utils/omit.util';
 import * as bcrypt from 'bcrypt';
 import { CreateUserDto } from './dtos/create.dto';
-import { promises as fsPromises } from 'fs';
-import { join } from 'path';
 import { UserStatus } from './enums/status.enum';
 import { LoginDto } from './dtos/login.dto';
 import { UpdateUserInformationDto } from './dtos/update-information.dto';
 import { deleteImage } from 'src/utils/delete-image.util';
 import { UpdateUserPasswordDto } from './dtos/update-password.dto';
+import { DeleteUserDto } from './dtos/delete.dto';
 
 @Injectable()
 export class UserService {
@@ -143,6 +142,14 @@ export class UserService {
         if ( oldPasswordHash !== user.password ) throw new UnauthorizedException();
         user.password = await bcrypt.hash(updateUserPassword.password, user.salt);
         await user.save();
+        return;
+    }
+
+    async delete(deleteUserDto: DeleteUserDto, user: UserEntity): Promise<void> {
+        if (
+            (await bcrypt.hash(deleteUserDto.password, user.salt)) !== user.password
+        ) throw new UnauthorizedException();
+        await this.userRepository.delete(user.id);
         return;
     }
 

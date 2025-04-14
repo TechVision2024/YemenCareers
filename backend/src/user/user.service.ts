@@ -24,6 +24,7 @@ import { UserStatus } from './enums/status.enum';
 import { LoginDto } from './dtos/login.dto';
 import { UpdateUserInformationDto } from './dtos/update-information.dto';
 import { deleteImage } from 'src/utils/delete-image.util';
+import { UpdateUserPasswordDto } from './dtos/update-password.dto';
 
 @Injectable()
 export class UserService {
@@ -132,6 +133,17 @@ export class UserService {
             this.logger.error(error);
             throw new InternalServerErrorException();
         }
+    }
+
+    async updatePassword(
+        updateUserPassword: UpdateUserPasswordDto,
+        user: UserEntity
+    ): Promise<void> {
+        const oldPasswordHash = await bcrypt.hash(updateUserPassword.oldPassword, user.salt);
+        if ( oldPasswordHash !== user.password ) throw new UnauthorizedException();
+        user.password = await bcrypt.hash(updateUserPassword.password, user.salt);
+        await user.save();
+        return;
     }
 
     private formatUserData( user: UserEntity ): FullUserData {

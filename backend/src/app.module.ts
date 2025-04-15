@@ -7,6 +7,7 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { typeormConfig } from './config/typeorm.config';
 import { ServeStaticModule } from '@nestjs/serve-static';
 import { ServeStaticConfig } from './config/serve-static.config';
+import { JobModule } from './job/job.module';
 
 @Module({
   imports: [
@@ -14,7 +15,8 @@ import { ServeStaticConfig } from './config/serve-static.config';
     TypeOrmModule.forRootAsync(typeormConfig),
     ServeStaticModule.forRoot(ServeStaticConfig),
     AuthModule,
-    UserModule
+    UserModule,
+    JobModule
   ],
   controllers: [],
   providers: [],

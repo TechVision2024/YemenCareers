@@ -1,4 +1,5 @@
 import { 
+    BadRequestException,
     Body,
     Controller, 
     Delete, 
@@ -28,6 +29,9 @@ import { LoginDto } from './dtos/login.dto';
 import { UpdateUserInformationDto } from './dtos/update-information.dto';
 import { UpdateUserPasswordDto } from './dtos/update-password.dto';
 import { DeleteUserDto } from './dtos/delete.dto';
+import { validate } from 'class-validator';
+import { plainToInstance } from 'class-transformer';
+import { deleteImage } from 'src/utils/delete-image.util';
 
 @Controller('user')
 export class UserController {
@@ -41,11 +45,30 @@ export class UserController {
     @Post('register')
     @UseInterceptors(FileInterceptor('profileImage'))
     async create(
-        @Body(ValidationPipe) createUserDto: CreateUserDto,
+        @Body() body: any,
         @UploadedFile() profileImage: Express.Multer.File,
         @Res() res: Response
     ) {
         this.logger.log(`POST '${this.API_BASE}/register'`);
+        const createUserDto = plainToInstance(CreateUserDto, body);
+        const error = await validate(createUserDto, {
+            skipMissingProperties: false,
+            whitelist: true
+        })
+        if (error.length > 0) {
+            deleteImage(profileImage.path);
+            let validation_error = []
+            for( let err of error) {
+                validation_error.push(
+                    Object.entries(err.constraints)[0][1]
+                )
+            }
+            throw new BadRequestException({
+                messages: validation_error,
+                error: "Bad Request",
+                statusCode: 400
+            });
+        }
         const userData = await this.userService.create(createUserDto, profileImage);
         res.cookie('refreshToken', userData.refreshToken, refreshTokenCookieConfig);
         return res.json(

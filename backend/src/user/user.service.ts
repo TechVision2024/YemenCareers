@@ -36,6 +36,11 @@ export class UserService {
     ) {}
 
     async create( createUserDto: CreateUserDto, profileImage: Express.Multer.File): Promise<FullUserData> {
+        if (!profileImage) throw new BadRequestException({
+            messages: ["Profile image NOT found!"],
+            error: "Bad Request",
+            statusCode: 400
+        });
         const user: UserEntity = this.userRepository.create();
         Object.assign(user, omitObjectKeys(createUserDto, ['confirmation']));
         user.salt = await bcrypt.genSalt(

@@ -1,5 +1,6 @@
 import { ConfigModule, ConfigService } from "@nestjs/config";
 import { TypeOrmModuleAsyncOptions } from "@nestjs/typeorm";
+import { JobEntity } from "src/job/entities/job.entity";
 import { UserEntity } from "src/user/entities/user.entity";
 
 
@@ -15,7 +16,7 @@ export const typeormConfig: TypeOrmModuleAsyncOptions = {
             username: configService.get<string>("YEMENCAREERS_DATABASE_USERNAME"),
             password: configService.get<string>("YEMENCAREERS_DATABASE_PASSWORD"),
             database: configService.get<string>("YEMENCAREERS_DATABASE_NAME"),
-            entities: [UserEntity],
+            entities: [UserEntity, JobEntity],
             synchronize: configService.get<string>("YEMENCAREERS_DATABASE_SYNC") === "true",
             ssl: isProduction ? { rejectUnauthorized: false } : false
         }

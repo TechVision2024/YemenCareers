@@ -667,7 +667,7 @@ This file contains a detailed description of the API design.
         "department": "CS",
         "end_date": "2025-04-19",
         "city": "sana'a",
-        "applyURL": "https://techvision.org/apply"
+        "apply_url": "https://techvision.org/apply"
     }
     ```
     - Body rules:
@@ -689,11 +689,15 @@ This file contains a detailed description of the API design.
             - Length: Between 3 and 100 characters.
         - end_date:
             - required.
-            - Type: Data NOT data and time.
+            - Type: Data.
         - city:
             - required.
             - Type: string.
             - Length: Between 2 and 100 characters.
+        - apply_url:
+            - required.
+            - Type: string.
+            - It must be a valid URL.
 - Response:
     - Type: `JSON`
     - Example:

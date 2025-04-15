@@ -2,11 +2,13 @@ import {
     BaseEntity, 
     Column, 
     Entity, 
+    OneToMany, 
     PrimaryGeneratedColumn, 
     UpdateDateColumn 
 } from 'typeorm';
 import { UserRoleEnum } from '../enums/role.enum';
 import { UserStatus } from '../enums/status.enum';
+import { JobEntity } from 'src/job/entities/job.entity';
 
 @Entity({name: 'users'})
 export class UserEntity extends BaseEntity {
@@ -60,6 +62,9 @@ export class UserEntity extends BaseEntity {
 
     @Column({enum: UserRoleEnum, default: UserRoleEnum.USER})
     role: UserRoleEnum;
+
+    @OneToMany((_) => JobEntity, (job) => job.user )
+    jobs: JobEntity[];
 
     @Column({type: 'timestamp', default: () => 'CURRENT_TIMESTAMP' })
     created_at: Date;

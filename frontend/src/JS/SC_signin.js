@@ -1,40 +1,29 @@
-//للقائمة الكبيرة
-const menuToggle = document.getElementById("menu-toggle");
-const menuClose = document.getElementById("menu-close");
-const mobileMenu = document.getElementById("mobile-menu");
-const backdrop = document.getElementById("backdrop");
+const validUsername = "admin";
+const validPassword = "123456789";
 
-function openMenu() {
-  mobileMenu.classList.remove("-translate-x-full");
-  mobileMenu.classList.add("translate-x-0");
-  backdrop.classList.remove("hidden");
-}
+document
+  .getElementById("signInBtn")
+  .addEventListener("click", function (event) {
+    event.preventDefault();
 
-function closeMenu() {
-  mobileMenu.classList.remove("translate-x-0");
-  mobileMenu.classList.add("-translate-x-full");
-  backdrop.classList.add("hidden");
-}
+    const account = document.getElementById("account").value.trim();
+    const password = document.getElementById("password").value.trim();
 
-menuToggle.addEventListener("click", openMenu);
-menuClose.addEventListener("click", closeMenu);
-backdrop.addEventListener("click", closeMenu);
-
-document.addEventListener("keydown", (e) => {
-  if (e.key === "Escape") {
-    closeMenu();
-  }
-});
-
-// للقائمة الصغيرة
-const accountBtn = document.getElementById("account-menu-button");
-const accountMenu = document.getElementById("account-dropdown");
-
-accountBtn.addEventListener("click", (e) => {
-  e.stopPropagation();
-  accountMenu.classList.toggle("hidden");
-});
-
-window.addEventListener("click", () => {
-  accountMenu.classList.add("hidden");
-});
+    if (account === validUsername && password === validPassword) {
+      Swal.fire({
+        icon: "success",
+        title: "Login Successful ✅",
+        text: "Welcome back!",
+        confirmButtonText: "OK",
+        confirmButtonColor: "#efb700",
+      });
+    } else {
+      Swal.fire({
+        icon: "error",
+        title: "Login Failed ❌",
+        text: "Incorrect username or password.",
+        confirmButtonText: "Try Again",
+        confirmButtonColor: "#d33",
+      });
+    }
+  });

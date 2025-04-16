@@ -40,7 +40,7 @@ export class JobEntity extends BaseEntity {
     apply_url: string;
 
     @Column()
-    user_id: number;
+    userId: number;
 
     @ManyToOne((_) => UserEntity, (user) => user.jobs)
     user: UserEntity;

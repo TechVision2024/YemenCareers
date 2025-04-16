@@ -1,4 +1,5 @@
 import { 
+    Body,
     Controller, 
     Delete, 
     Get, 
@@ -8,24 +9,32 @@ import {
     Patch, 
     Post, 
     Query, 
-    UseGuards 
+    UseGuards, 
+    ValidationPipe
 } from '@nestjs/common';
 import { JwtAuthGuard } from 'src/auth/jwt.guard';
 import { GetUser } from 'src/user/decorators/get-user.decorator';
 import { UserEntity } from 'src/user/entities/user.entity';
+import { JobService } from './job.service';
+import { CreateJobDto } from './dtos/create.dto';
 
 @Controller('job')
 export class JobController {
     private readonly logger: Logger = new Logger('JobController', {timestamp: true});
     private readonly API_BASE: string = 'api/v1/job';
 
+    constructor(
+        private jobService: JobService
+    ) {}
+
     @UseGuards(JwtAuthGuard)
     @Post('create')
     create(
+        @Body(ValidationPipe) createJobDto: CreateJobDto,
         @GetUser() user: UserEntity
     ) {
         this.logger.log(`POST '${this.API_BASE}/create'.`);
-        return 'create';
+        return this.jobService.create(createJobDto, user);
     }
     
     @Get('info/:id')

@@ -1,10 +1,6 @@
 @import "tailwindcss";
 
-/* * {
-    padding: 0;
-    margin: 0;
-    box-sizing: border-box;
-} */
+@custom-variant dark (&:where(.dark, .dark *));
 
 @font-face{
     font-family: 'Cairo-variable';
@@ -36,15 +32,42 @@
     src:url('/src/Fonts/Cairo-Regular.ttf')
 }
 
+@font-face{
+    font-family: 'Inter-700';
+    src:url('/src/Fonts/Inter_24pt-Bold.ttf');
+}
+
+@font-face{
+    font-family: 'Inter-300';
+    src:url('/src/Fonts/Inter_24pt-Light.ttf');
+}
+
+@font-face{
+    font-family: 'SemiBold';
+    src:url('/src/Fonts/Roboto-SemiBold.ttf');
+}
+
 /* For Common Styles */
 @theme {
     --color-primary-color:#017598;
     --color-secondary-color:#1ED7CD;
+    --color-light-blue:#05A7BE;
+    --color-medium-blue:#087EA2;
+    --color-dark-theme-color:#2B2B2B;
+    --color-dark-primary-color:#2CE6D6;
+    --color-dark-secondary-color:#5AF3E9;
+    --color-dark-third-color:#323232;
+    --color-dark-text-color:#FFFFFF66;
+    --color-dark-border-color:#8080808C;
+
+
    --font-Cairo-variable:"Cairo-variable";
    --font-Cairo-bold:"Cairo-bold";
    --font-Cairo-Black:"Cairo-Black";
+   --font-inter-700:"Inter-700";
+   --font-inter-300:"Inter-300";
+   --font-semi-bold:"SemiBold";
 }
-
 html,
 body {
   overflow-x: hidden;
@@ -57,6 +80,8 @@ body {
 }
 
 /* For Custom Styles */
-/* @utility {
-
-} */
+@layer utilities {
+    .box-shadow{
+        box-shadow: 1px 5px 4px rgba(0, 0, 0, 0.25);
+    }
+  } 

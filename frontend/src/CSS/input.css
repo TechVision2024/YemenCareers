@@ -45,6 +45,17 @@
    --font-Cairo-Black:"Cairo-Black";
 }
 
+html,
+body {
+  overflow-x: hidden;
+}
+.form-input {
+  @apply w-full pr-2 min-h-[50px] sm:min-h-[55px] md:min-h-[56px] lg:min-h-0 lg:h-12  border border-gray-300 rounded-xl sm:rounded-lg text-right placeholder-gray-400 bg-white xl:h-10;
+}
+.form-row {
+  @apply flex flex-row w-full gap-4;
+}
+
 /* For Custom Styles */
 /* @utility {
 

@@ -5,13 +5,14 @@ import { JwtStrategy } from 'src/auth/jwt.strategy';
 import { JobEntity } from './entities/job.entity';
 import { UserEntity } from 'src/user/entities/user.entity';
 import { JobController } from './job.controller';
+import { JobService } from './job.service';
 
 @Module({
     imports: [
         TypeOrmModule.forFeature([JobEntity, UserEntity]),
         AuthModule
     ],
-    providers: [JwtStrategy],
+    providers: [JwtStrategy, JobService],
     controllers: [JobController]
 })
 export class JobModule {}

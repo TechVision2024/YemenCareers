@@ -44,9 +44,8 @@ export class JobService {
                 // 1d = 86,400,000ms
                 ( (new Date(job.end_date)).getTime() - (new Date()).getTime() )/86400000
             ),
-            state: JobStatus.CLOSE
         };
-        jobInfo.state = (jobInfo.remaining_days <= 0) ? JobStatus.CLOSE : JobStatus.OPEN;
+        jobInfo.status = (jobInfo.remaining_days <= 0) ? JobStatus.CLOSE : JobStatus.OPEN;
         return jobInfo;
     }
 

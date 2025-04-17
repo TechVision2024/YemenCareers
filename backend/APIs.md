@@ -736,7 +736,7 @@ This file contains a detailed description of the API design.
         "compnay_image": "/uploads/1743937572726.png",
         "compnay_name": "Tech Vision",
         "remaining_days": 13,
-        "state": "open", //  status are open and close
+        "status": "open", //  status are open and close
         "apply_url": "https://techvision.org/apply"
     }
     ```

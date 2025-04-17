@@ -733,10 +733,10 @@ This file contains a detailed description of the API design.
         "department": "CS",
         "end_date": "2025-04-19",
         "city": "sana'a",
-        "compnay_image": "http://backend:3000/uploads/1743937572726.png",
+        "compnay_image": "/uploads/1743937572726.png",
         "compnay_name": "Tech Vision",
         "remaining_days": 13,
-        "State": "OPEN", //  Status are OPEN and CLOSED
+        "state": "open", //  status are open and close
         "applyURL": "https://techvision.org/apply"
     }
     ```

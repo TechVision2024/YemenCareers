@@ -42,7 +42,7 @@ export class JobController {
         @Param('id', ParseIntPipe) id: number
     ) {
         this.logger.log(`GET '${this.API_BASE}/info/${id}'.`);
-        return `info/${id}`;
+        return this.jobService.jobInofrmation(id);
     }
     
     @UseGuards(JwtAuthGuard)

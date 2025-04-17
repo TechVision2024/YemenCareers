@@ -84,6 +84,6 @@ export class JobController {
         @GetUser() user: UserEntity
     ) {
         this.logger.log(`DELETE '${this.API_BASE}/delete/${id}'.`);
-        return `delete/${id}`;
+        return this.jobService.delete(id, user);
     }
 }

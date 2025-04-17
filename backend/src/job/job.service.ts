@@ -75,4 +75,14 @@ export class JobService {
         this.logger.log(`${user.name} updated job '${job.id}'.`);
         return { id: job.id };
     }
+
+    async delete(id: number, user: UserEntity): Promise<void> {
+        const {affected} = await this.jobRepository.delete({
+            id,
+            userId: user.id
+        });
+        if (affected<1) throw new NotFoundException();
+        this.logger.log(`${user.name} deleted job '${id}'`);
+        return;
+    }
 }

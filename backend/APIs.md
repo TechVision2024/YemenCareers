@@ -737,7 +737,7 @@ This file contains a detailed description of the API design.
         "compnay_name": "Tech Vision",
         "remaining_days": 13,
         "state": "open", //  status are open and close
-        "applyURL": "https://techvision.org/apply"
+        "apply_url": "https://techvision.org/apply"
     }
     ```
     - Status codes:
@@ -772,7 +772,7 @@ This file contains a detailed description of the API design.
 		- end_date.
 		- department.
 		- city.
-		- applyURL.
+		- apply_url.
     - Example:
     ```json
     {
@@ -782,7 +782,7 @@ This file contains a detailed description of the API design.
         "department": "CS",
         "end_date": "2025-04-19",
         "city": "sana'a",
-        "applyURL": "https://techvision.org/apply"
+        "apply_url": "https://techvision.org/apply"
     }
     ```
     - Body rules:

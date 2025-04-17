@@ -1,7 +1,9 @@
 import { 
+    BadRequestException,
     Injectable, 
     Logger, 
-    NotFoundException 
+    NotFoundException, 
+    UnauthorizedException
 } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { JobEntity } from './entities/job.entity';
@@ -9,8 +11,9 @@ import { Repository } from 'typeorm';
 import { CreateJobDto } from './dtos/create.dto';
 import { UserEntity } from 'src/user/entities/user.entity';
 import { omitObjectKeys } from 'src/utils/omit.util';
-import { JobInformaionInterface } from './interfaces';
+import { JobInformaionInterface, UpdateJobReturnInterface } from './interfaces';
 import { JobStatus } from './enums/job-status.enum';
+import { UpdateJobDto } from './dtos/update.dto';
 
 @Injectable()
 export class JobService {
@@ -45,5 +48,31 @@ export class JobService {
         };
         jobInfo.state = (jobInfo.remaining_days <= 0) ? JobStatus.CLOSE : JobStatus.OPEN;
         return jobInfo;
+    }
+
+    async update(
+        id: number,
+        updateJobDto: UpdateJobDto,
+        user: UserEntity
+    ): Promise<UpdateJobReturnInterface> {
+        if (!updateJobDto) throw new BadRequestException("Invalid body!");
+        const updateJobDtoKeys: string[] = Object.keys(updateJobDto);
+        const updatefields: string[] = [ 
+            'title', 'body', 'type',
+            'department', 'end_date', 'city',
+            'apply_url',
+        ];
+        if (
+            updateJobDtoKeys.length > updatefields.length ||
+            updateJobDtoKeys.length < 1 ||
+            !updateJobDtoKeys.every( (key) => updatefields.includes(key) ) 
+        ) throw new BadRequestException("Invalid body!");
+        const job = await this.jobRepository.findOne({where: {id}});
+        if (!job) throw new NotFoundException();
+        if (job.userId != user.id) throw new UnauthorizedException();
+        Object.assign(job, updateJobDto);
+        await job.save();
+        this.logger.log(`${user.name} updated job '${job.id}'.`);
+        return { id: job.id };
     }
 }

@@ -17,6 +17,7 @@ import { GetUser } from 'src/user/decorators/get-user.decorator';
 import { UserEntity } from 'src/user/entities/user.entity';
 import { JobService } from './job.service';
 import { CreateJobDto } from './dtos/create.dto';
+import { UpdateJobDto } from './dtos/update.dto';
 
 @Controller('job')
 export class JobController {
@@ -69,10 +70,11 @@ export class JobController {
     @Patch('update/:id')
     update(
         @Param('id', ParseIntPipe) id: number,
+        @Body(ValidationPipe) updateJobDto: UpdateJobDto,
         @GetUser() user: UserEntity
     ) {
         this.logger.log(`PATCH '${this.API_BASE}/update/${id}'.`);
-        return `update/${id}`;
+        return this.jobService.update(id, updateJobDto, user);
     }
     
     @UseGuards(JwtAuthGuard)

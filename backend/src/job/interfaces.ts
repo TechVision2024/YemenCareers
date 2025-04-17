@@ -15,3 +15,7 @@ export interface JobInformaionInterface {
     remaining_days: number;
     state: JobStatus
 }
+
+export interface UpdateJobReturnInterface {
+    id: number;
+}

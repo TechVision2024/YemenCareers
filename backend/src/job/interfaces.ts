@@ -13,7 +13,7 @@ export interface JobInformaionInterface {
     compnay_image: string;
     compnay_name: string;
     remaining_days: number;
-    state: JobStatus
+    status: JobStatus
 }
 
 export interface UpdateJobReturnInterface {

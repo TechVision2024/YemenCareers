@@ -11,7 +11,7 @@ import { Repository } from 'typeorm';
 import { CreateJobDto } from './dtos/create.dto';
 import { UserEntity } from 'src/user/entities/user.entity';
 import { omitObjectKeys } from 'src/utils/omit.util';
-import { JobInformaionInterface, UpdateJobReturnInterface } from './interfaces';
+import { JobInformaionInterface, UpdateJobReturnInterface, YourJobInterface } from './interfaces';
 import { JobStatus } from './enums/job-status.enum';
 import { UpdateJobDto } from './dtos/update.dto';
 
@@ -47,6 +47,31 @@ export class JobService {
         };
         jobInfo.status = (jobInfo.remaining_days <= 0) ? JobStatus.CLOSE : JobStatus.OPEN;
         return jobInfo;
+    }
+
+    async yourJob(start: number, end: number, user: UserEntity): Promise<YourJobInterface[]> {
+        if ( start < 0 || end < 0 || start > end || end - start > 50) 
+            throw new BadRequestException('Invalid start or end point!');
+        const jobs: JobEntity[] = await this.jobRepository.find({
+            where: {userId: user.id},
+            skip: start,
+            take: end - start
+        });
+        if (jobs.length < 1) throw new NotFoundException();
+        let formatedJobs: YourJobInterface[] = [];
+        for (let job of jobs) {
+            let remaining_days = Math.round(
+                // 1d = 86,400,000ms
+                ( (new Date(job.end_date)).getTime() - (new Date()).getTime() )/86400000
+            )
+            formatedJobs.push({
+                ...omitObjectKeys(job, ['body', 'user', 'userId', 'updated_at', 'apply_url']),
+                compnay_image: user.profile_image_url,
+                remaining_days,
+                status: (remaining_days <= 0) ? JobStatus.CLOSE : JobStatus.OPEN
+            })
+        }
+        return formatedJobs;
     }
 
     async update(

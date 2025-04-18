@@ -54,7 +54,7 @@ export class JobController {
         @GetUser() user: UserEntity
     ) {
         this.logger.log(`GET '${this.API_BASE}/your?s=${start}&e=${end}'.`);
-        return 'your';
+        return this.jobService.yourJob(start, end, user);
     }
     
     @Get()

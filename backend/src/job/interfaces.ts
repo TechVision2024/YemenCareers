@@ -19,3 +19,15 @@ export interface JobInformaionInterface {
 export interface UpdateJobReturnInterface {
     id: number;
 }
+
+export interface YourJobInterface {
+    title: string;
+    type: string;
+    department: string;
+    end_date: Date;
+    created_at: Date;
+    city: string;
+    compnay_image: string;
+    remaining_days: number;
+    status: JobStatus
+}

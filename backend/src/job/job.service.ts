@@ -11,9 +11,15 @@ import { Repository } from 'typeorm';
 import { CreateJobDto } from './dtos/create.dto';
 import { UserEntity } from 'src/user/entities/user.entity';
 import { omitObjectKeys } from 'src/utils/omit.util';
-import { JobInformaionInterface, UpdateJobReturnInterface, YourJobInterface } from './interfaces';
+import { 
+    JobInformaionInterface, 
+    SearchJobInterface, 
+    UpdateJobReturnInterface, 
+    YourJobInterface 
+} from './interfaces';
 import { JobStatus } from './enums/job-status.enum';
 import { UpdateJobDto } from './dtos/update.dto';
+import { FiltersDto } from './dtos/filters.dto';
 
 @Injectable()
 export class JobService {
@@ -38,8 +44,8 @@ export class JobService {
         if (!job) throw new NotFoundException();
         let jobInfo: JobInformaionInterface = {
             ...omitObjectKeys(job, ['user', 'userId' ]),
-            compnay_image: job.user.profile_image_url,
-            compnay_name: job.user.name,
+            company_image: job.user.profile_image_url,
+            company_name: job.user.name,
             remaining_days: Math.round(
                 // 1d = 86,400,000ms
                 ( (new Date(job.end_date)).getTime() - (new Date()).getTime() )/86400000
@@ -66,12 +72,58 @@ export class JobService {
             )
             formatedJobs.push({
                 ...omitObjectKeys(job, ['body', 'user', 'userId', 'updated_at', 'apply_url']),
-                compnay_image: user.profile_image_url,
+                company_image: user.profile_image_url,
                 remaining_days,
                 status: (remaining_days <= 0) ? JobStatus.CLOSE : JobStatus.OPEN
             })
         }
         return formatedJobs;
+    }
+
+    async search(filters: FiltersDto, start: number, end: number): Promise<SearchJobInterface[]> {
+        if ( start < 0 || end < 0 || start > end || end - start > 50) 
+            throw new BadRequestException('Invalid start or end point!');
+        const query = `
+            SELECT 
+                jobs.id,
+                jobs.title,
+                jobs.type,
+                jobs.department,
+                jobs.end_date,
+                jobs.created_at,
+                jobs.city,
+                users.name AS company_name,
+                users.profile_image_url AS company_image
+            FROM jobs
+            LEFT JOIN users ON users.id = jobs."userId"
+            WHERE
+                jobs.title      ILIKE $1 AND
+                jobs.type       ILIKE $2 AND
+                jobs.department ILIKE $3 AND
+                jobs.end_date   >=    $4 AND
+                jobs.created_at >=    $5 AND
+                jobs.city       ILIKE $6 AND
+                users.name      ILIKE $7    
+            ORDER BY jobs.end_date ASC
+            LIMIT  $8 
+            OFFSET $9
+        `;
+        const jobs: SearchJobInterface[] = await this.jobRepository.query(
+            query,
+            [
+                filters?.title        ? `%${filters.title}%`        : "%%",
+                filters?.type         ? `%${filters.type}%`         : "%%",
+                filters?.department   ? `%${filters.department}%`   : "%%",
+                filters?.end_date     ? `${ filters.end_date}`      : "2000-01-01",
+                filters?.created_at   ? `${ filters.created_at}`    : "2000-01-01",
+                filters?.city         ? `%${filters.city}%`         : "%%",
+                filters?.company_name ? `%${filters.company_name}%` : "%%",
+                end - start,
+                start
+            ]
+        );
+        if (jobs.length < 1) throw new NotFoundException();
+        return jobs;
     }
 
     async update(

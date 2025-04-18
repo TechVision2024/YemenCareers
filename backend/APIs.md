@@ -53,9 +53,9 @@ This file contains a detailed description of the API design.
     ```json
     {
         "name": "Tech Vision",
-        "description": "Compnay description.",
+        "description": "Company description.",
         "email": "techvision@techvision.org",
-        "company_type": "Compnay type",
+        "company_type": "Company type",
         "phone": "+967 01-000-000",
         "address": "Compnat Location",
         "website": "https://techvision.org",
@@ -128,9 +128,9 @@ This file contains a detailed description of the API design.
         "user":    {
             "id": 203,
             "name": "Tech Vision",
-            "description": "Compnay description.",
+            "description": "Company description.",
             "email": "techvision@techvision.org",
-            "company_type": "Compnay type",
+            "company_type": "Company type",
             "phone": "+967 01-000-000",
             "address": "Compnat Location",
             "website": "https://techvision.org",
@@ -189,9 +189,9 @@ This file contains a detailed description of the API design.
         "user":    {
             "id": 203,
             "name": "Tech Vision",
-            "description": "Compnay description.",
+            "description": "Company description.",
             "email": "techvision@techvision.org",
-            "company_type": "Compnay type",
+            "company_type": "Company type",
             "phone": "+967 01-000-000",
             "address": "Compnat Location",
             "website": "https://techvision.org",
@@ -228,9 +228,9 @@ This file contains a detailed description of the API design.
         "user":    {
             "id": 203,
             "name": "Tech Vision",
-            "description": "Compnay description.",
+            "description": "Company description.",
             "email": "techvision@techvision.org",
-            "company_type": "Compnay type",
+            "company_type": "Company type",
             "phone": "+967 01-000-000",
             "address": "Compnat Location",
             "website": "https://techvision.org",
@@ -264,9 +264,9 @@ This file contains a detailed description of the API design.
     {
         "id": 203,
         "name": "Tech Vision",
-        "description": "Compnay description.",
+        "description": "Company description.",
         "email": "techvision@techvision.org",
-        "company_type": "Compnay type",
+        "company_type": "Company type",
         "phone": "+967 01-000-000",
         "address": "Compnat Location",
         "website": "https://techvision.org",
@@ -317,9 +317,9 @@ This file contains a detailed description of the API design.
     ```json
     {
         "name": "Tech Vision",
-        "description": "Compnay description.",
+        "description": "Company description.",
         "email": "techvision@techvision.org",
-        "company_type": "Compnay type",
+        "company_type": "Company type",
         "phone": "+967 01-000-000",
         "address": "Compnat Location",
         "website": "https://techvision.org",
@@ -373,9 +373,9 @@ This file contains a detailed description of the API design.
         "user":    {
             "id": 203,
             "name": "Tech Vision",
-            "description": "Compnay description.",
+            "description": "Company description.",
             "email": "techvision@techvision.org",
-            "type": "Compnay type",
+            "type": "Company type",
             "phone": "+967 01-000-000",
             "location": "Compnat Location",
             "siteURL": "https://techvision.org",
@@ -533,9 +533,9 @@ This file contains a detailed description of the API design.
         - type.
         - department.
         - end_date.
-        - start_date.
+        - created_at.
         - city.
-        - compnay_name.
+        - company_name.
     - Example:
     ```json
     {
@@ -543,9 +543,9 @@ This file contains a detailed description of the API design.
         "type": "developer",
         "department": "CS",
         "end_date": "2025-04-19",
-        "start_date": "2025-04-06",
+        "created_at": "2025-04-06",
         "city": "sana'a",
-        "compnay_name": "Tech Vision"
+        "company_name": "Tech Vision"
     }
     ```
     - Body rules:
@@ -568,7 +568,7 @@ This file contains a detailed description of the API design.
             - Optional.
             - Type: string.
             - Length: Between 2 and 100 characters.
-        - compnay_name:
+        - company_name:
             - Optional.
             - Type: string.
             - Length: Between 2 and 255 characters.
@@ -579,15 +579,16 @@ This file contains a detailed description of the API design.
     ```json
     [
         {
-            "id": 2120,
             "title": "Backend Developer",
             "type": "developer",
             "department": "CS",
             "end_date": "2025-04-19",
-            "start_date": "2025-04-06",
+            "created_at": "2025-04-06",
             "city": "sana'a",
-            "compnay_name": "Tech Vision",
-            "remaining_days": 13
+            "company_name": "Tech Vision",
+            "remaining_days": 23,
+            "status": "open", //  status are open and close,
+            "company_image": "/api/uploads/1743937572726.png"
         }
     ]
     ```
@@ -629,7 +630,7 @@ This file contains a detailed description of the API design.
             "end_date": "2025-04-19",
             "created_at": "2025-04-06",
             "city": "sana'a",
-            "compnay_name": "Tech Vision",
+            "company_name": "Tech Vision",
             "remaining_days": 13
         }
     ]
@@ -733,8 +734,8 @@ This file contains a detailed description of the API design.
         "department": "CS",
         "end_date": "2025-04-19",
         "city": "sana'a",
-        "compnay_image": "/uploads/1743937572726.png",
-        "compnay_name": "Tech Vision",
+        "company_image": "/uploads/1743937572726.png",
+        "company_name": "Tech Vision",
         "remaining_days": 13,
         "status": "open", //  status are open and close
         "apply_url": "https://techvision.org/apply"

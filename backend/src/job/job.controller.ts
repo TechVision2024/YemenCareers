@@ -18,6 +18,7 @@ import { UserEntity } from 'src/user/entities/user.entity';
 import { JobService } from './job.service';
 import { CreateJobDto } from './dtos/create.dto';
 import { UpdateJobDto } from './dtos/update.dto';
+import { FiltersDto } from './dtos/filters.dto';
 
 @Controller('job')
 export class JobController {
@@ -59,11 +60,12 @@ export class JobController {
     
     @Get()
     getSomeJobs(
+        @Body(ValidationPipe) filters: FiltersDto,
         @Query('s', ParseIntPipe) start: number,
         @Query('e', ParseIntPipe) end: number,
     ) {
         this.logger.log(`GET '${this.API_BASE}?s=${start}&e=${end}'.`);
-        return 'job';
+        return this.jobService.search(filters, start, end);
     }
     
     @UseGuards(JwtAuthGuard)

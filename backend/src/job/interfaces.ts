@@ -10,8 +10,8 @@ export interface JobInformaionInterface {
     updated_at: Date;
     city: string;
     apply_url: string;
-    compnay_image: string;
-    compnay_name: string;
+    company_image: string;
+    company_name: string;
     remaining_days: number;
     status: JobStatus
 }
@@ -27,7 +27,11 @@ export interface YourJobInterface {
     end_date: Date;
     created_at: Date;
     city: string;
-    compnay_image: string;
+    company_image: string;
     remaining_days: number;
     status: JobStatus
+}
+
+export interface SearchJobInterface extends YourJobInterface {
+    company_name: string;
 }

@@ -32,6 +32,7 @@ import { DeleteUserDto } from './dtos/delete.dto';
 import { validate } from 'class-validator';
 import { plainToInstance } from 'class-transformer';
 import { deleteImage } from 'src/utils/delete-image.util';
+import { Throttle } from '@nestjs/throttler';
 
 @Controller('user')
 export class UserController {
@@ -42,6 +43,7 @@ export class UserController {
         private userService: UserService
     ) {}
 
+    @Throttle({default: { limit: 10, ttl: 60*60*1000}}) // 10 requests/hour
     @Post('register')
     @UseInterceptors(FileInterceptor('profileImage'))
     async create(
@@ -76,6 +78,7 @@ export class UserController {
         ).status(201);
     }
 
+    @Throttle({default: { limit: 10, ttl: 60*60*1000}}) // 10 requests/hour
     @Post('login')
     async login(
         @Body(ValidationPipe) loginDto: LoginDto,
@@ -118,6 +121,7 @@ export class UserController {
         return this.userService.information(id);
     }
 
+    @Throttle({default: { limit: 10, ttl: 60*60*1000}}) // 10 requests/hour
     @UseGuards(JwtAuthGuard)
     @UseInterceptors(FileInterceptor('profileImage'))
     @Patch('update/info')
@@ -138,6 +142,7 @@ export class UserController {
         res.status(200).json(omitObjectKeys(userData, ['refreshToken']));
     }
     
+    @Throttle({default: { limit: 5, ttl: 60*60*1000}}) // 5 requests/hour
     @UseGuards(JwtAuthGuard)
     @Patch('update/pass')
     updatePassword(

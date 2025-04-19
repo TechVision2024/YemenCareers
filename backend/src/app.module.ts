@@ -8,17 +8,23 @@ import { typeormConfig } from './config/typeorm.config';
 import { ServeStaticModule } from '@nestjs/serve-static';
 import { ServeStaticConfig } from './config/serve-static.config';
 import { JobModule } from './job/job.module';
+import { ThrottlerGuard, ThrottlerModule } from '@nestjs/throttler';
+import { rateLimitConfig } from './config/rate-limit.config';
+import { APP_GUARD } from '@nestjs/core';
 
 @Module({
   imports: [
     ConfigModule.forRoot(envConfig),
     TypeOrmModule.forRootAsync(typeormConfig),
     ServeStaticModule.forRoot(ServeStaticConfig),
+    ThrottlerModule.forRoot(rateLimitConfig),
     AuthModule,
     UserModule,
     JobModule
   ],
   controllers: [],
-  providers: [],
+  providers: [
+    {provide: APP_GUARD, useClass: ThrottlerGuard}
+  ],
 })
 export class AppModule {}

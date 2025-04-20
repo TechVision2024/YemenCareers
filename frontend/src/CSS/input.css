@@ -5,47 +5,69 @@
     margin: 0;
     box-sizing: border-box;
 } */
-
-@font-face{
-    font-family: 'Cairo-variable';
-    src:url('/src/Fonts/Cairo-VariableFont_slnt\,wght.ttf')
+@font-face {
+  font-family: "Cairo-variable";
+  src: url("/src/Fonts/Cairo-VariableFont_slnt\,wght.ttf");
 }
 
-@font-face{
-    font-family: 'Cairo-bold';
-    src:url('/src/Fonts/Cairo-Bold.ttf')
+@font-face {
+  font-family: "Cairo-bold";
+  src: url("/src/Fonts/Cairo-Bold.ttf");
 }
 
-@font-face{
-    font-family: 'Cairo-Black';
-    src:url('/src/Fonts/Cairo-Black.ttf')
+@font-face {
+  font-family: "Cairo-Black";
+  src: url("/src/Fonts/Cairo-Black.ttf");
 }
 
-@font-face{
-    font-family: 'Cairo-Light';
-    src:url('/src/Fonts/Cairo-Light.ttf')
+@font-face {
+  font-family: "Cairo-Light";
+  src: url("/src/Fonts/Cairo-Light.ttf");
 }
 
-@font-face{
-    font-family: 'Cairo-Medium';
-    src:url('/src/Fonts/Cairo-Medium.ttf')
+@font-face {
+  font-family: "Cairo-Medium";
+  src: url("/src/Fonts/Cairo-Medium.ttf");
 }
 
-@font-face{
-    font-family: 'Cairo-Regular';
-    src:url('/src/Fonts/Cairo-Regular.ttf')
+@font-face {
+  font-family: "Cairo-Regular";
+  src: url("/src/Fonts/Cairo-Regular.ttf");
 }
 
 /* For Common Styles */
 @theme {
-    --color-primary-color:#017598;
-    --color-secondary-color:#1ED7CD;
-   --font-Cairo-variable:"Cairo-variable";
-   --font-Cairo-bold:"Cairo-bold";
-   --font-Cairo-Black:"Cairo-Black";
+  --color-primary-color: #017598;
+  --color-secondary-color: #1ed7cd;
+  --color-Sec-secondary-color: #05A7BE;
+  --font-Cairo-variable: "Cairo-variable";
+  --font-Cairo-bold: "Cairo-bold";
+  --font-Cairo-Black: "Cairo-Black";
 }
 
+html,
+body {
+  overflow-x: hidden;
+}
+.form-input {
+  @apply w-full pr-2 min-h-[50px] sm:min-h-[55px] md:min-h-[56px] lg:min-h-0 lg:h-12  border border-gray-300 rounded-xl sm:rounded-lg text-right placeholder-gray-400 bg-white xl:h-10;
+}
+.form-row {
+  @apply flex flex-row w-full gap-4;
+}
+
+.input-wrapper {
+  @apply relative w-full;
+}
+
+.eye-button {
+  @apply absolute top-1/2 left-3 -translate-y-1/2 text-xl text-gray-500 focus:outline-none;
+}
+
+.eye-button1 {
+  @apply absolute top-1/2 -translate-y-1/2 text-xl text-black focus:outline-none;
+}
 /* For Custom Styles */
 /* @utility {
-
+   
 } */

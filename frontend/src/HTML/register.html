@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sign-up</title>
+    <link rel="stylesheet" href="/src/CSS/output.css" />
+    <link
+      rel="stylesheet"
+      href="/node_modules/@fortawesome/fontawesome-free/css/all.min.css"
+    />
+  </head>
+  <body class="bg-gray-100 font-Cairo-variable min-h-screen flex flex-col">
+    <!-- Header للجوال -->
+    <header class="relative w-full">
+      <div
+        class="bg-white h-[70px] md:h-[80px] py-4 px-4 flex justify-between items-center shadow relative lg:hidden"
+      >
+        <h1
+          class="text-primary-color font-Cairo-Black text-3xl md:text-4xl lg:hidden"
+        >
+          يمن كريرز
+        </h1>
+        <!-- زر القائمة -->
+        <button id="menu-toggle" class="text-gray-500 focus:outline-none z-30">
+          <span id="menu-icon"><img src="/src/Images/list.svg" alt="" /></span>
+        </button>
+
+        <!-- تراك شفاف للخلفية -->
+        <div id="backdrop" class="fixed inset-0 bg-opacity-0 z-30 hidden"></div>
+      </div>
+
+      <!-- سهم الرجوع -->
+      <div
+        class="z-30 absolute top-20 left-5 w-7 h-7 sm:w-9 sm:h-9 sm:top-22 sm:left-3 md:w-12 md:h-12 md:top-26 md:left-1 lg:relative lg:top-[-25px] lg:right-[950px] lg:w-10 lg:h-10 lg:mt-12 xl:right-[1180px] xl:top-[-25px]"
+      >
+        <a href="/src/HTML/signin.html" class="back-btn text-[20px] font-bold">
+          <img src="/src/Images/arraow.svg" alt="رجوع" />
+        </a>
+      </div>
+
+      <!-- القائمة الجانبية -->
+      <div
+        id="mobile-menu"
+        class="fixed top-0 left-0 h-full w-64 bg-white shadow-lg transform -translate-x-full transition-transform duration-300 ease-in-out z-40 text-right"
+      >
+        <!-- رأس القائمة -->
+        <div
+          class="flex items-center justify-between p-4 border-b text-gray-300 mx-4"
+        >
+          <button id="menu-close" class="text-gray-500 text-6xl">
+            &times;
+          </button>
+          <div class="relative group">
+            <button
+              id="account-menu-button"
+              class="flex items-center w-[160px] h-[40px] mt-4 mr-6 space-x-2 bg-Sec-secondary-color px-2 py-2 rounded-full hover:bg-gray-200 transition"
+            >
+              <span class="font-Cairo-bold text-[12px] text-white"
+                >سجل لنشر اول طلب توظيف</span
+              >
+            </button>
+          </div>
+        </div>
+
+        <!-- الحاوية الكاملة -->
+        <div
+          class="flex flex-col justify-between h-[calc(100%-80px)] px-4 py-6 space-y-8 overflow-y-auto"
+        >
+          <!-- روابط التنقل -->
+          <nav
+            class="flex flex-col items-center space-y-4 font-Cairo-bold text-xl"
+          >
+            <a
+              href="/src/HTML/home.html"
+              class="text-Sec-secondary-color font-bold hover:text-primary-color"
+            >
+              الصفحة الرئيسية
+            </a>
+            <a href="#" class="hover:text-primary-color">البحث</a>
+          </nav>
+
+          <!-- فاصل -->
+          <div class="border-b border-gray-300 w-full"></div>
+
+          <!-- التذييل -->
+          <footer class="text-center text-gray-500 text-sm space-y-2 pt-4">
+            <span class="text-Sec-secondary-color font-Cairo-bold text-lg">
+              يمن كريرز
+            </span>
+            <div
+              class="flex justify-center items-center space-x-1 rtl:space-x-reverse"
+            >
+              <span class="text-primary-color text-xl pt-1">©</span>
+              <span>جميع الحقوق محفوظة ليمن كريرز</span>
+            </div>
+          </footer>
+        </div>
+      </div>
+    </header>
+    <!-- Main Content -->
+    <main
+      class="gap-4 sm:gap-0 md:gap-0 lg:gap-4 lg:flex-grow flex flex-col lg:flex-row justify-center"
+    >
+      <!-- Right Section -->
+      <div
+        class="w-full lg:w-1/2 flex flex-col items-center justify-center sm:py-6 md:py-10 md:px-0 lg:py-0 lg:px-10 xl:px-20"
+      >
+        <div class="lg:relative lg:max-w-xl z-10 mt-14 lg:mt-0">
+          <h1
+            class="text-lg font-Cairo-bold mb-3 leading-relaxed text-center sm:text-3xl lg:text-xl lg:px-3 lg:text-right xl:px-6 xl:text-2xl"
+          >
+            مرحبًا بك في
+            <span class="text-primary-color">يمن كريرز</span> لإعلانات التوظيف!
+          </h1>
+          <p
+            class="text-lg mb-3 px-6 text-center sm:text-xl sm:px-18 md:px-28 md:text-xl lg:text-right lg:text-lg lg:px-6 xl:px-6"
+          >
+            شكرًا لاختيارك نشر فرص التوظيف معنا. نحن هنا لنسهّل عليك عملية
+            العثور على الكفاءات المناسبة لشركتك. سجّل دخولك الآن وابدأ في نشر
+            إعلاناتك بكل سهولة ويسر!
+          </p>
+          <p
+            class="text-lg mb-6 px-6 text-center sm:text-xl sm:px-18 md:px-28 md:text-xl lg:text-right lg:text-lg lg:px-6 lg:mb-3 xl:mb-1 xl:px-6"
+          >
+            نحن نعمل باستمرار لتحسين تجربتك وتقديم أفضل الأدوات لتحقيق النجاح في
+            العثور على الموظفين المثاليين. إذا كنت بحاجة إلى أي مساعدة، لا تتردد
+            في التواصل معنا.
+          </p>
+          <h2
+            class="text-xl font-Cairo-bold px-6 mb-2 text-center sm:text-3xl lg:text-right lg:text-xl lg:pr-4 xl:px-6"
+          >
+            <span class="text-primary-color">نتمنى</span> لك تجربة مثمرة مع
+            منصتنا!
+          </h2>
+        </div>
+
+        <!-- صورة واضحة لسطح المكتب -->
+        <img
+          src="/src/Images/Frame.png"
+          alt="صورة توضيحية"
+          class="w-85 sm:w-[480px] sm:h-80 md:mt-6 lg:w-[400px] lg:h-[255px] lg:mb-0 xl:w-[350px] xl:h-[210px]"
+        />
+      </div>
+
+      <!-- خط فاصل -->
+      <div
+        class="hidden lg:block w-[4px] lg:h-[610px] xl:h-[500px] bg-primary-color/40 rounded-full"
+      ></div>
+      <!-- Left Section -->
+      <div class="w-full lg:w-1/2 px-2 lg:flex flex-col mt-0 z-20">
+        <!-- الصندوق -->
+        <div
+          class="w-full max-w-[370px] mx-auto mt-2 sm:max-w-[450px] md:max-w-lg lg:gap-2 lg:w-full lg:h-[250px] lg:max-w-md lg:ml-[120px] lg:mt-[-50px] xl:mt-[-35px]"
+        >
+          <form
+            action=""
+            class="flex flex-col pb-4 w-full items-center gap-2 sm:gap-3 md:px-0 md:gap-2 lg:px-4 xl:gap-1"
+          >
+            <h2
+              class="text-2xl font-bold text-right w-full sm:text-4xl lg:text-2xl"
+            >
+              تسجيل
+            </h2>
+            <!-- "ليس لديك حساب؟ قم بالتسجيل للجوال" -->
+            <label
+              for="account"
+              class="text-sm text-black w-full text-left mb-1 pl-4 sm:pl-4 lg:hidden"
+            >
+              لديك حساب بالفعل؟
+              <span
+                class="font-bold text-secondary-color hover:text-primary-color cursor-pointer"
+              >
+                <a href="/src/HTML/signin.html"> قم بالتسجيل</a>
+              </span>
+            </label>
+            <!-- اسم الشركة -->
+            <input
+              id="company-name"
+              type="text"
+              placeholder="اسم الشركة"
+              class="form-input"
+            />
+
+            <!-- الحساب الإلكتروني -->
+            <input
+              id="email"
+              type="email"
+              placeholder="الحساب الإلكتروني"
+              class="form-input"
+            />
+
+            <div class="form-row gap-2">
+              <input type="text" placeholder="نوع الشركة" class="form-input" />
+
+              <!-- حقل الصورة مع الأيقونة داخله -->
+              <div class="relative w-full">
+                <!-- طبقة العرض: أيقونة + نص -->
+                <div
+                  class="form-input flex items-center justify-center absolute gap-10 text-gray-400 pointer-events-none"
+                  id="customFileLabel"
+                >
+                  <span
+                    id="fileName"
+                    class="overflow-hidden text-ellipsis whitespace-nowrap max-w-full"
+                    >اختيار الصورة</span
+                  >
+                  <img
+                    src="/src/Images/arrow-top-right-on-square.svg"
+                    alt="icon"
+                    class="w-5 h-5 flex-shrink-0"
+                  />
+                </div>
+
+                <!-- input file شفاف فوقه -->
+                <input
+                  type="file"
+                  id="customFileInput"
+                  class="w-full pl-10 opacity-0 cursor-pointer"
+                />
+              </div>
+            </div>
+
+            <!-- موقع الشركة الإلكتروني -->
+            <div class="form-row">
+              <input
+                type="url"
+                placeholder="موقع الشركة الإلكتروني"
+                class="form-input"
+              />
+            </div>
+
+            <!-- رقم الهاتف + موقع الشركة -->
+            <div class="form-row">
+              <input type="text" placeholder="موقع الشركة" class="form-input" />
+              <input type="tel" placeholder="رقم الهاتف" class="form-input" />
+            </div>
+            <!-- الوصف -->
+            <textarea
+              placeholder="الوصف"
+              class="form-input resize-none md:pt-4 lg:pt-0"
+            ></textarea>
+
+            <div class="form-row">
+              <input
+                type="url"
+                placeholder="1-موقع تواصل إجتماعي"
+                class="form-input"
+              />
+              <input
+                type="url"
+                placeholder="2-موقع تواصل إجتماعي"
+                class="form-input"
+              />
+            </div>
+
+            <div class="form-row">
+              <input
+                type="url"
+                placeholder="3-موقع تواصل إجتماعي"
+                class="form-input"
+              />
+              <input
+                type="url"
+                placeholder="4-موقع تواصل إجتماعي"
+                class="form-input"
+              />
+            </div>
+
+            <!-- كلمة السر -->
+            <div class="input-wrapper">
+              <input
+                id="password"
+                type="password"
+                name="password"
+                placeholder="كلمة السر"
+                class="form-input pr-10"
+              />
+              <button
+                id="togglePassword1"
+                type="button"
+                class="eye-button cursor-pointer"
+              >
+                <i id="eyeIcon1" class="fa-solid fa-eye-slash fa-sm"></i>
+              </button>
+            </div>
+
+            <!-- تأكيد كلمة السر -->
+            <div class="input-wrapper">
+              <input
+                id="confirm-password"
+                type="password"
+                name="confirm-password"
+                placeholder="تأكيد كلمة السر"
+                class="password-input form-input pr-10"
+              />
+              <button
+                id="togglePassword2"
+                type="button"
+                class="eye-button cursor-pointer"
+              >
+                <i id="eyeIcon2" class="fa-solid fa-eye-slash fa-sm"></i>
+              </button>
+            </div>
+
+            <p class="hidden lg:block text-sm text-black mt-0 ml-[200px]">
+              لديك حساب بالفعل؟
+              <a
+                href="/src/HTML/signin.html"
+                class="text-secondary-color font-bold hover:text-primary-color"
+              >
+                قم بتسجيل
+              </a>
+            </p>
+            <button
+              id="signup"
+              class="bg-[#00c2cb] text-white w-full h-16 rounded-xl sm:rounded-xl sm:h-14 md:text-xl md:h-14 lg:h-12 xl:rounded-xl hover:opacity-90 transition hover:text-black hover:bg-primary-color font-bold mt-0"
+            >
+              تسجيل
+            </button>
+          </form>
+        </div>
+      </div>
+    </main>
+    <!-- الفوتر في أسفل الصفحة -->
+    <footer
+      class="w-full text-center text-gray-500 text-xs flex justify-center items-center mb-2 lg:mt-4 xl:mb-2"
+    >
+      <span class="text-primary-color text-xl pt-1">©</span>
+      جميع الحقوق محفوظة ليمن كريرز
+    </footer>
+    <script src="/node_modules/sweetalert2/dist/sweetalert2.all.min.js"></script>
+    <script src="/src/JS/SC_register.js"></script>
+    <script src="/src/JS/upper_list.js"></script>
+  </body>
+</html>

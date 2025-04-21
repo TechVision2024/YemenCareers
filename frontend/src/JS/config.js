@@ -1,1 +1,0 @@
-export const baseURL = "https://yemencareers.up.railway.app/src/HTML/signin.html";

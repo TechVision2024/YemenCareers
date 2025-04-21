@@ -27,14 +27,14 @@ document.addEventListener("keydown", (e) => {
 });
 
 // للقائمة الصغيرة
-const accountBtn = document.getElementById("account-menu-button");
-const accountMenu = document.getElementById("account-dropdown");
+// const accountBtn = document.getElementById("account-menu-button");
+// const accountMenu = document.getElementById("account-dropdown");
 
-accountBtn.addEventListener("click", (e) => {
-  e.stopPropagation();
-  accountMenu.classList.toggle("hidden");
-});
+// accountBtn.addEventListener("click", (e) => {
+//   e.stopPropagation();
+//   accountMenu.classList.toggle("hidden");
+// });
 
-window.addEventListener("click", () => {
-  accountMenu.classList.add("hidden");
-});
+// window.addEventListener("click", () => {
+//   accountMenu.classList.add("hidden");
+// });

@@ -20,6 +20,7 @@ import {
 import { JobStatus } from './enums/job-status.enum';
 import { UpdateJobDto } from './dtos/update.dto';
 import { FiltersDto } from './dtos/filters.dto';
+import { UserRoleEnum } from 'src/user/enums/role.enum';
 
 @Injectable()
 export class JobService {
@@ -153,12 +154,15 @@ export class JobService {
     }
 
     async delete(id: number, user: UserEntity): Promise<void> {
-        const {affected} = await this.jobRepository.delete({
-            id,
-            userId: user.id
-        });
+        let serchForm = {};
+        if (user.role === UserRoleEnum.ADMIN) {
+            serchForm = { id };
+        } else {
+            serchForm = { id, userId: user.id };
+        }
+        const {affected} = await this.jobRepository.delete(serchForm);
         if (affected<1) throw new NotFoundException();
-        this.logger.log(`${user.name} deleted job '${id}'`);
+        this.logger.log(`${user.name} deleted job with id '${id}'`);
         return;
     }
 }

@@ -6,10 +6,13 @@
         - [Register](#register)
         - [Login](#login)
         - [Refresh](#refresh)
+        - [Search For Users](#search-for-users)
         - [User Inofermation](#user-inofermation)
+        - [Set User as Active](#set-user-as-active)
         - [Update Information](#update-user-information)
         - [Update Password](#update-user-password)
         - [Delete](#delete-user)
+        - [Admin Delete User](#admin-delete-user)
         - [Logout](#logout)
     - [Job](#job)
         - [Get Jobs](#get-jobs)
@@ -29,12 +32,15 @@ This file contains a detailed description of the API design.
 | [/api/v1/user/register](#register)                   | POST   | Create new user.                                |
 | [/api/v1/user/login](#login)                         | POST   | Login and verify the user.                      |
 | [/api/v1/user/refresh](#refresh)                     | GET    | Verify if user loged in and create new tokens.  |
+| [/api/v1/user?name=&s=&e=](#search-for-users)        | GET    | Get the users for the admin.                    |
 | [/api/v1/user/info/{id}](#user-inofermation)         | GET    | Get account information.                        |
+| [/api/v1/user/active/{id}](#set-user-as-active)      | PATCH  | Set the user as Active by the admin.            |
 | [/api/v1/user/update/info](#update-user-information) | PATCH  | Update the current user information.            |
 | [/api/v1/user/update/pass](#update-user-password)    | PATCH  | Update the current user password.               |
 | [/api/v1/user/delete](#delete-user)                  | DELETE | Delete the current user.                        |
+| [/api/v1/user/delete/{id}](#admin-delete-user)       | DELETE | Delete user by the admin.                       |
 | [/api/v1/user/logout](#logout)                       | POST   | Logout the currrent user and delete the tokens. |
-| [/api/v1/job/?s=&e=](#get-jobs)                      | GET    | Get jobs by filters.                            |
+| [/api/v1/job?s=&e=](#get-jobs)                       | GET    | Get jobs by filters.                            |
 | [/api/v1/job/your?s=&e=](#get-your-jobs)             | GET    | Get user jobs.                                  |
 | [/api/v1/job/create](#create-job)                    | POST   | Create new job.                                 |
 | [/api/v1/job/info/{id}](#get-job-information)        | GET    | Get job information.                            |
@@ -251,6 +257,54 @@ This file contains a detailed description of the API design.
         | 429    | TooManyRequests     | More than 3req/1s or 10req/20s or 30req/1m.   |
         | 500    | InternalServerError | Backend failure -> submit an issue in github. |
 ---
+#### Search For Users:
+- API: `GET /api/v1/user?name=&s=&e=`
+    - name is optional.
+    - s and e are numbers -> s and e not lass than 0 and e not lass than s.
+    - `NOTE` max number of users return is 50 user.
+- Description: Get the users for the admin.
+- Request authorization header:
+    - required.
+    - type: `JSON`
+    - Example:
+    ```json
+    {
+        "Authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Im1vaGFuZWQyMDIzIiwiaWF0IjoxNzMxNjc1MzM0LCJleHAiOjE3MzE2ODYxMzR9.MEZmEDKvl7giIH7whhWMRoxTK8v4lz8jgDytLPDcm48"
+    }
+    ```
+- Request body:
+    - Not required
+- Response:
+    - Type: `JSON`
+    - Example:
+    ```json
+    [
+        {
+            "id": 203,
+            "name": "Tech Vision",
+            "email": "techvision@techvision.org",
+            "company_type": "Company type",
+            "phone": "+967 01-000-000",
+            "address": "Compnat Location",
+            "website": "https://techvision.org",
+            "profile_image_url": "http://backend:3000/uploads/1743937572726.png",
+            "created_at": "2025-04-15",
+            "updated_at": "2025-04-15",
+            "days_since_creation": 14
+        }
+    ]
+    ```
+    - Status codes:
+        | Status | Name                | Description                                   |
+        |--------|---------------------|-----------------------------------------------|
+        | 200    | OK                  | User loged in.                                |
+        | 400    | BadRequest          | Invalide start or end.                        |
+        | 401    | Unauthorized        | Invalide accessToken.                         |
+        | 403    | Forbidden           | User is not admin.                            |
+        | 404    | NotFound            | Users not found.                              |
+        | 429    | TooManyRequests     | More than 3req/1s or 10req/20s or 30req/1m.   |
+        | 500    | InternalServerError | Backend failure -> submit an issue in github. |
+---
 #### User Inofermation:
 - API: `GET /api/v1/user/info/{id}`
     - id must be integer.
@@ -282,6 +336,33 @@ This file contains a detailed description of the API design.
         |--------|---------------------|-----------------------------------------------|
         | 200    | OK                  | User loged in.                                |
         | 404    | NotFound            | User not found, not registered.               |
+        | 429    | TooManyRequests     | More than 3req/1s or 10req/20s or 30req/1m.   |
+        | 500    | InternalServerError | Backend failure -> submit an issue in github. |
+---
+#### Set User as Active:
+- API: `PATCH /api/v1/user/active/{id}`
+    - id is number start from 1.
+- Description: Set the user as Active by the admin.
+- Request authorization header:
+    - required.
+    - type: `JSON`
+    - Example:
+    ```json
+    {
+        "Authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Im1vaGFuZWQyMDIzIiwiaWF0IjoxNzMxNjc1MzM0LCJleHAiOjE3MzE2ODYxMzR9.MEZmEDKvl7giIH7whhWMRoxTK8v4lz8jgDytLPDcm48"
+    }
+    ```
+- Request body:
+    - Not required
+- Response:
+    - Body Null
+    - Status codes:
+        | Status | Name                | Description                                   |
+        |--------|---------------------|-----------------------------------------------|
+        | 200    | OK                  | User updated.                                 |
+        | 401    | Unauthorized        | Access token is expired.                      |
+        | 403    | Forbidden           | User is not admin.                            |
+        | 404    | NotFound            | User not found.                               |
         | 429    | TooManyRequests     | More than 3req/1s or 10req/20s or 30req/1m.   |
         | 500    | InternalServerError | Backend failure -> submit an issue in github. |
 ---
@@ -495,6 +576,33 @@ This file contains a detailed description of the API design.
         | 429    | TooManyRequests     | More than 3req/1s or 10req/20s or 30req/1m.   |
         | 500    | InternalServerError | Backend failure -> submit an issue in github. |
 ---
+#### Admin Delete User:
+- API: `DELETE /api/v1/user/delete/{id}`
+    - id is number start from 1.
+- Description: Delete user by the admin.
+- Request authorization header:
+    - required.
+    - type: `JSON`
+    - Example:
+    ```json
+    {
+        "Authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Im1vaGFuZWQyMDIzIiwiaWF0IjoxNzMxNjc1MzM0LCJleHAiOjE3MzE2ODYxMzR9.MEZmEDKvl7giIH7whhWMRoxTK8v4lz8jgDytLPDcm48"
+    }
+    ```
+- Request body:
+    - Not required
+- Response:
+    - Body Null
+    - Status codes:
+        | Status | Name                | Description                                   |
+        |--------|---------------------|-----------------------------------------------|
+        | 200    | OK                  | User deleted.                                 |
+        | 401    | Unauthorized        | Access token is expired.                      |
+        | 403    | Forbidden           | User is not admin.                            |
+        | 404    | NotFound            | User not found.                               |
+        | 429    | TooManyRequests     | More than 3req/1s or 10req/20s or 30req/1m.   |
+        | 500    | InternalServerError | Backend failure -> submit an issue in github. |
+---
 #### Logout:
 - API: `POST /api/v1/user/logout`
 - Description: Logout the currrent user and delete the tokens.
@@ -523,7 +631,7 @@ This file contains a detailed description of the API design.
 
 ### Job:
 #### Get Jobs:
-- API: `GET /api/v1/job/?s=&e=`
+- API: `GET /api/v1/job?s=&e=`
     - s and e are numbers -> s and e not lass than 0 and e not lass than s.
     - `NOTE` max number of jobs return is 50 job.
 - Description: Get jobs by filters.

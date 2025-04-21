@@ -9,6 +9,7 @@ import {
     ParseIntPipe, 
     Patch, 
     Post, 
+    Query, 
     Req, 
     Res,
     UploadedFile,
@@ -33,6 +34,9 @@ import { validate } from 'class-validator';
 import { plainToInstance } from 'class-transformer';
 import { deleteImage } from 'src/utils/delete-image.util';
 import { Throttle } from '@nestjs/throttler';
+import { RolesGuard } from './guards/role.guard';
+import { Roles } from './decorators/roles.decorator';
+import { UserRoleEnum } from './enums/role.enum';
 
 @Controller('user')
 export class UserController {
@@ -113,12 +117,36 @@ export class UserController {
         res.status(200).send();
     }
 
+    @UseGuards(JwtAuthGuard, RolesGuard)
+    @Roles(UserRoleEnum.ADMIN)
+    @Get()
+    search(
+        @Query('name') name: string,
+        @Query('s', ParseIntPipe) start: number,
+        @Query('e', ParseIntPipe) end: number,
+        @GetUser() user : UserEntity
+    ) {
+        this.logger.log(`GET '${this.API_BASE}?name=${name}&s=${start}&e=${end}'`);
+        return this.userService.search(name, start, end, user);
+    }
+
     @Get('info/:id')
     information(
         @Param('id', ParseIntPipe) id: number
     ) {
         this.logger.log(`POST '${this.API_BASE}/info/${id}'`);
         return this.userService.information(id);
+    }
+
+    @UseGuards(JwtAuthGuard, RolesGuard)
+    @Roles(UserRoleEnum.ADMIN)
+    @Patch('active/:id')
+    setUserAsActive(
+        @Param('id', ParseIntPipe) id: number,
+        @GetUser() user: UserEntity
+    ) {
+        this.logger.log(`PATCH '${this.API_BASE}/active/${id}'`);
+        return this.userService.setUserAsActive(id, user);
     }
 
     @Throttle({default: { limit: 10, ttl: 60*60*1000}}) // 10 requests/hour
@@ -160,9 +188,20 @@ export class UserController {
         @GetUser() user: UserEntity,
         @Res() res: Response
     ) {
-        this.logger.log(`POST '${this.API_BASE}/delete'`);
+        this.logger.log(`DELETE '${this.API_BASE}/delete'`);
         await this.userService.delete(deleteUserDto, user);
         res.cookie('refreshToken', "", {maxAge: 1000, httpOnly: true})
         res.send().status(200);
+    }
+
+    @UseGuards(JwtAuthGuard, RolesGuard)
+    @Roles(UserRoleEnum.ADMIN)
+    @Delete('delete/:id')
+    adminDelete(
+        @Param('id', ParseIntPipe) id: number,
+        @GetUser() user: UserEntity
+    ) {
+        this.logger.log(`DELETE '${this.API_BASE}/delete/${id}'`);
+        return this.userService.adminDelete(id, user);
     }
 }

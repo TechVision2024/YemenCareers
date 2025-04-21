@@ -14,7 +14,7 @@ import { Repository } from 'typeorm';
 import { JwtService } from '@nestjs/jwt';
 import { ConfigService } from '@nestjs/config';
 import { JwtPayloadInterface } from 'src/auth/interface';
-import { FullUserData } from './interfaces';
+import { FullUserData, SearchUserInterface } from './interfaces';
 import { omitObjectKeys } from 'src/utils/omit.util';
 import * as bcrypt from 'bcrypt';
 import { CreateUserDto } from './dtos/create.dto';
@@ -87,14 +87,58 @@ export class UserService {
         }
     }
 
+    async search(
+        name: string|undefined,
+        start: number,
+        end: number,
+        user: UserEntity
+    ): Promise<SearchUserInterface[]> {
+        if ( start < 0 || end < 0 || start > end || end - start > 50)
+            throw new BadRequestException('Invalid start or end point!');
+        const query = `
+            SELECT
+                id,
+                name,
+                status,
+                address,
+                email,
+                company_type,
+                website,
+                profile_image_url,
+                phone,
+                created_at::DATE,
+                updated_at::DATE,
+                CURRENT_DATE - created_at::DATE AS days_since_creation
+            FROM users
+            WHERE
+                name ILIKE $1
+            ORDER BY status DESC, created_at ASC
+            LIMIT $2 OFFSET $3;
+        `;
+        const users: SearchUserInterface[] = await this.userRepository.query(
+            query, 
+            [name ? `%${name}%` : '%%', end-start, start]
+        );
+        if (users.length < 1 ) throw new NotFoundException();
+        this.logger.log(`Admin '${user.name}' got users.`);
+        return users;
+    }
+
     async information(id: number): Promise<UserEntity> {
         const user = await this.userRepository.findOne({where: {id}});
         if (!user || user.status == UserStatus.INACTIVE ) 
             throw new NotFoundException(`User with id '${id}' NOT found!`);
         return omitObjectKeys(
             user, 
-            ['password', 'salt', 'role', 'status', 'created_at', 'update_at']
+            ['password', 'salt', 'role', 'status', 'created_at', 'updated_at']
         ) as UserEntity;
+    }
+
+    async setUserAsActive(id: number, user: UserEntity) {
+        const {affected} = await this.userRepository.update(id, {status: UserStatus.ACTIVE});
+        if ( affected < 1 ) throw new NotFoundException();
+        this.logger.log(`'${user.name}' has accepted the register request for the user with id '${id}'.`);
+        return;
     }
 
     async updateInformation(
@@ -155,6 +199,14 @@ export class UserService {
             (await bcrypt.hash(deleteUserDto.password, user.salt)) !== user.password
         ) throw new UnauthorizedException();
         await this.userRepository.delete(user.id);
+        this.logger.log(`The user '${user.name}' deleted his account.`);
+        return;
+    }
+
+    async adminDelete(id: number, user: UserEntity): Promise<void> {
+        let {affected} = await this.userRepository.delete(id);
+        if (affected < 1) throw new NotFoundException();
+        this.logger.log(`'${user.name}' deleted the user with id '${id}'`);
         return;
     }
 

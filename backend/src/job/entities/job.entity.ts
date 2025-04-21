@@ -42,7 +42,7 @@ export class JobEntity extends BaseEntity {
     @Column()
     userId: number;
 
-    @ManyToOne((_) => UserEntity, (user) => user.jobs)
+    @ManyToOne((_) => UserEntity, (user) => user.jobs, {onDelete: 'CASCADE'})
     user: UserEntity;
 
     @Column({type: 'timestamp', default: () => 'CURRENT_TIMESTAMP' })

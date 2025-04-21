@@ -63,12 +63,12 @@ export class UserEntity extends BaseEntity {
     @Column({enum: UserRoleEnum, default: UserRoleEnum.USER})
     role: UserRoleEnum;
 
-    @OneToMany((_) => JobEntity, (job) => job.user )
+    @OneToMany((_) => JobEntity, (job) => job.user, {cascade: true})
     jobs: JobEntity[];
 
     @Column({type: 'timestamp', default: () => 'CURRENT_TIMESTAMP' })
     created_at: Date;
 
     @UpdateDateColumn()
-    update_at: Date
+    updated_at: Date
 }

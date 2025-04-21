@@ -1,29 +1,17 @@
-const validUsername = "admin";
-const validPassword = "123456789";
-
+//toggle for password field
 document
-  .getElementById("signInBtn")
-  .addEventListener("click", function (event) {
-    event.preventDefault();
+.getElementById("togglePassword")
+.addEventListener("click", function () {
+  const passwordInput = document.getElementById("password");
+  const eyeIcon = document.getElementById("eyeIcon");
 
-    const account = document.getElementById("account").value.trim();
-    const password = document.getElementById("password").value.trim();
-
-    if (account === validUsername && password === validPassword) {
-      Swal.fire({
-        icon: "success",
-        title: "Login Successful ✅",
-        text: "Welcome back!",
-        confirmButtonText: "OK",
-        confirmButtonColor: "#efb700",
-      });
-    } else {
-      Swal.fire({
-        icon: "error",
-        title: "Login Failed ❌",
-        text: "Incorrect username or password.",
-        confirmButtonText: "Try Again",
-        confirmButtonColor: "#d33",
-      });
-    }
-  });
+  if (passwordInput.type === "password") {
+    passwordInput.type = "text";
+    eyeIcon.classList.remove("fa-eye-slash");
+    eyeIcon.classList.add("fa-eye");
+  } else {
+    passwordInput.type = "password";
+    eyeIcon.classList.remove("fa-eye");
+    eyeIcon.classList.add("fa-eye-slash");
+  }
+});

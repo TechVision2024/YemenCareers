@@ -1,73 +1,50 @@
 @import "tailwindcss";
 
-@custom-variant dark (&:where(.dark, .dark *));
-
-@font-face{
-    font-family: 'Cairo-variable';
-    src:url('/src/Fonts/Cairo-VariableFont_slnt\,wght.ttf')
+/* * {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+} */
+@font-face {
+  font-family: "Cairo-variable";
+  src: url("/src/Fonts/Cairo-VariableFont_slnt\,wght.ttf");
 }
 
-@font-face{
-    font-family: 'Cairo-bold';
-    src:url('/src/Fonts/Cairo-Bold.ttf')
+@font-face {
+  font-family: "Cairo-bold";
+  src: url("/src/Fonts/Cairo-Bold.ttf");
 }
 
-@font-face{
-    font-family: 'Cairo-Black';
-    src:url('/src/Fonts/Cairo-Black.ttf')
+@font-face {
+  font-family: "Cairo-Black";
+  src: url("/src/Fonts/Cairo-Black.ttf");
 }
 
-@font-face{
-    font-family: 'Cairo-Light';
-    src:url('/src/Fonts/Cairo-Light.ttf')
+@font-face {
+  font-family: "Cairo-Light";
+  src: url("/src/Fonts/Cairo-Light.ttf");
 }
 
-@font-face{
-    font-family: 'Cairo-Medium';
-    src:url('/src/Fonts/Cairo-Medium.ttf')
+@font-face {
+  font-family: "Cairo-Medium";
+  src: url("/src/Fonts/Cairo-Medium.ttf");
 }
 
-@font-face{
-    font-family: 'Cairo-Regular';
-    src:url('/src/Fonts/Cairo-Regular.ttf')
-}
-
-@font-face{
-    font-family: 'Inter-700';
-    src:url('/src/Fonts/Inter_24pt-Bold.ttf');
-}
-
-@font-face{
-    font-family: 'Inter-300';
-    src:url('/src/Fonts/Inter_24pt-Light.ttf');
-}
-
-@font-face{
-    font-family: 'SemiBold';
-    src:url('/src/Fonts/Roboto-SemiBold.ttf');
+@font-face {
+  font-family: "Cairo-Regular";
+  src: url("/src/Fonts/Cairo-Regular.ttf");
 }
 
 /* For Common Styles */
 @theme {
-    --color-primary-color:#017598;
-    --color-secondary-color:#1ED7CD;
-    --color-light-blue:#05A7BE;
-    --color-medium-blue:#087EA2;
-    --color-dark-theme-color:#2B2B2B;
-    --color-dark-primary-color:#2CE6D6;
-    --color-dark-secondary-color:#5AF3E9;
-    --color-dark-third-color:#323232;
-    --color-dark-text-color:#FFFFFF66;
-    --color-dark-border-color:#8080808C;
-
-
-   --font-Cairo-variable:"Cairo-variable";
-   --font-Cairo-bold:"Cairo-bold";
-   --font-Cairo-Black:"Cairo-Black";
-   --font-inter-700:"Inter-700";
-   --font-inter-300:"Inter-300";
-   --font-semi-bold:"SemiBold";
+  --color-primary-color: #017598;
+  --color-secondary-color: #1ed7cd;
+  --color-Sec-secondary-color: #05a7be;
+  --font-Cairo-variable: "Cairo-variable";
+  --font-Cairo-bold: "Cairo-bold";
+  --font-Cairo-Black: "Cairo-Black";
 }
+
 html,
 body {
   overflow-x: hidden;
@@ -79,9 +56,18 @@ body {
   @apply flex flex-row w-full gap-4;
 }
 
+.input-wrapper {
+  @apply relative w-full;
+}
+
+.eye-button {
+  @apply absolute top-1/2 left-3 -translate-y-1/2 text-xl text-gray-500 focus:outline-none;
+}
+
+.eye-button1 {
+  @apply absolute top-1/2 -translate-y-1/2 text-xl text-black focus:outline-none;
+}
 /* For Custom Styles */
-@layer utilities {
-    .box-shadow{
-        box-shadow: 1px 5px 4px rgba(0, 0, 0, 0.25);
-    }
-  } 
+/* @utility {
+   
+} */

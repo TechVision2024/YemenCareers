@@ -1,166 +1,136 @@
 <!DOCTYPE html>
-<html lang="ar" dir="rtl" class="">
+<html lang="ar" dir="rtl" class="dark">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Update Job Page</title>
-  <link rel="stylesheet" href="../tailwindcss/src/output.css" />
-  <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
-  <link rel="stylesheet" href="../CSS/input.css">
-  <script src="https://cdn.tailwindcss.com"></script>
-
-  <script>
-    // تفعيل dark variant عن طريق class
-    tailwind.config = {
-      darkMode: 'class',
-    }
-
-    function toggleTheme() {
-    const root = document.documentElement;
-    const isDark = root.classList.toggle("dark");
-    localStorage.theme = isDark ? "dark" : "light";
-  }
-  </script>
+  <link rel="stylesheet" href="../CSS/output.css">
 </head>
 <body class="bg-white dark:bg-zinc-800 text-gray-800 dark:text-gray-100 overflow-x-hidden lg:w-full">
-      <header class="w-full h-[120px] shadow-[0px_2px_15px_0px_rgba(0,0,0,0.25)] flex justify-between items-center px-6 relative
-          max-[640px]:h-[87px] max-[640px]:w-[412px] max-[640px]:top-[5px] max-[640px]:shadow-[0px_4px_4px_0px_rgba(0,0,0,0.25)]
-          sm:px-4
-          md:h-[100px]
-          lg:h-[110px] lg:px-8 lg:flex-row-reverse
-          xl:px-10
-          2xl:h-[130px] 2xl:px-14">
+  <header class="w-full h-[120px] shadow-[0px_2px_15px_0px_rgba(0,0,0,0.25)] flex justify-between items-center px-6 relative
+  max-[640px]:h-[87px] max-[640px]:w-[412px] max-[640px]:top-[5px] max-[640px]:shadow-[0px_4px_4px_0px_rgba(0,0,0,0.25)]
+  sm:px-4
+  md:h-[100px]
+  lg:h-[110px] lg:px-8 lg:flex-row-reverse
+  xl:px-10
+  2xl:h-[130px] 2xl:px-14">
 
-          <div id="account-menu" class="hidden absolute z-50 bg-white border border-[#B4B4B4] rounded-[8px] w-[252px] h-[255px] top-[80px] left-[5] shadow-lg text-gray-800 dark:bg-zinc-800 dark:text-gray-100">
-            <div class="flex items-center gap-2 px-4 py-2 border-b border-[#B4B4B4]">
-              <img src="../Images/TechVision.jpg" alt="TechVision Logo" class="w-[44px] h-[44px] rounded-full object-cover" />
+      <div id="account-menu" class="hidden absolute z-50 bg-white border border-[#B4B4B4] rounded-[8px] w-[252px] h-[255px] top-[80px] left-[5] shadow-lg text-gray-800 dark:bg-zinc-800 dark:text-gray-100">
+          <div class="flex items-center gap-2 px-4 py-2 border-b border-[#B4B4B4]">
+              <img src="../Images/logo.jpeg" alt="TechVision Logo" class="w-[44px] h-[44px] rounded-full object-cover" />
               <div class="flex flex-col">
-                <span class="font-bold text-[16px] dark:text-gray-300">TechVision</span>
-                <span class="text-[10px] text-gray-600 dark:text-gray-100">techvision@techvision.com</span>
+                  <span class="font-bold text-[16px] dark:text-gray-300">TechVision</span>
+                  <span class="text-[10px] text-gray-600 dark:text-gray-100">techvision@techvision.com</span>
               </div>
-            </div>
-            
-            <ul class="flex flex-col items-center justify-between px-4 py-2 space-y-3 text-[16px]">
+          </div>
+    
+          <ul class="flex flex-col items-center justify-between px-4 py-2 space-y-3 text-[16px]">
               <li class="flex items-center gap-2 cursor-pointer hover:text-cyan-700">
-                <i class='bx bx-cog'></i>
-                معلومات الحساب
+                  <img src="../Images/bx-user.svg" alt="">
+                      معلومات الحساب
               </li>
               <li class="flex items-center gap-2 cursor-pointer hover:text-cyan-700">
-                <i class='bx bx-cog'></i>
-                إعدادات الحساب
+                  <img src="../Images/bx-cog.svg" alt="">
+                      إعدادات الحساب
               </li>
-                <li onclick="toggleTheme()" class="flex items-center gap-2 cursor-pointer hover:text-cyan-700">
-                  <i class='bx bx-moon'></i>
-                  الوضع المظلم
-                </li>              
+              <li onclick="toggleTheme()" class="flex items-center gap-2 cursor-pointer hover:text-cyan-700">
+                  <img src="../Images/bxs-moon.svg" alt="">
+                      الوضع المظلم
+              </li>              
               <hr class="w-1/2 mx-auto border-t border-gray-300 my-2" />
               <li class="flex items-center gap-2 cursor-pointer hover:text-cyan-700 mt-2">
-                <i class='bx bx-log-out'></i>
-                تسجيل الخروج
+                  <img src="../Images/bx-log-out.svg" alt="">
+                      تسجيل الخروج
               </li>
-            </ul>
-          </div>
-          
+          </ul>
+      </div>
+  
 
-          <div id="account-toggle" class="hidden lg:flex bg-neutral-100 dark:bg-neutral-700 items-center border border-[#B4B4B4] rounded-[8px] h-[50px] w-[252px] px-2 gap-2 cursor-pointer relative">
-            <img src="../Images/TechVision.jpg" alt="TechVision Logo" class="w-[44px] h-[44px] rounded-full object-cover mr-6" />
-            <span class="text-[18px] font-bold text-gray-800 dark:text-gray-100">TechVision</span>
-            <svg class="w-5 h-5 text-gray-600 ml-auto" fill="none" stroke="currentColor" stroke-width="2"
-              viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
-            </svg>
-          </div>
+      <div id="account-toggle" class="hidden lg:flex bg-neutral-100 dark:bg-neutral-700 items-center border border-[#B4B4B4] rounded-[8px] h-[50px] w-[252px] px-2 gap-2 cursor-pointer relative">
+          <img src="../Images/logo.jpeg" alt="TechVision Logo" class="w-[44px] h-[44px] rounded-full object-cover mr-6" />
+          <span class="text-[18px] font-bold text-gray-800 dark:text-gray-100">TechVision</span>
+          <img src="../Images/bx-down-arrow-alt.svg" alt="">
+      </div>
 
-          <nav class="hidden lg:flex gap-8 items-center text-[20px] font-bold leading-[1] text-gray-800 dark:text-gray-100 
-              sm:gap-4 sm:text-[16px]
-              md:gap-6 md:text-[18px]
-              lg:gap-8 
-              xl:gap-10
-              2xl:gap-12 lg:text-[18px] xl:text-[20px] 2xl:text-[22px]">
-              <a href="#" class="hover:text-cyan-600">الصفحة الرئيسية</a>
-              <a href="#" class="hover:text-cyan-600">البحث</a>
-              <a href="#" class="text-cyan-700 hover:underline">أضف طلب توظيف جديد</a>
-              <a href="#" class="hover:text-cyan-600">وظائفي</a>
-          </nav>
+      <nav class="hidden lg:flex gap-8 items-center text-[20px] font-bold leading-[1] text-gray-800 dark:text-gray-100 
+          sm:gap-4 sm:text-[16px]
+          md:gap-6 md:text-[18px]
+          lg:gap-8 
+          xl:gap-10
+          2xl:gap-12 lg:text-[18px] xl:text-[20px] 2xl:text-[22px]">
+          <a href="#" class="hover:text-cyan-600">الصفحة الرئيسية</a>
+          <a href="#" class="hover:text-cyan-600">البحث</a>
+          <a href="#" class="text-cyan-700 hover:underline">أضف طلب توظيف جديد</a>
+          <a href="#" class="hover:text-cyan-600">وظائفي</a>
+      </nav>
 
-          <div class="w-[280px] h-[100px] flex items-center justify-center
-              lg:w-[220px] lg:h-[80px]
-              xl:w-[260px] xl:h-[100px]
-              2xl:w-[300px] 2xl:h-[120px]
-              max-[430px]:w-[315px] max-[430px]:h-[87px] max-[430px]:absolute max-[430px]:top-[17px] max-[430px]:left-[97px]">
-              <h1 class="text-[32px] font-bold text-cyan-700 text-center leading-[1] 
-                  max-[430px]:w-[133px] max-[430px]:h-[60px] max-[430px]:text-right max-[430px]:text-[32px] max-[430px]:leading-[100%]">
-                  يمن كريرز
-              </h1>
-          </div>
+      <div class="w-[280px] h-[100px] flex items-center justify-center
+          lg:w-[220px] lg:h-[80px]
+          xl:w-[260px] xl:h-[100px]
+          2xl:w-[300px] 2xl:h-[120px]
+          max-[430px]:w-[315px] max-[430px]:h-[87px] max-[430px]:absolute max-[430px]:top-[17px] max-[430px]:left-[97px]">
+          <h1 class="text-[32px] font-bold text-cyan-700 text-center leading-[1] 
+              max-[430px]:w-[133px] max-[430px]:h-[60px] max-[430px]:text-right max-[430px]:text-[32px] max-[430px]:leading-[100%]">
+              يمن كريرز
+          </h1>
+      </div>
 
-          <div class="hidden lg:block border-r border-[#1ED7CD] absolute 
-              top-[22px] right-[280px] h-[60px]
-              xl:right-[320px] xl:h-[70px]
-              2xl:right-[360px] 2xl:h-[85px]">
-          </div>
+      <div class="hidden lg:block border-r border-[#1ED7CD] absolute 
+          top-[22px] right-[280px] h-[60px]
+          xl:right-[320px] xl:h-[70px]
+          2xl:right-[360px] 2xl:h-[85px]">
+      </div>
 
-          <div class="block lg:hidden fixed top-[26px] left-[20px] size-12 z-50" id="menu-toggle">
-            <i class='bx bx-menu text-gray-800 dark:text-amber-100 text-[40px] leading-none'></i>
-          </div>          
-
-          <nav id="mobile-nav" class="fixed top-0 left-0 w-[80%] max-w-[300px] h-screen bg-white text-gray-500 shadow-lg z-40 p-4 flex flex-col justify-between transition-transform duration-300 transform -translate-x-full lg:hidden dark:bg-zinc-800 dark:text-gray-100">
-
-            <!-- ✅ العنوان وزر الإغلاق في اليمين -->
-            <div>
-              <div class="flex justify-between items-center mb-6">
-                <button id="menu-close" class="text-2xl text-gray-600 dark:text-gray-100">
+      <div class="block lg:hidden fixed top-[26px] left-[20px] size-12 z-50" id="menu-toggle">
+          <img src="../Images/bx-menu.svg" alt="" class='w-24 h-12 text-gray-800 dark:text-amber-100 text-[40px] leading-none'>
+      </div>          
+    
+      <nav id="mobile-nav" class="fixed top-0 left-0 w-[80%] max-w-[300px] h-screen bg-white text-gray-500 shadow-lg z-40 p-4 flex flex-col justify-between transition-transform duration-300 transform -translate-x-full lg:hidden dark:bg-zinc-800 dark:text-gray-100">
+          <div class="flex justify-between items-center mb-6">
+              <button id="menu-close" class="text-2xl text-gray-600 dark:text-gray-100">
                   ✕
-                </button>
-              </div>
-          
-              <!-- ✅ حساب المستخدم - يفتح قائمة -->
-              <div id="account-toggle-mobile" class="flex items-center border border-[#B4B4B4] rounded-[8px] h-[50px] w-full px-2 gap-2 cursor-pointer mb-6 bg-neutral-100 dark:bg-neutral-700">
-                <img src="../Images/TechVision.jpg" alt="TechVision Logo" class="w-[44px] h-[44px] rounded-full object-cover" />
-                <span class="text-[16px] font-bold  text-black dark:text-gray-100">TechVision</span>
-                <svg class="w-5 h-5 text-gray-600 ml-auto" fill="none" stroke="currentColor" stroke-width="2"
-                  viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                  <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7"></path>
-                </svg>
-              </div>
-          
-              <!-- ✅ قائمة الحساب (تظهر عند الضغط على الحساب) -->
-              <ul id="account-menu-mobile" class="hidden flex flex-col items-start justify-between px-4 py-2 space-y-3 text-[16px]">
-                <li class="flex items-center gap-2 cursor-pointer hover:text-cyan-700">
-                  <i class='bx bx-cog'></i>
+              </button>
+          </div>
+
+          <div id="account-toggle-mobile" class="flex items-center border border-[#B4B4B4] rounded-[8px] h-[50px] w-full px-2 gap-2 cursor-pointer mb-6 bg-neutral-100 dark:bg-neutral-700">
+              <img src="../Images/logo.jpeg" alt="TechVision Logo" class="w-[44px] h-[44px] rounded-full object-cover" />
+              <span class="text-[16px] font-bold  text-black dark:text-gray-100">TechVision</span>
+              <img src="../Images/bx-down-arrow-alt.svg" alt="">
+          </div>
+      
+          <ul id="account-menu-mobile" class="hidden flex flex-col items-start justify-between px-4 py-2 space-y-3 text-[16px]">
+              <li class="flex items-center gap-2 cursor-pointer hover:text-cyan-700">
+                  <img src="../Images/bx-user.svg" alt="">
                   معلومات الحساب
-                </li>
-                <li class="flex items-center gap-2 cursor-pointer hover:text-cyan-700">
-                  <i class='bx bx-cog'></i>
+              </li>
+              <li class="flex items-center gap-2 cursor-pointer hover:text-cyan-700">
+                  <img src="../Images/bx-cog.svg" alt="">
                   إعدادات الحساب
-                </li>
-                <li onclick="toggleTheme()" class="flex items-center gap-2 cursor-pointer hover:text-cyan-700">
-                  <i class='bx bx-moon'></i>
+              </li>
+              <li onclick="toggleTheme()" class="flex items-center gap-2 cursor-pointer hover:text-cyan-700">
+                  <img src="../Images/bxs-moon.svg" alt="">
                   الوضع المظلم
-                </li> 
-                <hr class="w-1/2 mx-auto border-t border-gray-300 my-2" />
-                <li class="flex items-center gap-2 cursor-pointer hover:text-cyan-700 mt-2">
-                  <i class='bx bx-log-out'></i>
+              </li> 
+              <hr class="w-1/2 mx-auto border-t border-gray-300 my-2" />
+              <li class="flex items-center gap-2 cursor-pointer hover:text-cyan-700 mt-2">
+                  <img src="../Images/bx-log-out.svg" alt="">
                   تسجيل الخروج
-                </li>
-              </ul>
-              
-          
-              <!-- ✅ روابط التنقل -->
-              <hr class="mb-4">
-              <a href="#" class="block py-3 text-[28px] font-bold text-center text-[#087EA2]">الصفحة الرئيسية</a>
-              <a href="#" class="block py-3 text-[28px] font-bold text-center">البحث</a>
-              <a href="#" class="block py-3 text-[28px] font-bold text-center">أضف وظيفة جديدة</a>
-              <a href="#" class="block py-3 text-[28px] font-bold text-center">وظائفي</a>
-            </div>
-          
-            <!-- ✅ الفوتر -->
-            <div class="text-center text-sm text-gray-500 dark:text-gray-100">
+              </li>
+          </ul>
+
+          <hr class="mb-4">
+          <a href="#" class="block py-3 text-[28px] font-bold text-center text-[#087EA2]">الصفحة الرئيسية</a>
+          <a href="#" class="block py-3 text-[28px] font-bold text-center">البحث</a>
+          <a href="#" class="block py-3 text-[28px] font-bold text-center">أضف وظيفة جديدة</a>
+          <a href="#" class="block py-3 text-[28px] font-bold text-center">وظائفي</a>
+
+          <div class="text-center text-sm text-gray-500 dark:text-gray-100">
               <p class="text-[#087EA2] font-bold">يمن كريرز</p>
               <p>جميع الحقوق محفوظة ليمن كريرز</p>
-            </div>
-          </nav>                    
-      </header>
+          </div>
+      </nav>                    
+</header>
+
 
       <div class="px-6 sm:px-8 md:px-12 lg:px-20 xl:px-28 2xl:px-36">
         <h2 class="font-extrabold text-[28px] leading-[42px] text-right mt-[40px]
@@ -197,32 +167,32 @@
 
       <div class="block lg:hidden bg-gray-50 w-full mt-[42px] px-4 py-4 dark:bg-neutral-800 dark:text-gray-100">
           <div class="w-full mb-4">
-              <input type="text" placeholder="عنوان الوظيفة" id="job-title" required
+              <input type="text" placeholder="عنوان الوظيفة" id="job-titlee" required
               class="bg-white dark:bg-zinc-800 w-full h-[60px] border-2 border-[#CACECB] rounded-[15px] px-4 text-[16px] font-medium" />
           </div>
 
           <div class="flex flex-row space-x-4 mb-4">
-              <input type="text" placeholder="القسم" id="name" required
+              <input type="text" placeholder="القسم" id="namee" required
               class="bg-white dark:bg-zinc-800 w-1/2 h-[60px] border-2 border-[#CACECB] rounded-[15px] px-4 text-[16px] font-medium" />
-              <input type="text" placeholder="نوع الوظيفة" id="job-type" required
+              <input type="text" placeholder="نوع الوظيفة" id="job-typee" required
               class="bg-white dark:bg-zinc-800 w-1/2 h-[60px] border-2 border-[#CACECB] rounded-[15px] px-4 text-[16px] font-medium" />
           </div>
 
           <div class="flex flex-row space-x-4 mb-4">
-              <input type="date" id="job-date" required
+              <input type="date" id="job-datee" required
               class="bg-white dark:bg-zinc-800 w-1/2 h-[60px] border-2 border-[#CACECB] rounded-[15px] px-4 text-[16px]" />
-              <input type="text" placeholder="المدينة" id="city" required
+              <input type="text" placeholder="المدينة" id="cityy" required
               class="bg-white dark:bg-zinc-800 w-1/2 h-[60px] border-2 border-[#CACECB] rounded-[15px] px-4 text-[16px] font-medium" />
           </div>
 
           <div class="w-full mb-4">
-              <input type="url" placeholder="رابط التقديم" id="apply-link" required
+              <input type="url" placeholder="رابط التقديم" id="apply-linkk" required
               class="bg-white dark:bg-zinc-800 w-full h-[60px] border-2 border-[#CACECB] rounded-[15px] px-4 text-[16px] font-medium" />
           </div>
 
           <div class="w-full mb-4">
               <label class="block text-[20px] font-light text-right mb-2">الوصف</label>
-              <textarea placeholder="الوصف" id="description"
+              <textarea placeholder="الوصف" id="descriptionn"
               class="bg-white dark:bg-zinc-800 w-full h-[300px] border-2 border-[#CACECB] rounded-[15px] px-4 py-2 text-[16px] font-medium resize-none"></textarea>
           </div>
 
@@ -281,7 +251,6 @@
               حذف الوظيفة
             </button>
           </div>
-          
         </div>
       </div>
 
@@ -300,9 +269,9 @@
       <input id="password-input" type="password" placeholder="كلمة السر"
         class="w-full px-4 py-3 pr-12 rounded-lg bg-[#2A2A2A] text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-red-500">
       
-      <i class='bx bx-hide absolute top-1/2 right-4 -translate-y-1/2 text-gray-400 text-xl cursor-pointer'
-         id="toggle-password"
-         onclick="togglePasswordVisibility()"></i>
+      <img src="../Images/bx-low-vision.svg" alt="" class='absolute top-1/2 right-4 -translate-y-1/2 text-gray-400 text-xl cursor-pointer'
+        id="toggle-password"
+        onclick="togglePasswordVisibility()">
     </div>
     
     <button onclick="confirmJobDelete()" class="w-full bg-red-600 hover:bg-red-700 transition-colors text-white py-3 rounded-lg font-bold">
@@ -314,106 +283,8 @@
     </button>
   </div>
 </div>
-      
-      <script>
-        const toggleBtn = document.getElementById('menu-toggle');
-  const closeBtn = document.getElementById('menu-close');
-  const mobileNav = document.getElementById('mobile-nav');
-  const accountToggle = document.getElementById('account-toggle-mobile');
-  const accountMenu = document.getElementById('account-menu-mobile');
 
-  toggleBtn.addEventListener('click', () => {
-    mobileNav.classList.remove('-translate-x-full');
-  });
-
-  closeBtn.addEventListener('click', () => {
-    mobileNav.classList.add('-translate-x-full');
-  });
-
-  accountToggle.addEventListener('click', () => {
-    accountMenu.classList.toggle('hidden');
-  });
-      
-        // التحقق من الحقول عند الضغط على زر النشر
-        document.querySelector('#submit-button')?.addEventListener('click', function(event) {
-            const title = document.querySelector('#job-title')?.value.trim();
-            const name = document.querySelector('#name')?.value.trim();
-            const jobType = document.querySelector('#job-type')?.value.trim();
-            const date = document.querySelector('#job-date')?.value.trim();
-            const city = document.querySelector('#city')?.value.trim();
-            const link = document.querySelector('#apply-link')?.value.trim();
-            const description = document.querySelector('#description')?.value.trim();
-      
-            // التحقق من الحقول الفارغة
-            if (!title || !name || !jobType || !date || !city || !link || !description) {
-                alert('يرجى تعبئة جميع الحقول قبل النشر.');
-                event.preventDefault();
-                return;
-            }
-      
-            // التحقق من صحة الرابط
-            const urlPattern = /^(https?:\/\/)?([\w-]+\.)+[\w-]{2,}(\/\S*)?$/;
-            if (!urlPattern.test(link)) {
-                alert('يرجى إدخال رابط تقديم صالح.');
-                event.preventDefault();
-                return;
-            }
-      
-            alert('تم التحقق بنجاح! يمكنك الآن إرسال النموذج.');
-            // هنا يمكنك إرسال البيانات للسيرفر إن وُجد
-        });
-      
-        // القائمة المنسدلة لحساب المستخدم
-        const toggle = document.getElementById('account-toggle');
-        const menu = document.getElementById('account-menu');
-      
-        toggle?.addEventListener('click', () => {
-          menu?.classList.toggle('hidden');
-        });
-      
-        // إغلاق القائمة عند النقر خارجها
-        window.addEventListener('click', function (e) {
-          if (!toggle?.contains(e.target) && !menu?.contains(e.target)) {
-            menu?.classList.add('hidden');
-          }
-        });
-
-        // تفعيل الوضع الليلي بناءً على التفضيل المخزن أو إعداد النظام
-  if (
-    localStorage.theme === "dark" ||
-    (!("theme" in localStorage) && window.matchMedia("(prefers-color-scheme: dark)").matches)
-  ) {
-    document.documentElement.classList.add("dark");
-  } else {
-    document.documentElement.classList.remove("dark");
-  }
-
-  function openJobDeleteModal() {
-    document.getElementById("job-delete-modal").classList.remove("hidden");
-  }
-
-  function closeJobDeleteModal() {
-    document.getElementById("job-delete-modal").classList.add("hidden");
-  }
-
-  function confirmJobDelete() {
-    // هنا يتم تنفيذ عملية الحذف الفعلية
-    alert("تم حذف الوظيفة!");
-    closeJobDeleteModal();
-  }
-
-  function togglePasswordVisibility() {
-    const passwordInput = document.getElementById("password-input");
-    const toggleIcon = document.getElementById("toggle-password");
-    const isHidden = passwordInput.type === "password";
-    
-    passwordInput.type = isHidden ? "text" : "password";
-    toggleIcon.classList.toggle("bx-hide");
-    toggleIcon.classList.toggle("bx-show");
-  }
-
-      </script>
-      
+<script src="../JS/updatejob.js"></script>
 
 </body>
 </html>

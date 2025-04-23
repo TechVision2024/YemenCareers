@@ -1,10 +1,10 @@
 @import "tailwindcss";
 
 /* * {
-    padding: 0;
-    margin: 0;
-    box-sizing: border-box;
+  outline: 1px dashed red;
 } */
+@custom-variant dark (&:where(.dark, .dark *));
+
 @font-face {
   font-family: "Cairo-variable";
   src: url("/src/Fonts/Cairo-VariableFont_slnt\,wght.ttf");
@@ -35,27 +35,51 @@
   src: url("/src/Fonts/Cairo-Regular.ttf");
 }
 
+@font-face {
+  font-family: "Inter-700";
+  src: url("/src/Fonts/Inter_24pt-Bold.ttf");
+}
+
+@font-face {
+  font-family: "Inter-300";
+  src: url("/src/Fonts/Inter_24pt-Light.ttf");
+}
+
+@font-face {
+  font-family: "SemiBold";
+  src: url("/src/Fonts/Roboto-SemiBold.ttf");
+}
+
 /* For Common Styles */
 @theme {
   --color-primary-color: #017598;
   --color-secondary-color: #1ed7cd;
-  --color-Sec-secondary-color: #05a7be;
+  --color-light-blue: #05a7be;
+  --color-medium-blue: #087ea2;
+  --color-dark-theme-color: #2b2b2b;
+  --color-dark-primary-color: #2ce6d6;
+  --color-dark-secondary-color: #5af3e9;
+  --color-dark-third-color: #323232;
+  --color-dark-text-color: #ffffff66;
+  --color-dark-border-color: #8080808c;  
+  
   --font-Cairo-variable: "Cairo-variable";
   --font-Cairo-bold: "Cairo-bold";
   --font-Cairo-Black: "Cairo-Black";
+  --font-inter-700: "Inter-700";
+  --font-inter-300: "Inter-300";
+  --font-semi-bold: "SemiBold";
 }
-
 html,
 body {
   overflow-x: hidden;
 }
 .form-input {
-  @apply w-full pr-2 min-h-[50px] sm:min-h-[55px] md:min-h-[56px] lg:min-h-0 lg:h-12  border border-gray-300 rounded-xl sm:rounded-lg text-right placeholder-gray-400 bg-white xl:h-10;
+  @apply font-Cairo-bold w-full pr-2 min-h-[50px] sm:min-h-[55px] md:min-h-[56px] lg:min-h-0 lg:h-12  border border-gray-300 rounded-xl sm:rounded-lg text-right placeholder-gray-400 bg-white dark:border-[#8080808C] dark:placeholder-dark-border-color dark:bg-[var(--color-dark-theme-color)] xl:h-10;
 }
 .form-row {
   @apply flex flex-row w-full gap-4;
 }
-
 .input-wrapper {
   @apply relative w-full;
 }
@@ -67,7 +91,10 @@ body {
 .eye-button1 {
   @apply absolute top-1/2 -translate-y-1/2 text-xl text-black focus:outline-none;
 }
+
 /* For Custom Styles */
-/* @utility {
-   
-} */
+@layer utilities {
+  .box-shadow {
+    box-shadow: 1px 5px 4px rgba(0, 0, 0, 0.25);
+  }  
+}

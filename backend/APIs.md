@@ -846,7 +846,9 @@ This file contains a detailed description of the API design.
         "company_name": "Tech Vision",
         "remaining_days": 13,
         "status": "open", //  status are open and close
-        "apply_url": "https://techvision.org/apply"
+        "apply_url": "https://techvision.org/apply",
+        "created_at": "2025-04-21T14:44:48.839Z",
+        "updated_at": "2025-04-21T14:44:48.839Z"
     }
     ```
     - Status codes:

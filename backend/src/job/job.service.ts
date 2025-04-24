@@ -124,6 +124,14 @@ export class JobService {
             ]
         );
         if (jobs.length < 1) throw new NotFoundException();
+        jobs.map( (job) => { 
+            let remaining_days = Math.round(
+                // 1d = 86,400,000ms
+                ( (new Date(job.end_date)).getTime() - (new Date()).getTime() )/86400000
+            )
+            job.remaining_days = remaining_days;
+            job.status = (remaining_days <= 0) ? JobStatus.CLOSE : JobStatus.OPEN;
+        });
         return jobs;
     }
 

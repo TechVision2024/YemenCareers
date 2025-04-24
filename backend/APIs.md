@@ -62,7 +62,7 @@ This file contains a detailed description of the API design.
         "description": "Company description.",
         "email": "techvision@techvision.org",
         "company_type": "Company type",
-        "phone": "+967 01-000-000",
+        "phone": "+967 700000000",
         "address": "Compnat Location",
         "website": "https://techvision.org",
         "social_url_1": "Link 1",
@@ -137,14 +137,15 @@ This file contains a detailed description of the API design.
             "description": "Company description.",
             "email": "techvision@techvision.org",
             "company_type": "Company type",
-            "phone": "+967 01-000-000",
+            "phone": "+967 700000000",
             "address": "Compnat Location",
             "website": "https://techvision.org",
             "social_url_1": "Link 1",
             "social_url_2": "Link 2",
             "social_url_3": "Link 3",
             "social_url_4": "Link 4",
-            "profile_image_url": "http://backend:3000/uploads/1743937572726.png"
+            "role": "user", // role onle "user" or "admin"
+            "profile_image_url": "/uploads/1743937572726.png"
         }
     }
     ```
@@ -198,14 +199,15 @@ This file contains a detailed description of the API design.
             "description": "Company description.",
             "email": "techvision@techvision.org",
             "company_type": "Company type",
-            "phone": "+967 01-000-000",
+            "phone": "+967 700000000",
             "address": "Compnat Location",
             "website": "https://techvision.org",
             "social_url_1": "Link 1",
             "social_url_2": "Link 2",
             "social_url_3": "Link 3",
             "social_url_4": "Link 4",
-            "profile_image_url": "http://backend:3000/uploads/1743937572726.png"
+            "role": "user", // role onle "user" or "admin"
+            "profile_image_url": "/uploads/1743937572726.png"
         }
     }
     ```
@@ -237,14 +239,15 @@ This file contains a detailed description of the API design.
             "description": "Company description.",
             "email": "techvision@techvision.org",
             "company_type": "Company type",
-            "phone": "+967 01-000-000",
+            "phone": "+967 700000000",
             "address": "Compnat Location",
             "website": "https://techvision.org",
             "social_url_1": "Link 1",
             "social_url_2": "Link 2",
             "social_url_3": "Link 3",
             "social_url_4": "Link 4",
-            "profile_image_url": "http://backend:3000/uploads/1743937572726.png"
+            "role": "user", // role onle "user" or "admin"
+            "profile_image_url": "/uploads/1743937572726.png"
         }
     }
     ```
@@ -284,10 +287,10 @@ This file contains a detailed description of the API design.
             "name": "Tech Vision",
             "email": "techvision@techvision.org",
             "company_type": "Company type",
-            "phone": "+967 01-000-000",
+            "phone": "+967 700000000",
             "address": "Compnat Location",
             "website": "https://techvision.org",
-            "profile_image_url": "http://backend:3000/uploads/1743937572726.png",
+            "profile_image_url": "/uploads/1743937572726.png",
             "created_at": "2025-04-15",
             "updated_at": "2025-04-15",
             "days_since_creation": 14
@@ -321,14 +324,14 @@ This file contains a detailed description of the API design.
         "description": "Company description.",
         "email": "techvision@techvision.org",
         "company_type": "Company type",
-        "phone": "+967 01-000-000",
+        "phone": "+967 700000000",
         "address": "Compnat Location",
         "website": "https://techvision.org",
         "social_url_1": "Link 1",
         "social_url_2": "Link 2",
         "social_url_3": "Link 3",
         "social_url_4": "Link 4",
-        "profile_image_url": "http://backend:3000/uploads/1743937572726.png"
+        "profile_image_url": "/uploads/1743937572726.png"
     }
     ```
     - Status codes:
@@ -456,17 +459,16 @@ This file contains a detailed description of the API design.
             "name": "Tech Vision",
             "description": "Company description.",
             "email": "techvision@techvision.org",
-            "type": "Company type",
-            "phone": "+967 01-000-000",
-            "location": "Compnat Location",
-            "siteURL": "https://techvision.org",
-            "social": [
-                "Link 1",
-                "Link 2",
-                "Link 3",
-                "Link 4"
-            ],
-            "profileImage": "http://backend:3000/uploads/1743937572726.png"
+            "company_type": "Company type",
+            "phone": "+967 700000000",
+            "address": "Compnat Location",
+            "website": "https://techvision.org",
+            "social_url_1": "Link 1",
+            "social_url_2": "Link 2",
+            "social_url_3": "Link 3",
+            "social_url_4": "Link 4",
+            "role": "user", // role onle "user" or "admin"
+            "profile_image_url": "/uploads/1743937572726.png"
         }
     }
     ```
@@ -687,6 +689,7 @@ This file contains a detailed description of the API design.
     ```json
     [
         {
+            "id": 75,
             "title": "Backend Developer",
             "type": "developer",
             "department": "CS",
@@ -695,8 +698,8 @@ This file contains a detailed description of the API design.
             "city": "sana'a",
             "company_name": "Tech Vision",
             "remaining_days": 23,
-            "status": "open", //  status are open and close,
-            "company_image": "/api/uploads/1743937572726.png"
+            "status": "open", //  status are "open" and "close",
+            "company_image": "/uploads/1743937572726.png"
         }
     ]
     ```

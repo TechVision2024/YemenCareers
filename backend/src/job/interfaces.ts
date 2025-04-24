@@ -21,6 +21,7 @@ export interface UpdateJobReturnInterface {
 }
 
 export interface YourJobInterface {
+    id: number;
     title: string;
     type: string;
     department: string;

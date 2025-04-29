@@ -52,16 +52,18 @@
   src: url("/src/Fonts/Roboto-SemiBold.ttf");
 }
 
-/* For Common Styles */
+/* For Common Styles */ 
 @theme {
   --color-primary-color: #017598;
   --color-secondary-color: #1ed7cd;
   --color-light-blue: #05a7be;
   --color-medium-blue: #087ea2;
+  --color-teal:#18C4B8;
   --color-dark-theme-color: #2b2b2b;
   --color-dark-primary-color: #2ce6d6;
   --color-dark-secondary-color: #5af3e9;
   --color-dark-third-color: #323232;
+  --color-dark-fourth-color: #4AC8E0;
   --color-dark-text-color: #ffffff66;
   --color-dark-border-color: #8080808c;  
   
@@ -71,6 +73,14 @@
   --font-inter-700: "Inter-700";
   --font-inter-300: "Inter-300";
   --font-semi-bold: "SemiBold";
+
+
+   --font-Cairo-variable:"Cairo-variable";
+   --font-Cairo-bold:"Cairo-bold";
+   --font-Cairo-Black:"Cairo-Black";
+   --font-inter-700:"Inter-700";
+   --font-inter-300:"Inter-300";
+   --font-semi-bold:"SemiBold";
 }
 html,
 body {
@@ -93,6 +103,7 @@ body {
 .eye-button1 {
   @apply absolute top-1/2 -translate-y-1/2 text-xl text-black focus:outline-none;
 }
+
 
 /* For Custom Styles */
 @layer utilities {

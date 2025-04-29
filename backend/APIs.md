@@ -285,6 +285,7 @@ This file contains a detailed description of the API design.
         {
             "id": 203,
             "name": "Tech Vision",
+            "status": "active", // status onle "active" or "inactive" 
             "email": "techvision@techvision.org",
             "company_type": "Company type",
             "phone": "+967 700000000",

@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>job information</title>
+    <link rel="stylesheet" href="/src/CSS/output.css" />
+    <link
+      rel="stylesheet"
+      href="/node_modules/@fortawesome/fontawesome-free/css/all.min.css"
+    />
+</head>
+<body class="dark:bg-dark-theme-color dark:text-white h-screen">
+    
+    <div class="">
+        <!-- الهيدر -->
+    <div id="header-container"></div>
+
+        <!-- Information of Company -->
+        <section class="flex justify-center items-center mt-8 sm:h-52 sm:mt-12">
+                <div class="grid grid-cols-3 grid-rows-3 sm:grid-cols-2 sm:grid-rows-5 gap-1 ">
+                    <!-- Job Title -->
+                    <h1 id="job_title" class=" flex items-center translate-x-5 translate-y-1 font-inter-700 font-bold text-[15px] text-[#090909] sm:block sm:text-center sm:translate-0 sm:col-span-2 sm:text-4xl dark:text-white">مطور برمجيات</h1>
+                    <!-- Company Name -->
+                     <div id="Company_name"class=" flex translate-x-5 -translate-y-1 mt-2 row-start-2 col-start-2 sm:items-center  sm:translate-x-8 sm:translate-y-0">
+                        <h2 class="font-inter-700 text-[14px] text-primary-color sm:text-[20px] dark:text-dark-fourth-color">Tech Vision</h2>
+                     </div>
+                    <!-- Logo -->
+                     <div class="flex mt-2 row-span-2 col-start-1 row-start-1 sm:col-auto sm:row-start-2 sm:row-span-1 sm:justify-center sm:-translate-x-4">
+                         <img id="company_image" src="../Images/logo.jpeg" alt="Logo" class="size-12.5 rounded-[10px] sm:size-10">
+                     </div>
+
+                    <div class=" flex items-end space-x-2 -translate-y-1 row-start-2 col-start-3 sm:items-center sm:justify-center sm:col-span-2 sm:col-start-1 sm:row-start-3 sm:mt-6">
+                      <!-- Job Type -->
+                        <div id="job_type" class="hidden sm:flex space-x-1 relative after:w-[0.5px] after:h-5 after:bg-medium-blue after:top-1/2 after:mr-1">
+                            <svg width="18" height="18" class=" translate-y-1 text-{#B3B3B3} dark:text-dark-text-color" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M16.3125 3.375H1.6875C1.53832 3.375 1.39524 3.43426 1.28975 3.53975C1.18426 3.64524 1.125 3.78832 1.125 3.9375V14.0625C1.125 14.2117 1.18426 14.3548 1.28975 14.4602C1.39524 14.5657 1.53832 14.625 1.6875 14.625H16.3125C16.4617 14.625 16.6048 14.5657 16.7102 14.4602C16.8157 14.3548 16.875 14.2117 16.875 14.0625V3.9375C16.875 3.78832 16.8157 3.64524 16.7102 3.53975C16.6048 3.43426 16.4617 3.375 16.3125 3.375ZM15.75 13.5H2.25V4.5H15.75V13.5Z" fill="currentColor"/>
+                                <path d="M3.9375 7.3125H5.625V11.25C5.625 11.3992 5.68426 11.5423 5.78975 11.6477C5.89524 11.7532 6.03832 11.8125 6.1875 11.8125C6.33668 11.8125 6.47976 11.7532 6.58525 11.6477C6.69074 11.5423 6.75 11.3992 6.75 11.25V7.3125H8.4375C8.58668 7.3125 8.72976 7.25324 8.83525 7.14775C8.94074 7.04226 9 6.89918 9 6.75C9 6.60082 8.94074 6.45774 8.83525 6.35225C8.72976 6.24676 8.58668 6.1875 8.4375 6.1875H3.9375C3.78832 6.1875 3.64524 6.24676 3.53975 6.35225C3.43426 6.45774 3.375 6.60082 3.375 6.75C3.375 6.89918 3.43426 7.04226 3.53975 7.14775C3.64524 7.25324 3.78832 7.3125 3.9375 7.3125Z" fill="currentColor"/>
+                                <path d="M7.875 9C7.875 9.14918 7.93426 9.29226 8.03975 9.39775C8.14524 9.50324 8.28832 9.5625 8.4375 9.5625H11.8125C11.9617 9.5625 12.1048 9.50324 12.2102 9.39775C12.3157 9.29226 12.375 9.14918 12.375 9C12.375 8.85082 12.3157 8.70774 12.2102 8.60225C12.1048 8.49676 11.9617 8.4375 11.8125 8.4375H8.4375C8.28832 8.4375 8.14524 8.49676 8.03975 8.60225C7.93426 8.70774 7.875 8.85082 7.875 9Z" fill="currentColor"/>
+                                <path d="M7.875 11.25C7.875 11.3992 7.93426 11.5423 8.03975 11.6477C8.14524 11.7532 8.28832 11.8125 8.4375 11.8125H14.0625C14.2117 11.8125 14.3548 11.7532 14.4602 11.6477C14.5657 11.5423 14.625 11.3992 14.625 11.25C14.625 11.1008 14.5657 10.9577 14.4602 10.8523C14.3548 10.7468 14.2117 10.6875 14.0625 10.6875H8.4375C8.28832 10.6875 8.14524 10.7468 8.03975 10.8523C7.93426 10.9577 7.875 11.1008 7.875 11.25Z" fill="currentColor"/>
+                            </svg>
+                            
+                            <p class="font-inter-300 font-light h-5 -translate-y-0.5 text-[#0000004D] dark:text-dark-text-color ">Programming</p>
+                        </div>
+                        <!-- Location -->
+                        <div class="flex items-center pr-3 space-x-1.5 h-5 sm:relative sm:after:w-[0.5px] sm:after:h-5 sm:after:bg-medium-blue sm:after:top-1/2 sm:after:mr-1 sm:pr-0">
+                            <!-- Location Icon -->
+                            <svg class="w-3 h-4 text-[#CACECB] dark:text-dark-text-color" viewBox="0 0 15 20" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                            <g clip-path="url(#clip0_120_91)">
+                                <path d="M7.5 0C3.3582 0 0 3.3582 0 7.5C0 10.5238 1.05352 11.3684 6.73047 19.5977C7.10277 20.1355 7.89883 20.1355 8.27109 19.5977C13.9453 11.3672 15 10.5234 15 7.5C15 3.3582 11.6406 0 7.5 0ZM7.5 10.5898C5.77617 10.5898 4.375 9.18828 4.375 7.46484C4.375 5.74141 5.77734 4.33984 7.5 4.33984C9.22266 4.33984 10.625 5.74141 10.625 7.46484C10.625 9.18828 9.22266 10.5898 7.5 10.5898Z" fill="currentColor"/>
+                            </g>
+                            <defs>
+                                <clipPath id="clip0_120_91">
+                                <rect width="15" height="20" fill="white"/>
+                                </clipPath>
+                            </defs>
+                            </svg>
+
+                          <!-- City -->
+                            <p id="city" class="font-inter-300 font-light text-[16px] text-[#CACECB] dark:text-dark-text-color">صنعاء</p>
+                        </div>
+
+                        <!-- Department -->
+                        <div class="hidden sm:flex space-x-1.5">
+                            <svg width="18" height="18" class="text-[#CACECB] dark:text-dark-text-color" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M8.625 1.06055V2.40674H6.27392V3.94189H5.02295V8.72021H3.91113V7.2085H3.16113V8.72021H1.42236V16.9395H5.02295H5.77441H7.54394H10.3608H12.8818H16.5776V8.72021H14.7891V7.2085H14.0391V8.72021H12.8818V3.94189H11.5356V2.40674H9.375V1.06055H8.625ZM7.02392 3.15674H10.7856V3.94189H7.02392V3.15674ZM5.77295 4.69336H12.1304V16.188H10.3608V13.4019H7.54394V16.188H5.77441V8.72021H5.77291L5.77295 4.69336ZM2.17236 9.47168H5.02295V16.188H2.17236V9.47168ZM12.8818 9.47168H15.8276V16.188H12.8818V9.47168ZM8.29541 14.1533H9.60937V16.188H8.29541V14.1533Z" fill="currentColor"/>
+                                <path d="M7.08862 5.74316C7.08862 6.50522 7.08862 7.26728 7.08862 8.02935C8.29936 8.02935 9.51011 8.02935 10.7208 8.02935C10.7208 7.26728 10.7208 6.50522 10.7208 5.74316C9.51011 5.74316 8.29936 5.74316 7.08862 5.74316ZM7.83983 6.49444C8.54977 6.49444 9.25971 6.49444 9.96965 6.49444C9.96965 6.75612 9.96965 7.0178 9.96965 7.27948C9.25971 7.27948 8.54977 7.27948 7.83983 7.27948C7.83983 7.0178 7.83983 6.75612 7.83983 6.49444Z" fill="currentColor"/>
+                                <path d="M7.08862 9.25049C7.08862 10.0125 7.08862 10.7746 7.08862 11.5367C8.29936 11.5367 9.51011 11.5367 10.7208 11.5367C10.7208 10.7746 10.7208 10.0125 10.7208 9.25049C9.51011 9.25049 8.29936 9.25049 7.08862 9.25049ZM7.83983 10.0004C8.54977 10.0004 9.25971 10.0004 9.96965 10.0004C9.96965 10.262 9.96965 10.5237 9.96965 10.7854C9.25971 10.7854 8.54977 10.7854 7.83983 10.7854C7.83983 10.5237 7.83983 10.262 7.83983 10.0004Z" fill="currentColor"/>
+                                <path d="M2.86279 12.4548C2.86279 12.7048 2.86279 12.9547 2.86279 13.2047C3.35281 13.2047 3.84283 13.2047 4.33285 13.2047C4.33285 12.9547 4.33285 12.7048 4.33285 12.4548C3.84283 12.4548 3.35281 12.4548 2.86279 12.4548Z" fill="currentColor"/>
+                                <path d="M2.86279 10.8242C2.86279 11.0746 2.86279 11.3251 2.86279 11.5755C3.35281 11.5755 3.84283 11.5755 4.33285 11.5755C4.33285 11.3251 4.33285 11.0746 4.33285 10.8242C3.84283 10.8242 3.35281 10.8242 2.86279 10.8242Z" fill="currentColor"/>
+                                <path d="M2.86279 14.084C2.86279 14.3339 2.86279 14.5839 2.86279 14.8339C3.35281 14.8339 3.84283 14.8339 4.33285 14.8339C4.33285 14.5839 4.33285 14.3339 4.33285 14.084C3.84283 14.084 3.35281 14.084 2.86279 14.084Z" fill="currentColor"/>
+                                <path d="M13.6187 12.4548C13.6187 12.7048 13.6187 12.9547 13.6187 13.2047C14.1087 13.2047 14.5987 13.2047 15.0887 13.2047C15.0887 12.9547 15.0887 12.7048 15.0887 12.4548C14.5987 12.4548 14.1087 12.4548 13.6187 12.4548Z" fill="currentColor"/>
+                                <path d="M13.6187 10.8242C13.6187 11.0746 13.6187 11.3251 13.6187 11.5755C14.1087 11.5755 14.5987 11.5755 15.0887 11.5755C15.0887 11.3251 15.0887 11.0746 15.0887 10.8242C14.5987 10.8242 14.1087 10.8242 13.6187 10.8242Z" fill="currentColor"/>
+                                <path d="M13.6187 14.084C13.6187 14.3339 13.6187 14.5839 13.6187 14.8339C14.1087 14.8339 14.5987 14.8339 15.0887 14.8339C15.0887 14.5839 15.0887 14.3339 15.0887 14.084C14.5987 14.084 14.1087 14.084 13.6187 14.084Z" fill="currentColor"/>
+                                </svg>
+                                <p id="department" class="font-inter-300 h-5 font-light text-[16px] text-[#CACECB] dark:text-dark-text-color">IT</p>
+                        </div>
+
+                       
+                        
+                    </div>
+
+                    <div class= "flex justify-between  items-center col-span-3 row-start-3 sm:col-span-2 sm:row-start-4 ">
+                        <p class="font-inter-300 font-light h-5 text-[12px] text-[#B3B3B3] pl-4 -translate-x-[55%] sm:text-[20px] sm:relative sm:after:absolute sm:after:w-[1px] sm:after:h-5 sm:after:bg-medium-blue sm:after:top-1/2 sm:after:-translate-y-1.5 sm:after:mr-2 sm:translate-x-0 dark:text-dark-text-color">انشاء: 2025/04/13</p>
+                        <p id="end_date" class="font-inter-300 font-light h-5 text-[12px] text-[#B3B3B3] sm:text-[20px] dark:text-dark-text-color">انهاء: 2025/04/20</p>
+                    </div>
+
+                    <!-- remaining_days -->
+                    <div id="remaining_days_container" class=" flex items-center justify-center font-inter-300 font-light text-[11px] text-[#00B448] border border-[#00B448] rounded-[5px] translate-y-2 w-20 h-5 bg-green-100 sm:space-x-2 sm:w-full sm:h-auto sm:rounded-none sm:translate-y-0 sm:border-0 sm:bg-transparent sm:items-start sm:text-[#B3B3B3] sm:text-[20px] sm:col-span-2 sm:row-start-5 dark:bg-transparent">
+                      <p id="remaining_days_p" class="order-2 mr-2 sm:mr-0 sm:order-none dark:text-[#00B448] sm:dark:text-dark-text-color">الايام المتبقية: </p>
+                      <span id="remaining_days" class="font-inter-700 font-bold order-1 sm:order-none sm:text-medium-blue dark:text[#00B448] sm:dark:text-dark-fourth-color">14</span>
+                    </div>
+                </div>
+        </section>
+
+        <main class="h-full mt-8 sm:mt-0">
+            <h3 class="font-inter-700 font-bold text-[20px] text-medium-blue mr-4 sm:text-4xl sm:mr-8 lg:mr-14 dark:text-dark-fourth-color">الوصف:</h3>
+            <!-- Body of Job -->
+            <div class="w-[88%] mr-7 sm:mr-33 lg:mr-40 sm:w-9/12 dark:text-white">
+                <p id="body">المسمى الوظيفي: مطور برمجيات الموقع: [المدينة، الدولة أو عن بُعد] نوع الوظيفة: دوام كامل / جزئي / عمل حر الخبرة المطلوبة: [عدد] سنوات في تطوير البرمجيات الوصف الوظيفي: نبحث عن مطور برمجيات موهوب ومتحمس للانضمام إلى فريقنا الديناميكي. سيكون مسؤولاً عن تصميم وتطوير وصيانة تطبيقات برمجية عالية الجودة تلبي احتياجات العملاء وتسهم في تحقيق أهداف الشركة. نتطلع لشخص لديه شغف بالتقنية، ويحب التعلّم المستمر، ويجيد العمل ضمن فريق. المهام والمسؤوليات: تحليل المتطلبات البرمجية وتحويلها إلى حلول تقنية فعّالة. تصميم وبناء تطبيقات جديدة وصيانة الأنظمة الحالية. التعاون مع فرق متعددة التخصصات لضمان جودة الأداء. اختبار وتصحيح الأخطاء البرمجية لضمان أفضل أداء ممكن. توثيق الكود والعمليات البرمجية لتسهيل التطوير المستقبلي. المؤهلات المطلوبة: شهادة في علوم الحاسوب أو مجال ذو صلة (أو خبرة معادلة). إتقان واحدة أو أكثر من لغات البرمجة مثل: Java, Python, JavaScript, C#, أو غيرها. معرفة بأنظمة إدارة قواعد البيانات مثل MySQL أو PostgreSQL. خبرة في استخدام أدوات التحكم بالإصدار مثل Git. مهارات تحليلية وحل مشكلات ممتازة. القدرة على العمل ضمن فريق وتحمل ضغط العمل. ميزات إضافية (اختياري): خبرة في تطوير تطبيقات الويب أو الهواتف المحمولة. معرفة بأطر العمل مثل React, Angular, .NET, Django، أو غيرها. تجربة في بيئات العمل السحابية مثل AWS أو Azure. المزايا التي نقدمها: بيئة عمل محفّزة وداعمة. فرص للتعلّم والتطوير المهني. [رواتب تنافسية، تأمين صحي، إجازات سنوية، وغيرها حسب ما توفره الشركة]. للمهتمين، يرجى إرسال السيرة الذاتية إلى [البريد الإلكتروني] مع ذكر "مطور برمجيات" في عنوان الرسالة.
+                </p>
+            </div>
+             <!-- Button -->
+             <div class="flex justify-center my-7">
+                <a id="#" href="#" class="font-inter-700 font-bold text-white text-[15px] w-53.75 h-9.25 shadow-[4px_4px_15px_0px_#00000040] flex items-center justify-center rounded-2xl bg-light-blue sm:h-12.5 sm:w-72 sm:text-[20px]">التقديم الان</a>
+              </div>
+        </main>
+
+
+    </div>
+
+    <script src="/src/JS/header.js"></script>
+    <script src="/src/JS/upper_list.js"></script>
+    <script src="/src/JS/Dark_Mode.js"></script>
+    <!-- <script src="../JS/job_information.js"></script> -->
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+  const remaining_days_container = document.getElementById("remaining_days_p");
+
+  function checkScreenWidth() {
+    if (window.innerWidth >= 640) {
+      // العرض 640 بكسل أو أكثر
+      document.getElementById("remaining_days_p").innerHTML = "الايام المتبقية:";
+    } else {
+      // العرض أقل من 640 بكسل
+      document.getElementById("remaining_days_p").innerHTML = "يوم متبقي";
+    }
+  }
+
+  // تنفيذ عند التحميل
+  checkScreenWidth();
+
+  // إعادة الفحص عند تغيير حجم النافذة
+  window.addEventListener("resize", checkScreenWidth);
+});
+
+</script>
+</body>
+</html>

@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="/src/CSS/output.css" />
+    <link
+      rel="stylesheet"
+      href="/node_modules/@fortawesome/fontawesome-free/css/all.min.css"
+    />
+  </head>
+  <body
+    class="overflow-y-auto overflow-x-hidden font-Cairo-variable bg-gray-100 md:bg-white dark:bg-[var(--color-dark-third-color)] dark:md:bg-[var(--color-dark-theme-color)]"
+  >
+    <!-- الهيدر -->
+    <div id="header-container"></div>
+    <!-- المقدمة -->
+    <nav class="px-6 py-6 md:py-4 md:space-y-4 lg:px-10 xl:py-8 xl:px-18">
+      <h1
+        class="font-Cairo-bold sm:text-xl md:text-2xl xl:text-3xl dark:text-[#FFFFFF]"
+      >
+        “ابتكر اليوم، وحقق غدًا: معًا نبدأ رحلة
+        <span class="text-secondary-color">الإبداع <br />والنجاح</span>!”
+      </h1>
+      <p
+        class="sm:text-lg sm:ml-12 sm:pt-2 sm:pb-2 md:pb-0 md:pt-0 md:text-base lg:ml-35 xl:ml-100 dark:text-[#FFFFFF]"
+      >
+        هنا
+        <span class="text-primary-color dark:text-secondary-color">نؤمن</span>
+        أن الإبداع هو القدرة على رؤية ما لا يراه الآخرون، وأن كل فكرة جديدة هي
+        بذرة لمستقبل أفضل. لأننا نعلم أن الإبداع ليس موهبة، بل هو أسلوب حياة،
+        فإننا نحتفل بكل فكرة، مهما كانت صغيرة، لأنها قد تكون خطوة نحو شيء أكبر.
+        التحديــــات هي وقود الإبداع، وكلما واجهنا المزيد منها، زادت الفرص
+        للابتكار. لا حدود لما يمكنك تحقيقه، إذا كنت
+        <span class="text-primary-color dark:text-secondary-color">تؤمن</span>
+        بقوة أفكارك.
+      </p>
+    </nav>
+    <div class="grid xl:gap-4 xl:py-8 xl:px-18">
+      <h1
+        class="text-medium-blue dark:text-secondary-color font-Cairo-bold text-lg py-6 px-4 sm:py-4 sm:px-6 sm:text-xl lg:text-2xl xl:py-8 xl:px-2"
+      >
+        وظائفي:
+      </h1>
+
+      <!-- عرض البطاقات في الشاشات الصغيرة فقط -->
+      <div class="block md:hidden">
+        <div class="flex justify-around pt-2 gap-34 sm:gap-50">
+          <div class="pt-1">
+            <input
+              type="checkbox"
+              class="select-all-checkbox form-checkbox accent-medium-blue scale-125"
+            />
+            <span class="text-gray-400 text-sm pr-1 sm:text-lg"
+              >تحديد الكل</span
+            >
+          </div>
+          <a
+            href="#"
+            class="text-medium-blue text-xs font-Cairo-bold pt-2 sm:text-lg"
+            >إضافة وظيفة جديدة</a
+          >
+        </div>
+
+        <!-- قائمة الوظائف كبطاقات -->
+        <div class="space-y-4 p-4">
+          <div
+            class="bg-white dark:bg-dark-theme-color shadow p-2 grid gap-4 grid-cols-[auto_2px_1fr] items-start relative"
+          >
+            <div class="pt-14 sm:pt-20 sm:pr-4">
+              <input
+                type="checkbox"
+                class="jobCheckbox form-checkbox accent-cyan-600 scale-125"
+              />
+            </div>
+            <div
+              class="h-full w-[2px] mt-4 bg-gray-300 dark:bg-dark-border-color"
+            ></div>
+            <div
+              class="grid grid-cols-4 gap-y-4 text-xs sm:text-lg text-black dark:text-[#ffffff] pt-4 pr-2"
+            >
+              <div class="col-span-2 flex">
+                <span
+                  class="field-label font-medium text-medium-blue font-Cairo-bold"
+                  data-key="name"
+                ></span>
+                <span class="pr-3">مطور برمجيات</span>
+              </div>
+              <div class="col-span-2 flex">
+                <span
+                  class="field-label font-medium text-medium-blue font-Cairo-bold"
+                  data-key="department"
+                ></span>
+                <span class="pr-3 sm:pr-3">علوم الحاسوب</span>
+              </div>
+              <div class="col-span-2 flex">
+                <span
+                  class="field-label font-medium text-medium-blue font-Cairo-bold"
+                  data-key="city"
+                ></span>
+                <span class="pr-3">صنعاء</span>
+              </div>
+              <div class="col-span-2 flex">
+                <div
+                  class="field-label font-medium text-medium-blue font-Cairo-bold"
+                  data-key="type"
+                ></div>
+                <div class="pr-1 sm:pr-4">مطور واجهات خلفية</div>
+              </div>
+              <div class="col-span-2 flex">
+                <div
+                  class="field-label font-medium text-medium-blue font-Cairo-bold"
+                  data-key="daysLeft"
+                ></div>
+                <div class="pr-1 sm:pr-2">
+                  <span
+                    class="text-green-600 border-green-600 bg-green-50 dark:bg-dark-theme-color flex w-10 h-4 sm:w-16 sm:h-6 rounded border items-center justify-center"
+                    >14</span
+                  >
+                </div>
+              </div>
+              <div class="col-span-2 flex">
+                <span
+                  class="field-label text-medium-blue font-Cairo-bold"
+                  data-key="endDate"
+                ></span>
+                <span class="pr-1">10/04/2025</span>
+              </div>
+            </div>
+            <div
+              class="col-span-3 flex items-center justify-center gap-30 mt-4 pb-2 sm:gap-70"
+            >
+              <button class="text-blue-600 hover:text-blue-800 pr-8">
+                <a href="#">
+                  <img
+                    src="/src/Images/pen.svg"
+                    alt="edit"
+                    class="sm:w-7 sm:-h-5"
+                  />
+                </a>
+              </button>
+              <button class="text-red-600 hover:text-red-800 cursor-pointer">
+                <img
+                  src="/src/Images/trash.svg"
+                  alt="delete"
+                  class="sm:w-7 sm:-h-5"
+                />
+              </button>
+            </div>
+          </div>
+          <!--  -->
+          <div
+            class="bg-white dark:bg-dark-theme-color shadow p-2 grid gap-4 grid-cols-[auto_2px_1fr] items-start relative"
+          >
+            <div class="pt-14 sm:pt-20 sm:pr-4">
+              <input
+                type="checkbox"
+                class="jobCheckbox form-checkbox accent-cyan-600 scale-125"
+              />
+            </div>
+            <div
+              class="h-full w-[2px] mt-4 bg-gray-300 dark:bg-dark-border-color"
+            ></div>
+            <div
+              class="grid grid-cols-4 gap-y-4 text-xs sm:text-lg text-black dark:text-[#ffffff] pt-4 pr-2"
+            >
+              <div class="col-span-2 flex">
+                <span
+                  class="field-label font-medium text-medium-blue font-Cairo-bold"
+                  data-key="name"
+                ></span>
+                <span class="pr-3">مطور برمجيات</span>
+              </div>
+              <div class="col-span-2 flex">
+                <span
+                  class="field-label font-medium text-medium-blue font-Cairo-bold"
+                  data-key="department"
+                ></span>
+                <span class="pr-3 sm:pr-3">علوم الحاسوب</span>
+              </div>
+              <div class="col-span-2 flex">
+                <span
+                  class="field-label font-medium text-medium-blue font-Cairo-bold"
+                  data-key="city"
+                ></span>
+                <span class="pr-3">صنعاء</span>
+              </div>
+              <div class="col-span-2 flex">
+                <div
+                  class="field-label font-medium text-medium-blue font-Cairo-bold"
+                  data-key="type"
+                ></div>
+                <div class="pr-1 sm:pr-4">مطور واجهات خلفية</div>
+              </div>
+              <div class="col-span-2 flex">
+                <div
+                  class="field-label font-medium text-medium-blue font-Cairo-bold"
+                  data-key="daysLeft"
+                ></div>
+                <div class="pr-1 sm:pr-2">
+                  <span
+                    class="text-[#FF4747] border-[#FF4747] bg-green-50 dark:bg-dark-theme-color flex w-10 h-4 sm:w-16 sm:h-6 rounded border items-center justify-center"
+                    >0</span
+                  >
+                </div>
+              </div>
+              <div class="col-span-2 flex">
+                <span
+                  class="field-label text-medium-blue font-Cairo-bold"
+                  data-key="endDate"
+                ></span>
+                <span class="pr-1">10/04/2025</span>
+              </div>
+            </div>
+            <div
+              class="col-span-3 flex items-center justify-center gap-30 mt-4 pb-2 sm:gap-70"
+            >
+              <button class="text-blue-600 hover:text-blue-800 pr-8">
+                <a href="#">
+                  <img
+                    src="/src/Images/pen.svg"
+                    alt="edit"
+                    class="sm:w-7 sm:-h-5"
+                  />
+                </a>
+              </button>
+              <button class="text-red-600 hover:text-red-800 cursor-pointer">
+                <img
+                  src="/src/Images/trash.svg"
+                  alt="delete"
+                  class="sm:w-7 sm:-h-5"
+                />
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- عرض الجدول في الشاشات الكبيرة فقط -->
+      <div class="hidden md:block">
+        <div
+          class="md:bg-gray-100 md:dark:bg-dark-third-color md:dark:text-[#ffffff] md:p-1 md:border-separate md:rounded-lg md:mx-4 lg:mx-4 xl:mx-0"
+        >
+          <div
+            class="hidden md:grid md:grid-cols-8 md:justify-center md:items-center md:text-xs md:px-1 md:py-1 lg:py-1 lg:px-2 lg:text-sm"
+          >
+            <div class="flex md:pr-1 lg:pr-4 xl:pr-4">
+              <input
+                type="checkbox"
+                class="select-all-checkbox form-checkbox xl:scale-125 accent-medium-blue"
+              />
+            </div>
+            <div class="md:col-span-1 md:pr-2 lg:pr-4 xl:pr-2">
+              <span
+                class="field-label text-medium-blue md:text-gray-500 dark:text-gray-300"
+                data-key="name"
+              ></span>
+            </div>
+            <div class="md:pr-6 xl:pr-7">
+              <span
+                class="field-label text-medium-blue md:text-gray-500 dark:text-gray-300"
+                data-key="department"
+              ></span>
+            </div>
+            <div class="md:pr-2 lg:pr-4 xl:pr-5">
+              <span
+                class="field-label text-medium-blue md:text-gray-500 dark:text-gray-300"
+                data-key="daysLeft"
+              ></span>
+            </div>
+            <div class="md:pr-8 lg:pr-12 xl:pr-15">
+              <span
+                class="field-label text-medium-blue md:text-gray-500 dark:text-gray-300"
+                data-key="type"
+              ></span>
+            </div>
+            <div class="md:text-center">
+              <span
+                class="field-label text-medium-blue md:text-gray-500 dark:text-gray-300"
+                data-key="city"
+              ></span>
+            </div>
+            <div class="md:pr-4 lg:pr-7 xl:pr-10">
+              <span
+                class="field-label text-medium-blue md:text-gray-500 dark:text-gray-300"
+                data-key="endDate"
+              ></span>
+            </div>
+            <div class="md:pr-3 lg:pr-6 xl:pr-8">
+              <span
+                class="hidden field-label md:block md:text-gray-500 dark:text-gray-300"
+                data-key="EditDelete"
+              ></span>
+            </div>
+          </div>
+
+          <div class="space-y-2">
+            <div
+              class="font-Cairo-bold text-black shadow md:bg-white md:dark:bg-dark-theme-color md:dark:text-[#ffffff] md:grid md:grid-cols-8 md:p-2 md:text-[10px] lg:text-xs lg:items-center lg:p-2 lg:text-center xl:text-sm xl:space-y-1"
+            >
+              <div
+                class="flex md:gap-4 md:col-span-2 lg:pr-4 lg:col-span-2 xl:items-center xl:justify-start"
+              >
+                <input
+                  type="checkbox"
+                  class="jobCheckbox form-checkbox xl:scale-125 accent-medium-blue"
+                />
+                <span class="text-gray-700 dark:text-gray-300"
+                  >مطور برمجيات</span
+                >
+              </div>
+              <div class="lg:pl-7 xl:pl-10">
+                <span class="text-gray-700 dark:text-gray-300"
+                  >علوم الحاسوب</span
+                >
+              </div>
+              <div class="md:pr-5 lg:pr-9 xl:pr-6">
+                <span
+                  class="md:w-10 md:h-4 lg:w-12 lg:h-5 xl:w-16 xl:h-5 flex items-center justify-center rounded border text-green-600 border-green-600 bg-green-50 dark:bg-dark-third-color"
+                  >14</span
+                >
+              </div>
+              <div class="">
+                <span class="text-gray-700 dark:text-gray-300"
+                  >مطور واجهات خلفية</span
+                >
+              </div>
+              <div class="md:pr-8 lg:pr-1">
+                <span class="text-gray-700 dark:text-gray-300">صنعاء</span>
+              </div>
+              <div class="md:text-center lg:pr-2 xl:pr-3">
+                <span class="text-gray-700 dark:text-gray-300">10/04/2025</span>
+              </div>
+              <div
+                class="flex justify-center items-center md:pr-4 md:gap-4 lg:pr-4 lg:gap-4 xl:pr-4 xl:gap-4"
+              >
+                <button class="text-blue-600 hover:text-blue-800">
+                  <a href="#"><img src="/src/Images/pen.svg" alt="edit" /></a>
+                </button>
+                <button class="text-red-600 hover:text-red-800 cursor-pointer">
+                  <img src="/src/Images/trash.svg" alt="delete" />
+                </button>
+              </div>
+            </div>
+            <!--  -->
+            <div
+              class="font-Cairo-bold text-black shadow md:bg-white md:dark:bg-dark-theme-color md:dark:text-[#ffffff] md:grid md:grid-cols-8 md:p-2 md:text-[10px] lg:text-xs lg:items-center lg:p-2 lg:text-center xl:text-sm xl:space-y-1"
+            >
+              <div
+                class="flex md:gap-4 md:col-span-2 lg:pr-4 lg:col-span-2 xl:items-center xl:justify-start"
+              >
+                <input
+                  type="checkbox"
+                  class="jobCheckbox form-checkbox xl:scale-125 accent-medium-blue"
+                />
+                <span class="text-gray-700 dark:text-gray-300"
+                  >مطور برمجيات</span
+                >
+              </div>
+              <div class="lg:pl-7 xl:pl-10">
+                <span class="text-gray-700 dark:text-gray-300"
+                  >علوم الحاسوب</span
+                >
+              </div>
+              <div class="md:pr-5 lg:pr-9 xl:pr-6">
+                <span
+                  class="md:w-10 md:h-4 lg:w-12 lg:h-5 xl:w-16 xl:h-5 flex items-center justify-center rounded border text-[#FF4747] border-[#FF4747] bg-green-50 dark:bg-dark-third-color"
+                  >0</span
+                >
+              </div>
+              <div class="">
+                <span class="text-gray-700 dark:text-gray-300"
+                  >مطور واجهات خلفية</span
+                >
+              </div>
+              <div class="md:pr-8 lg:pr-1">
+                <span class="text-gray-700 dark:text-gray-300">صنعاء</span>
+              </div>
+              <div class="md:text-center lg:pr-2 xl:pr-3">
+                <span class="text-gray-700 dark:text-gray-300">10/04/2025</span>
+              </div>
+              <div
+                class="flex justify-center items-center md:pr-4 md:gap-4 lg:pr-4 lg:gap-4 xl:pr-4 xl:gap-4"
+              >
+                <button class="text-blue-600 hover:text-blue-800">
+                  <a href="#"><img src="/src/Images/pen.svg" alt="edit" /></a>
+                </button>
+                <button class="text-red-600 hover:text-red-800 cursor-pointer">
+                  <img src="/src/Images/trash.svg" alt="delete" />
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- الترقيم -->
+      <div
+        class="flex justify-center mt-4 gap-0 overflow-x-hidden sm:text-sm md:pr-5 md:justify-start"
+      >
+        <button
+          class="px-2 py-1 text-gray-600 transition-transform duration-200 hover:text-medium-blue dark:hover:text-dark-primary-color rounded origin-center"
+        >
+          <i class="fas fa-angle-right"></i>
+        </button>
+        <button
+          class="px-2 py-1 text-gray-400 rounded transition-transform duration-200 hover:text-medium-blue dark:hover:text-dark-primary-color origin-center"
+        >
+          5
+        </button>
+        <button
+          class="px-2 py-1 text-gray-400 rounded transition-transform duration-200 hover:text-medium-blue dark:hover:text-dark-primary-color origin-center"
+        >
+          4
+        </button>
+        <button
+          class="px-2 py-1 text-gray-400 rounded transition-transform duration-200 hover:text-medium-blue dark:hover:text-dark-primary-color origin-center"
+        >
+          3
+        </button>
+        <button
+          class="px-2 py-1 text-medium-blue dark:text-dark-primary-color rounded transition-transform duration-200 hover:text-medium-blue dark:hover:text-dark-primary-color origin-center"
+        >
+          2
+        </button>
+        <button
+          class="px-2 py-1 text-gray-400 rounded transition-transform duration-200 hover:text-medium-blue dark:hover:text-dark-primary-color origin-center"
+        >
+          1
+        </button>
+        <button
+          class="px-2 py-1 text-gray-600 transition-transform duration-200 hover:text-medium-blue dark:hover:text-dark-primary-color rounded origin-center"
+        >
+          <i class="fas fa-angle-left"></i>
+        </button>
+      </div>
+    </div>
+
+    <script src="/src/JS/header.js"></script>
+    <script src="/src/JS/upper_list.js"></script>
+    <script src="/src/JS/my_job.js" defer></script>
+    <script src="/src/JS/Dark_Mode.js"></script>
+  </body>
+</html>

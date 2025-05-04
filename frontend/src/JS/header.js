@@ -10,7 +10,9 @@ document.addEventListener("DOMContentLoaded", function () {
         <h1
           class="text-light-blue font-bold text-3xl pr-3 sm:text-4xl sm:pr-4 md:pr-0 md:text-4xl lg:text-[30px] xl:text-[35px] dark:text-dark-primary-color"
         >
+        <a href="/src/HTML/home.html" alt="يمن كريرز">
           يمن كريرز
+          </a>
         </h1>
         <span
           class="hidden lg:block w-0.5 h-8 bg-primary-color/40 rounded-full"
@@ -18,7 +20,9 @@ document.addEventListener("DOMContentLoaded", function () {
         <h1
           class="text-light-blue hidden lg:block lg:text-lg xl:text-xl font-bold dark:text-dark-secondary-color"
         >
+        <a href="/src/HTML/home.html" alt="الصفحة الرئيسية">
           الصفحة الرئيسية
+          </a>
         </h1>
         <p
           class="hidden lg:block lg:text-lg xl:text-xl font-bold cursor-pointer dark:text-[#FFFFFF]"
@@ -142,7 +146,7 @@ document.addEventListener("DOMContentLoaded", function () {
         id="themeToggle"
         class="hidden lg:flex lg:pr-60 xl:pr-120 cursor-pointer dark:text-[#FFFFFF]"
       >
-        <i id="themeIcon" class="fas fa-moon fa-lg"></i>
+          <img id="themeIcon" src="/src/Images/moon.svg" alt="Theme Icon" class="w-6 h-6 transition-all duration-500 ease-in-out" />
       </button>
 
       <!-- Left Side -->

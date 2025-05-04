@@ -1,36 +1,44 @@
 document.addEventListener("DOMContentLoaded", () => {
-  // قراءة التفضيل من localStorage أو تفعيل dark إذا النظام يفضل ذلك
   const storedTheme = localStorage.getItem("theme");
   const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
   const isDark = storedTheme === "dark" || (!storedTheme && prefersDark);
 
-  // تطبيق الوضع المخزن في localStorage أو تفضيل النظام
-  if (isDark) {
-    document.documentElement.classList.add("dark");
-  } else {
-    document.documentElement.classList.remove("dark");
-  }
-
-  // في صفحة home.html، إذا كان هناك زر لتغيير الوضع:
   const themeToggle = document.getElementById("themeToggle");
   const themeIcon = document.getElementById("themeIcon");
 
-  // تحقق إذا كان الزر موجودًا في الصفحة (مثل home.html)
+
+  function updateIcon(dark) {
+    // أضف التأثيرات مباشرة
+    themeIcon.style.opacity = "0";
+    themeIcon.style.transform = "rotate(180deg) scale(1.2)";
+  
+    setTimeout(() => {
+      // غيّر الصورة بعد جزء من الثانية
+      themeIcon.src = dark ? "/src/Images/sun.svg" : "/src/Images/moon.svg";
+      themeIcon.alt = dark ? "Sun Icon" : "Moon Icon";
+  
+      // استرجاع الحالة الطبيعية
+      themeIcon.style.opacity = "1";
+      themeIcon.style.transform = "rotate(0deg) scale(1)";
+    }, 200); // 200ms هي المهلة قبل تغيير الصورة
+  }
+
+  // تطبيق الوضع والرمز عند تحميل الصفحة
+  document.documentElement.classList.toggle("dark", isDark);
+  updateIcon(isDark);
+
+  // عند الضغط على الزر
   if (themeToggle && themeIcon) {
     themeToggle.addEventListener("click", () => {
-      // تغيير الوضع وإضافة/إزالة الفئة dark
       const isDarkNow = document.documentElement.classList.toggle("dark");
-
-      // حفظ التفضيل في localStorage
       localStorage.setItem("theme", isDarkNow ? "dark" : "light");
-
-      // تبديل الأيقونات بين القمر والشمس
-      themeIcon.classList.toggle("fa-moon", !isDarkNow);
-      themeIcon.classList.toggle("fa-sun", isDarkNow);
+      updateIcon(isDarkNow);
     });
   }
 });
 
+
+//تغيير زر الرجوع في الوضع المظلم
 document.addEventListener("DOMContentLoaded", () => {
   const backArrow = document.getElementById("backArrow");
   const storedTheme = localStorage.getItem("theme");

@@ -10,11 +10,11 @@
       href="/node_modules/@fortawesome/fontawesome-free/css/all.min.css"
     />
   </head>
-  <body class="bg-gray-100 font-Cairo-variable min-h-screen flex flex-col">
+  <body class="bg-gray-100 font-Cairo-variable min-h-screen flex flex-col dark:bg-[var(--color-dark-theme-color)]">
     <!-- Header للجوال -->
     <header class="relative w-full">
       <div
-        class="bg-white h-[70px] md:h-[80px] py-4 px-4 flex justify-between items-center shadow relative lg:hidden"
+        class="bg-white dark:bg-dark-third-color h-[70px] md:h-[80px] py-4 px-4 flex justify-between items-center shadow relative lg:hidden"
       >
         <h1
           class="text-primary-color font-Cairo-Black text-3xl md:text-4xl lg:hidden"
@@ -35,14 +35,14 @@
         class="z-30 absolute top-20 left-5 w-7 h-7 sm:w-9 sm:h-9 sm:top-22 sm:left-3 md:w-12 md:h-12 md:top-26 md:left-1 lg:relative lg:top-[-25px] lg:right-[950px] lg:w-10 lg:h-10 lg:mt-12 xl:right-[1180px] xl:top-[-25px]"
       >
         <a href="/src/HTML/signin.html" class="back-btn text-[20px] font-bold">
-          <img src="/src/Images/arraow.svg" alt="رجوع" />
+          <img id="backArrow" src="/src/Images/arrow-dark.svg" alt="رجوع" />
         </a>
       </div>
 
       <!-- القائمة الجانبية -->
       <div
         id="mobile-menu"
-        class="fixed top-0 left-0 h-full w-64 bg-white shadow-lg transform -translate-x-full transition-transform duration-300 ease-in-out z-40 text-right"
+        class="fixed top-0 left-0 h-full w-64 bg-white dark:bg-[var(--color-dark-theme-color)] shadow-lg transform -translate-x-full transition-transform duration-300 ease-in-out z-40 text-right"
       >
         <!-- رأس القائمة -->
         <div
@@ -54,7 +54,7 @@
           <div class="relative group">
             <button
               id="account-menu-button"
-              class="flex items-center w-[160px] h-[40px] mt-4 mr-6 space-x-2 bg-Sec-secondary-color px-2 py-2 rounded-full hover:bg-gray-200 transition"
+              class="flex items-center w-[160px] h-[40px] mt-4 mr-6 space-x-2 bg-light-blue px-2 py-2 rounded-full hover:bg-gray-200 transition"
             >
               <span class="font-Cairo-bold text-[12px] text-white"
                 >سجل لنشر اول طلب توظيف</span
@@ -73,11 +73,11 @@
           >
             <a
               href="/src/HTML/home.html"
-              class="text-Sec-secondary-color font-bold hover:text-primary-color"
+              class="text-light-blue font-bold hover:text-primary-color"
             >
               الصفحة الرئيسية
             </a>
-            <a href="#" class="hover:text-primary-color">البحث</a>
+            <a href="#" class="hover:text-primary-color dark:text-[#FFFFFF]">البحث</a>
           </nav>
 
           <!-- فاصل -->
@@ -85,11 +85,11 @@
 
           <!-- التذييل -->
           <footer class="text-center text-gray-500 text-sm space-y-2 pt-4">
-            <span class="text-Sec-secondary-color font-Cairo-bold text-lg">
+            <span class="text-light-blue font-Cairo-bold text-lg">
               يمن كريرز
             </span>
             <div
-              class="flex justify-center items-center space-x-1 rtl:space-x-reverse"
+              class="flex justify-center items-center space-x-1 rtl:space-x-reverse dark:text-[#FFFFFF]"
             >
               <span class="text-primary-color text-xl pt-1">©</span>
               <span>جميع الحقوق محفوظة ليمن كريرز</span>
@@ -108,29 +108,29 @@
       >
         <div class="lg:relative lg:max-w-xl z-10 mt-14 lg:mt-0">
           <h1
-            class="text-lg font-Cairo-bold mb-3 leading-relaxed text-center sm:text-3xl lg:text-xl lg:px-3 lg:text-right xl:px-6 xl:text-2xl"
+            class="text-lg font-Cairo-bold mb-3 leading-relaxed text-center sm:text-3xl lg:text-xl lg:px-3 lg:text-right xl:px-6 xl:text-2xl dark:text-[#FFFFFF]"
           >
             مرحبًا بك في
-            <span class="text-primary-color">يمن كريرز</span> لإعلانات التوظيف!
+            <span class="text-primary-color dark:text-secondary-color">يمن كريرز</span> لإعلانات التوظيف!
           </h1>
           <p
-            class="text-lg mb-3 px-6 text-center sm:text-xl sm:px-18 md:px-28 md:text-xl lg:text-right lg:text-lg lg:px-6 xl:px-6"
+            class="text-lg mb-3 px-6 text-center sm:text-xl sm:px-18 md:px-28 md:text-xl lg:text-right lg:text-lg lg:px-6 xl:px-6 dark:text-[#FFFFFF]"
           >
             شكرًا لاختيارك نشر فرص التوظيف معنا. نحن هنا لنسهّل عليك عملية
             العثور على الكفاءات المناسبة لشركتك. سجّل دخولك الآن وابدأ في نشر
             إعلاناتك بكل سهولة ويسر!
           </p>
           <p
-            class="text-lg mb-6 px-6 text-center sm:text-xl sm:px-18 md:px-28 md:text-xl lg:text-right lg:text-lg lg:px-6 lg:mb-3 xl:mb-1 xl:px-6"
+            class="text-lg mb-6 px-6 text-center sm:text-xl sm:px-18 md:px-28 md:text-xl lg:text-right lg:text-lg lg:px-6 lg:mb-3 xl:mb-1 xl:px-6 dark:text-[#FFFFFF]"
           >
             نحن نعمل باستمرار لتحسين تجربتك وتقديم أفضل الأدوات لتحقيق النجاح في
             العثور على الموظفين المثاليين. إذا كنت بحاجة إلى أي مساعدة، لا تتردد
             في التواصل معنا.
           </p>
           <h2
-            class="text-xl font-Cairo-bold px-6 mb-2 text-center sm:text-3xl lg:text-right lg:text-xl lg:pr-4 xl:px-6"
+            class="text-xl font-Cairo-bold px-6 mb-2 text-center sm:text-3xl lg:text-right lg:text-xl lg:pr-4 xl:px-6 dark:text-[#FFFFFF]"
           >
-            <span class="text-primary-color">نتمنى</span> لك تجربة مثمرة مع
+            <span class="text-primary-color dark:text-secondary-color">نتمنى</span> لك تجربة مثمرة مع
             منصتنا!
           </h2>
         </div>
@@ -145,7 +145,7 @@
 
       <!-- خط فاصل -->
       <div
-        class="hidden lg:block w-[4px] lg:h-[610px] xl:h-[500px] bg-primary-color/40 rounded-full"
+        class="hidden lg:block w-[4px] lg:h-[610px] xl:h-[500px] bg-primary-color/40 dark:bg-[#4AC8E0] rounded-full"
       ></div>
       <!-- Left Section -->
       <div class="w-full lg:w-1/2 px-2 lg:flex flex-col mt-0 z-20">
@@ -158,14 +158,14 @@
             class="flex flex-col pb-4 w-full items-center gap-2 sm:gap-3 md:px-0 md:gap-2 lg:px-4 xl:gap-1"
           >
             <h2
-              class="text-2xl font-bold text-right w-full sm:text-4xl lg:text-2xl"
+              class="text-2xl font-bold text-right w-full sm:text-4xl lg:text-2xl dark:text-[#FFFFFF]"
             >
               تسجيل
             </h2>
             <!-- "ليس لديك حساب؟ قم بالتسجيل للجوال" -->
             <label
               for="account"
-              class="text-sm text-black w-full text-left mb-1 pl-4 sm:pl-4 lg:hidden"
+              class="text-sm text-black w-full text-left mb-1 pl-4 sm:pl-4 lg:hidden dark:text-[#FFFFFF]"
             >
               لديك حساب بالفعل؟
               <span
@@ -303,7 +303,7 @@
               </button>
             </div>
 
-            <p class="hidden lg:block text-sm text-black mt-0 ml-[200px]">
+            <p class="hidden lg:block text-sm text-black mt-0 ml-[200px] dark:text-[#FFFFFF]">
               لديك حساب بالفعل؟
               <a
                 href="/src/HTML/signin.html"
@@ -314,7 +314,7 @@
             </p>
             <button
               id="signup"
-              class="bg-[#00c2cb] text-white w-full h-16 rounded-xl sm:rounded-xl sm:h-14 md:text-xl md:h-14 lg:h-12 xl:rounded-xl hover:opacity-90 transition hover:text-black hover:bg-primary-color font-bold mt-0"
+              class="bg-[#00c2cb] text-white w-full h-16 rounded-xl sm:rounded-xl sm:h-14 md:text-xl md:h-14 lg:h-12 xl:rounded-xl hover:opacity-90 transition dark:text-black hover:text-black hover:bg-primary-color font-bold mt-0 cursor-pointer"
             >
               تسجيل
             </button>
@@ -324,12 +324,14 @@
     </main>
     <!-- الفوتر في أسفل الصفحة -->
     <footer
-      class="w-full text-center text-gray-500 text-xs flex justify-center items-center mb-2 lg:mt-4 xl:mb-2"
+      class="w-full text-center text-gray-500 text-xs flex justify-center items-center mb-2 lg:mt-4 xl:mb-1 dark:text-[#FFFFFF]"
     >
       <span class="text-primary-color text-xl pt-1">©</span>
       جميع الحقوق محفوظة ليمن كريرز
     </footer>
+    <script src="/node_modules/sweetalert2/dist/sweetalert2.all.min.js"></script>
     <script src="/src/JS/SC_register.js"></script>
     <script src="/src/JS/upper_list.js"></script>
+    <script src="/src/JS/Dark_Mode.js"></script>
   </body>
 </html>

@@ -5,21 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Add Job Page</title>
     <link rel="stylesheet" href="../tailwindcss/src/output.css" />
-    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <link rel="stylesheet" href="../CSS/input.css">
-    <script src="https://cdn.tailwindcss.com"></script> // to the dark mode turn on 
-    <script>
-        // تفعيل dark variant عن طريق class
-        tailwind.config = {
-            darkMode: 'class',
-        }
-        // دالة الوضع الليلي
-        function toggleTheme() {
-            const root = document.documentElement;
-            const isDark = root.classList.toggle("dark");
-            localStorage.theme = isDark ? "dark" : "light";
-        }
-    </script>
 </head>
 <body class="bg-white dark:bg-zinc-800 text-gray-800 dark:text-gray-100 overflow-x-hidden lg:w-full">
     <header class="w-full h-[120px] shadow-[0px_2px_15px_0px_rgba(0,0,0,0.25)] flex justify-between items-center px-6 relative
@@ -337,7 +323,7 @@
         } else {
         document.documentElement.classList.remove("dark");
         }
-    </script>
+    </scrip>
 
 </body>
 </html>

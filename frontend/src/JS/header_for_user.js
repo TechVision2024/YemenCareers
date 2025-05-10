@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", function () {
-  const headerHTML = ` <!-- الهيدر -->
+  const userHeaderHTML = ` <!-- الهيدر -->
     <header
       class="box-shadow shadow-md h-24 flex justify-between items-center md:h-19 md:px-6 lg:h-27 lg:px-12 xl:px-10"
     >
@@ -30,12 +30,12 @@ document.addEventListener("DOMContentLoaded", function () {
           <a href="/src/HTML/search_for_job.html">البحث</a>
         </li>
         <li
-          class="hidden lg:hidden lg:text-lg xl:text-xl font-bold cursor-pointer"
+          class="hidden lg:block lg:text-lg xl:text-xl font-bold cursor-pointer"
         >
           <a href="/src/HTML/add_new_job.html">اضف طلب توظيف جديد</a>
         </li>
         <li
-          class="hidden lg:hidden lg:text-lg xl:text-xl font-bold cursor-pointer"
+          class="hidden lg:block lg:text-lg xl:text-xl font-bold cursor-pointer"
         >
           <a href="/src/HTML/Myjob.html">وظائفي</a>
         </li>
@@ -141,91 +141,74 @@ document.addEventListener("DOMContentLoaded", function () {
         </div>
       </ul>
 
-      <!-- زر الوضع الداكن للشاشات الكبيرة قبل تسجيل الدخول -->
-      <button
-        id="themeToggle"
-        class="hidden lg:flex lg:pr-60 xl:pr-120 cursor-pointer dark:text-[#FFFFFF]"
-      >
-          <img id="themeIcon" src="/src/Images/moon.svg" alt="Theme Icon" class="w-6 h-6 transition-all duration-500 ease-in-out" />
-      </button>
+      
 
-      <!-- Left Side -->
-      <div
-        class="hidden box-shadow bg-light-blue rounded-2xl px-4 h-12 lg:flex justify-center items-center hover:bg-secondary-color transition-colors duration-300 ease-in-out"
-      >
-        <a
-          href="/src/HTML/signin.html"
-          class="md:text-[10px] lg:text-sm xl:text-sm font-bold text-white"
-          >سجل لنشر اول طلب توظيف</a
-        >
+     <!-- القائمة المنسدلة الجانبية للشاشات الكبيرة بعد تسجيل الدخول-->
+  <div class="relative group">
+  <button
+      id="account-menu-button"
+      class="hidden lg:flex items-center lg:w-40 lg:h-10 xl:w-50 xl:h-12 mt-4 mr-0 space-x-2 bg-gray-100 px-2 py-2 rounded-lg hover:bg-gray-200 transition justify-between"
+      onclick="toggleDropdown()"
+  >
+      <div class="flex items-center space-x-2">
+      <i id="dropdown-icon" class="fas fa-chevron-down mr-1 text-gray-600 transition-transform duration-300"></i>
+      <span class="font-Cairo-bold text-sm text-black  lg:mr-4 xl:mr-12">TechVision</span>
+      <img src="/src/Images/logo.jpeg" alt="Logo" class="w-8 h-8 rounded-full" />
       </div>
+  </button>
+  <!-- القائمة المنسدلة للشاشات الكبيرة -->
+        <div
+            id="account-dropdown"
+            class="absolute right-0 mt-2 w-50 bg-white border border-gray-200 rounded-xl shadow-lg hidden z-50"
+        >
+        <div class="p-4 border-b border-gray-200">
+        <div class="flex flex-row-reverse items-center">
+            <!-- صورة الحساب -->
+            <img src="/src/Images/logo.jpeg" alt="Logo" class="w-12 h-12 rounded-full mr-3" />    
+            <!-- اسم الحساب والبريد -->
+            <div class="flex flex-col items-end text-right">
+            <div class="text-lg font-Cairo-bold text-gray-900">TechVision</div>
+            <div class="text-[10px] text-blue-600">techvision@techvision.com</div>
+            
+            </div>
+        </div>
+        </div>
+            <ul>
+            <li>
+            <a href="#" class="flex items-center px-4 py-2 text-gray-700 hover:bg-gray-100 text-sm">
+            <i class="fas fa-user ml-2"></i>
+            معلومات الحساب
+            </a>
+            </li>
+            <li>
+            <a href="#" class="flex items-center px-4 py-2 text-gray-700 hover:bg-gray-100 text-sm">
+            <i class="fas fa-sliders-h ml-2"></i>
+            إعدادات الحساب
+            </a>
+            </li>
+            <li>
+            <button href="#" class="flex items-center px-4 py-2 text-gray-700 hover:bg-gray-100 text-sm">
+            <i class="fas fa-moon ml-2"></i>
+            الوضع المظلم
+            </button>
+            </li>
+            <hr class="my-1" />
+            <li>
+             <button href="#" class="flex items-center px-4 py-2 text-gray-700 hover:bg-gray-100 text-sm">
+            <i class="fas fa-sign-out-alt ml-2"></i>
+            تسجيل الخروج
+            </button>
+            </li>
+            </ul>    
+        </div>
+        </div>
 
-        
     </header> `;
 
   // إدراج الهيدر داخل عنصر في الصفحة
-  const container = document.getElementById("header-container");
-  if (container) container.innerHTML = headerHTML;
+  const userHeaderContainer = document.getElementById("user-header-container");
+  if (userHeaderContainer) userHeaderContainer.innerHTML = userHeaderHTML;
 
-  
-  // <!-- القائمة المنسدلة الجانبية للشاشات الكبيرة بعد تسجيل الدخول-->
-  // <div class="relative group">
-  // <button
-  //     id="account-menu-button"
-  //     class="hidden lg:flex items-center lg:w-40 lg:h-10 xl:w-50 xl:h-12 mt-4 mr-0 space-x-2 bg-gray-100 px-2 py-2 rounded-lg hover:bg-gray-200 transition justify-between"
-  //     onclick="toggleDropdown()"
-  // >
-  //     <div class="flex items-center space-x-2">
-  //     <i id="dropdown-icon" class="fas fa-chevron-down mr-1 text-gray-600 transition-transform duration-300"></i>
-  //     <span class="font-Cairo-bold text-sm text-black  lg:mr-4 xl:mr-12">TechVision</span>
-  //     <img src="/src/Images/logo.jpeg" alt="Logo" class="w-8 h-8 rounded-full" />
-  //     </div>
-  // </button>
-  // <!-- القائمة المنسدلة للشاشات الكبيرة -->
-  //       <div
-  //           id="account-dropdown"
-  //           class="absolute right-0 mt-2 w-50 bg-white border border-gray-200 rounded-xl shadow-lg hidden z-50"
-  //       >
-  //       <div class="p-4 border-b border-gray-200">
-  //       <div class="flex flex-row-reverse items-center">
-  //           <!-- صورة الحساب -->
-  //           <img src="/src/Images/logo.jpeg" alt="Logo" class="w-12 h-12 rounded-full mr-3" />    
-  //           <!-- اسم الحساب والبريد -->
-  //           <div class="flex flex-col items-end text-right">
-  //           <div class="text-lg font-Cairo-bold text-gray-900">TechVision</div>
-  //           <div class="text-[10px] text-blue-600">techvision@techvision.com</div>
-            
-  //           </div>
-  //       </div>
-  //       </div>
-  //           <ul>
-  //           <li>
-  //           <a href="#" class="flex items-center px-4 py-2 text-gray-700 hover:bg-gray-100 text-sm">
-  //           <i class="fas fa-user ml-2"></i>
-  //           معلومات الحساب
-  //           </a>
-  //           </li>
-  //           <li>
-  //           <a href="#" class="flex items-center px-4 py-2 text-gray-700 hover:bg-gray-100 text-sm">
-  //           <i class="fas fa-sliders-h ml-2"></i>
-  //           إعدادات الحساب
-  //           </a>
-  //           </li>
-  //           <li>
-  //           <button href="#" class="flex items-center px-4 py-2 text-gray-700 hover:bg-gray-100 text-sm">
-  //           <i class="fas fa-moon ml-2"></i>
-  //           الوضع المظلم
-  //           </button>
-  //           </li>
-  //           <hr class="my-1" />
-  //           <li>
-  //            <button href="#" class="flex items-center px-4 py-2 text-gray-700 hover:bg-gray-100 text-sm">
-  //           <i class="fas fa-sign-out-alt ml-2"></i>
-  //           تسجيل الخروج
-  //           </button>
-  //           </li>
-  //           </ul>    
-  //       </div>
-  //       </div>
 });
+
 

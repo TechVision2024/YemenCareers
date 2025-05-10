@@ -1,7 +1,7 @@
-const baseURL = " https://api-yemencareers.up.railway.app/";
+const baseURL = "https://api-yemencareers.up.railway.app/";
 const axiosInstance = axios.create({
-    baseURL: baseURL,
-    withCredentials: true,
-  });
+  baseURL: baseURL,
+  withCredentials: true,
+});
 
-  export default axiosInstance
+export default axiosInstance;

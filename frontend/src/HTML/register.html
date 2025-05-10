@@ -191,7 +191,7 @@
             />
 
             <div class="form-row gap-2">
-              <input type="text" placeholder="نوع الشركة" class="form-input" />
+              <input id="company_type" type="text" placeholder="نوع الشركة" class="form-input" />
 
               <!-- حقل الصورة مع الأيقونة داخله -->
               <div class="relative w-full">
@@ -201,7 +201,7 @@
                   id="customFileLabel"
                 >
                   <span
-                    id="fileName"
+                    id="profileImage"
                     class="overflow-hidden text-ellipsis whitespace-nowrap max-w-full"
                     >اختيار الصورة</span
                   >
@@ -224,6 +224,7 @@
             <!-- موقع الشركة الإلكتروني -->
             <div class="form-row">
               <input
+                id="website"
                 type="url"
                 placeholder="موقع الشركة الإلكتروني"
                 class="form-input"
@@ -232,22 +233,26 @@
 
             <!-- رقم الهاتف + موقع الشركة -->
             <div class="form-row">
-              <input type="text" placeholder="موقع الشركة" class="form-input" />
-              <input type="tel" placeholder="رقم الهاتف" class="form-input" />
+              <input id="address" type="text" placeholder="موقع الشركة" class="form-input" />
+              <input id="phone" type="tel" placeholder="رقم الهاتف" class="form-input" />
             </div>
             <!-- الوصف -->
             <textarea
+              id="description"
               placeholder="الوصف"
               class="form-input resize-none md:pt-4 lg:pt-0"
+
             ></textarea>
 
             <div class="form-row">
               <input
+                id="social_url_1"
                 type="url"
                 placeholder="1-موقع تواصل إجتماعي"
                 class="form-input"
               />
               <input
+                id="social_url_2"
                 type="url"
                 placeholder="2-موقع تواصل إجتماعي"
                 class="form-input"
@@ -256,11 +261,13 @@
 
             <div class="form-row">
               <input
+                id="social_url_3"
                 type="url"
                 placeholder="3-موقع تواصل إجتماعي"
                 class="form-input"
-              />
-              <input
+                />
+                <input
+                id="social_url_4"
                 type="url"
                 placeholder="4-موقع تواصل إجتماعي"
                 class="form-input"
@@ -330,7 +337,8 @@
       جميع الحقوق محفوظة ليمن كريرز
     </footer>
     <script src="/node_modules/sweetalert2/dist/sweetalert2.all.min.js"></script>
-    <script src="/src/JS/SC_register.js"></script>
+    <script src="/node_modules/axios/dist/axios.min.js"></script>
+    <script src="/src/JS/SC_register.js" type="module"></script>
     <script src="/src/JS/upper_list.js"></script>
     <script src="/src/JS/Dark_Mode.js"></script>
   </body>

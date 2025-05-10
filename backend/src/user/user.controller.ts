@@ -56,6 +56,7 @@ export class UserController {
         @Res() res: Response
     ) {
         this.logger.log(`POST '${this.API_BASE}/register'`);
+        if (!body) throw new BadRequestException();
         const createUserDto = plainToInstance(CreateUserDto, body);
         const error = await validate(createUserDto, {
             skipMissingProperties: false,

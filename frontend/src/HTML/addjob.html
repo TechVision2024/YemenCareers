@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Update Job Page</title>
+  <title>Add Job Page</title>
   <link rel="stylesheet" href="../CSS/output.css">
 </head>
 <body class="bg-white dark:bg-zinc-800 text-gray-800 dark:text-gray-100 overflow-x-hidden lg:w-full">
@@ -257,44 +257,7 @@
         </div>
       </div>
 
-      
-<!-- نافذة حذف الوظيفة -->
-<div id="job-delete-modal" class="fixed inset-0 bg-opacity-60 z-50 flex justify-center items-center hidden">
-  <div class="dark:bg-[#1E1E1E] bg-gray-50 text-black dark:text-white rounded-2xl p-6 w-[90%] max-w-md shadow-xl">
-    <h2 class="text-2xl font-bold text-center mb-4">
-      <span class="text-red-500">حذف</span> الوظيفة من يمن كريرز!
-    </h2>
-    <p class="text-gray-800 dark:text-gray-300 text-center mb-6 text-sm leading-6">
-      سيؤدي هذا الإجراء إلى حذف هذه الوظيفة وجميع البيانات المرتبطة بها بشكل دائم. <br>
-      <span class="text-red-500 font-medium">لا يمكن التراجع عن هذا القرار.</span>
-    </p>
-  
-    <div class="relative w-full mb-4">
-      <input id="password" type="password" placeholder="كلمة السر"
-          class="w-full px-4 py-3 rounded-lg
-                    bg-gray-300 text-black
-                    dark:bg-[#2A2A2A] dark:text-white
-                    placeholder-gray-400
-                    focus:outline-none focus:ring-2 focus:ring-red-500" />
-    
-      <button type="button" onclick="togglePassword()"
-              class="absolute inset-y-0 left-3 flex items-center text-gray-500 dark:text-gray-300">
-        👁
-      </button>
-    </div>
-
-    <button onclick="confirmJobDelete()" class="w-full bg-red-600 hover:bg-red-700 transition-colors text-white py-3 rounded-lg font-bold">
-      حذف الوظيفة
-    </button>
-  
-    <button onclick="closeJobDeleteModal()" class="mt-4 w-full text-gray-400 hover:text-white text-sm underline">
-      إلغاء
-    </button>
-  </div>
-  </div>
-  
-      
-<script src="../JS/updatejob.js"></script>
+      <script src="../JS/updatejob.js"></script>
 
 </body>
 </html>

@@ -23,9 +23,13 @@ document.addEventListener("DOMContentLoaded", () => {
     }, 200); // 200ms هي المهلة قبل تغيير الصورة
   }
 
+  if(themeIcon) {
+    updateIcon(isDark);
+
+  }
+
   // تطبيق الوضع والرمز عند تحميل الصفحة
   document.documentElement.classList.toggle("dark", isDark);
-  updateIcon(isDark);
 
   // عند الضغط على الزر
   if (themeToggle && themeIcon) {

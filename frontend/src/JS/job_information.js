@@ -1,8 +1,23 @@
-import {axiosInstance} from "./config.js";
+import axiosInstance from './config.js' 
+
 
 let accessToken = localStorage.getItem("accessToken");
 const params = new URLSearchParams(window.location.search);
 const job_id = params.get("job-id");
+
+document.addEventListener("DOMContentLoaded", async function () {
+    try {
+        const refreshResponse = await axiosInstance.get(`/api/v1/user/refresh`);
+        localStorage.setItem("accessToken", refreshResponse.data.accessToken);
+        let header = document.getElementById("header-container");
+        header.id = "user-header-container";
+
+        accessToken = localStorage.getItem("accessToken");
+        getUserInfo(accessToken);
+    } catch(error) {
+        console.log("Error: " + error);
+    }
+})
 
 const getJobInformation = async (token,jobId) => {
     try {
@@ -14,22 +29,24 @@ const getJobInformation = async (token,jobId) => {
 
         let data = response.data;
 
-        document.getElementById("job_title").innerHTML = data.title;
-        document.getElementById("Company_name").innerHTML = data.company_name;
+        document.getElementById("job_title").textContent = data.title;
+        document.getElementById("Company_name").textContent = data.company_name;
         document.getElementById("company_image").setAttribute("src", data.company_image);
-        document.getElementById("job_type").innerHTML = data.type;
-        document.getElementById("city").innerHTML = data.city;
-        document.getElementById("department").innerHTML = data.department;
-        document.getElementById("end_date").innerHTML = data.end_date;
-        document.getElementById("remaining_days").innerHTML = data.remaining_days;
+        document.getElementById("job_type").textContent = data.type;
+        document.getElementById("city").textContent = data.city;
+        document.getElementById("department").textContent = data.department;
+        document.getElementById("end_date").textContent = data.end_date;
+        document.getElementById("remaining_days").textContent = data.remaining_days;
+        document.getElementById("created_at").textContent = data.created_at;
+        document.getElementById("end_at").textContent = data.updated_at;
 
-        document.getElementById("body").innerHTML = data.body;
+        document.getElementById("body").textContent = data.body;
         document.getElementById("apply_url").setAttribute("href", data.apply_url);
 
         if(data.status === "open") {
-            document.getElementById("remaining_days_container").classList.add("text-[#00B448]","border-[#00B448]", "sm:text-medium-blue");
+            document.getElementById("remaining_days_container").classList.add(" text-[#00B448]","border-[#00B448  sm:text-medium-blue ");
         } else if (data.status === "close") {
-            document.getElementById("remaining_days_container").classList.add("text-[#FF4747]","border-[#FF4747]", "sm:text-[#FF4747");
+            document.getElementById("remaining_days_container").classList.add("text-[#FF4747]","border-[#FF4747] sm:text-[#FF4747 ");
         }
     } catch(error) {
         if (error.response) {
@@ -86,4 +103,4 @@ const getJobInformation = async (token,jobId) => {
     }
 }
 
-getJobInformation(accessToken, job_id)
+getJobInformation(accessToken, job_id);

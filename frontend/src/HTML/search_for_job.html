@@ -64,64 +64,25 @@
 
             <!-- Jobs Container -->
              <section id="jobs_container" class="mb-8 mt-4 w-full ">
-                <!-- Job -->
-              <div class="w-full rounded-2xl h-30 p-4 border grid grid-cols-4 grid-rows-3 space-y-8 mt-4 border-[#CACECB] transition-all duration-350 hover:border-b-8 hover:border-primary-color md:grid-cols-4 md:grid-rows-1 md:py-12 md:h-64 md:gap-x-1 lg:gap-x-4 lg:px-14 xl:pl-8 xl:gap-x-8 dark:border-[#8080808C] dark:hover:border-dark-primary-color">
-                <div class="row-span-2 md:row-span-1">
-                  <img src="../Images/logo.jpeg" alt="Logo" class="size-12 rounded-2xl hover:border md:size-24 hover:border-blue-500">
-                </div>
-                 <!-- Job Title -->
-                  <div class="md:flex justify-center items-center translate-x-4 md:translate-x-0"> 
-                    <h3 class=" font-inter-700 text-[14px] text-[#090909] font-bold md:text-2xl dark:text-white">مطور برمجيات</h3>
-                  </div>
-                <!-- Line -->
-                 <div class="flex justify-end items-center">
-                  <span class="hidden w-[1px] h-14 bg-[#CACECB] after:right-4-5 md:flex md:justify-end dark:bg-dark-border-color lg:-translate-x-1 xl:translate-x-6"></span>
-                 </div>
-                 <!-- Company Name -->
-                <div class=" col-start-2 row-start-2 translate-x-4 md:flex md:pr-2 md:translate-x-0 md:col-start-auto md:row-start-auto md:justify-center lg:justify-start ">
-                  <p class="font-inter-700 text-[14px] text-light-blue font-bold md:translate-y-5 md:text-2xl lg:-translate-x-1/2 dark:text-[#4AC8E0]">TechVision</p>
-                </div>
-                
-                <div class="flex justify-center col-start-4 row-start-2 space-x-2 md:items-center md:translate-y-0 md:space-x-0 md:relative md:col-start-auto md:row-start-auto">
-                  <!-- Location Icon -->
-                  <svg  class=" w-2.5 h-4 md:h-5 md:w-4 md:translate-x-4 text-[#CACECB] dark:text-[#FFFFFF66]" viewBox="0 0 15 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <g clip-path="url(#clip0_120_91)">
-                    <path d="M7.5 0C3.3582 0 0 3.3582 0 7.5C0 10.5238 1.05352 11.3684 6.73047 19.5977C7.10277 20.1355 7.89883 20.1355 8.27109 19.5977C13.9453 11.3672 15 10.5234 15 7.5C15 3.3582 11.6406 0 7.5 0ZM7.5 10.5898C5.77617 10.5898 4.375 9.18828 4.375 7.46484C4.375 5.74141 5.77734 4.33984 7.5 4.33984C9.22266 4.33984 10.625 5.74141 10.625 7.46484C10.625 9.18828 9.22266 10.5898 7.5 10.5898Z" fill="currentColor"/>
-                    </g>
-                    <defs>
-                    <clipPath id="clip0_120_91">
-                    <rect width="15" height="20" fill="currentColor"/>
-                    </clipPath>
-                    </defs>
-                    </svg>
-                <!-- City -->
-                  <p class="font-inter-700 font-bold text-[#B3B3B3] text-[12px] md:absolute md:left-0 md:text-[20px] lg:text-2xl  dark:dark:text-dark-text-color">صنعاء</p>
-                </div>
-
-                   <!-- Days Left -->
-                  <div class="col-start-4 row-start-1 md:col-start-auto md:row-start-auto md:flex md:justify-center md:items-center">
-                    <div class="border border-[#00B448] px-2 roundeed-[5px] bg-green-100 flex items-center justify-center md:rounded-none md:h-7 md:w-40 dark:bg-transparent">
-                      <p class="font-semi-bold text-[11px] text-[#00B448] font-semibold md:text-[13px] ">14 يوم متبقي</p>
-                    </div>
-                  </div>
-                <div class="flex justify-center mt-2 col-span-2 row-start  md:mt-0 md:justify-start md:row-start-auto md:col-auto">
-                  <p class="font-inter-700 font-bold text-[#B3B3B3] text-[12px] md:text-[20px] lg:text-2xl dark:text-dark-text-color">انشاء: 2025/04/13</p>
-                </div>
-                <div class="flex justify-end mt-2 pl-4 col-start-3 col-span-2 row-start-3 md:justify-start md:col-start-auto md:row-start-auto md:col-auto md:mt-0 md:pl-0 ">
-                  <p class="font-inter-700 font-bold text-[#B3B3B3] text-[12px] md:text-[20px] lg:text-2xl dark:text-dark-text-color">انهاء: 2025/04/20</p>
-                </div>
+              
+              <div id="next_jobs" class=" w-screen container">
+                <button class="font-inter-700 font-bold text-black text-[14px] flex items-center cursor-pointer my-2 mr-4 dark:text-white">
+                <svg class="ml-1 text-primary-color dark:text-dark-primary-color" width="7" height="12" viewBox="0 0 7 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M1 11L6 5.72393L1 1" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+                التالي
+              </button>
               </div>
              </section>
 
-             
-             
         </main>
     </div>
-
+    <script src="/node_modules/sweetalert2/dist/sweetalert2.all.min.js"></script>
     <script src="/src/JS/header.js"></script>
+    <script src="/src/JS/header_for_user.js"></script>
     <script src="/src/JS/upper_list.js"></script>
     <script src="/src/JS/Dark_Mode.js"></script>
-    <!-- <script src="/node_modules/axios/dist/axios.min.js"></script> -->
+    <script src="/node_modules/axios/dist/axios.min.js"></script>
     <script src="/src/JS/flatpickr.js"></script>
      
     <script src="../JS/search_for_job.js" type="module"></script>

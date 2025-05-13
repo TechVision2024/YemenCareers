@@ -3,29 +3,47 @@ const filter_icon = document.getElementById("filter-icon");
 const filter_container = document.getElementById("filter-container");   
 const jobs_container = document.getElementById("jobs_container"); 
 const search_icon = document.getElementById("search_icon"); 
+let accessToken = localStorage.getItem("accessToken");
+let hasMoreJobs = false;
+let next_jobs_container = document.getElementById("next_jobs");
+
+next_jobs_container.style.display = "none";
+
+let createdAtPicker = null;
+
+document.getElementById("created_at").addEventListener("focus", () => {
+  if (!createdAtPicker) {
+    createdAtPicker = flatpickr("#created_at", {
+      dateFormat: "Y/m/d",
+    });
+  }
+});
+
+document.getElementById("created_at").addEventListener("blur", () => {
+  if (createdAtPicker) {
+    createdAtPicker.destroy();
+    createdAtPicker = null;
+  }
+});
 
 
-flatpickr("#created_at", {
-    dateFormat: "Y/m/d",
-})
+document.getElementById("end_date").addEventListener("focus", () => {
+  if (!createdAtPicker) {
+    createdAtPicker = flatpickr("#end_date", {
+      dateFormat: "Y/m/d",
+    });
+  }
+});
 
-flatpickr("#end_date", {
-    dateFormat: "Y/m/d",
-})
-
+document.getElementById("end_date").addEventListener("blur", () => {
+  if (createdAtPicker) {
+    createdAtPicker.destroy();
+    createdAtPicker = null;
+  }
+});
+  
 let start,end;  
 
-const next_jobs_container = document.createElement("div");
-next_jobs_container.id = "next_jobs";
-next_jobs_container.className = "w-screen container";
-next_jobs_container.innerHTML = `
-  <button class="font-inter-700 font-bold text-black text-[14px] flex items-center cursor-pointer my-2 mr-4 dark:text-white">
-    <svg class="ml-1 text-primary-color dark:text-dark-primary-color" width="7" height="12" viewBox="0 0 7 12" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <path d="M1 11L6 5.72393L1 1" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-    </svg>
-    التالي
-  </button>
-`;
 
 // Showing Filter Section
 filter_icon.addEventListener("click", () => {
@@ -40,18 +58,18 @@ filter_icon.addEventListener("click", () => {
     }
 });
 
-/*
+
 // to get number of jobs depending on width of screen
 document.addEventListener("DOMContentLoaded", () => {
     function checkScreenWidth() {
       if (window.innerWidth >= 640) {
         // العرض 640 بكسل أو أكثر
         start = 0;
-        end = 20;
+        end = 19;
     } else {
         // العرض أقل من 640 بكسل
         start = 0;
-        end = 10;
+        end = 9;
       }
     }
   
@@ -73,6 +91,7 @@ const getJobsInformation = async (token, start, end, filters = {}) => {
         });
 
         let data = response.data;
+                hasMoreJobs = data.length >= (window.innerWidth >= 640 ? 20 : 10);
 
         if(data.length === 0) {
             jobs_container.innerHTML = `
@@ -81,14 +100,14 @@ const getJobsInformation = async (token, start, end, filters = {}) => {
             </div>`;
         } else if (data.length > 0)  {
             jobs_container.innerHTML = data.map(job => {
-                `<!-- Job -->
-              <div key=${job.id} class="w-full rounded-2xl h-30 p-4 border grid grid-cols-4 grid-rows-3 space-y-8 mt-4 border-[#CACECB] transition-all duration-350 hover:border-b-8 hover:border-primary-color md:grid-cols-4 md:grid-rows-1 md:py-12 md:h-64 md:gap-x-1 lg:gap-x-4 lg:px-14 xl:pl-8 xl:gap-x-8 dark:border-[#8080808C]">
+                return `<!-- Job -->
+              <div key=${job.id} class="w-full rounded-2xl h-30 p-4 border grid grid-cols-4 grid-rows-3 space-y-8 mt-4 border-[#CACECB] transition-all duration-350 hover:border-b-8 hover:border-primary-color md:grid-cols-4 md:grid-rows-1 md:py-12 md:h-64 md:gap-x-1 lg:gap-x-4 lg:px-14 xl:pl-8 xl:gap-x-8 dark:border-[#8080808C] dark:hover:border-dark-primary-color">
                 <div class="row-span-2 md:row-span-1">
-                  <img src=${job.company_image} alt="Logo" class="size-12 rounded-2xl hover:border md:size-24 hover:border-blue-500">
+                  <img src="${job.company_image}" alt="Logo" loading="lazy" class="size-12 rounded-2xl hover:border md:size-24 hover:border-blue-500">
                 </div>
                  <!-- Job Title -->
                   <div class="md:flex justify-center items-center translate-x-4 md:translate-x-0"> 
-                    <h3 class=" font-inter-700 text-[14px] text-[#090909] font-bold md:text-2xl dark:text-white">${job.title}</h3>
+                    <h3 class=" font-inter-700 text-[14px] text-[#090909] font-bold md:text-2xl dark:text-white">${job.type}</h3>
                   </div>
                 <!-- Line -->
                  <div class="flex justify-end items-center">
@@ -96,46 +115,47 @@ const getJobsInformation = async (token, start, end, filters = {}) => {
                  </div>
                  <!-- Company Name -->
                 <div class=" col-start-2 row-start-2 translate-x-4 md:flex md:pr-2 md:translate-x-0 md:col-start-auto md:row-start-auto md:justify-center lg:justify-start ">
-                <p class="font-inter-700 text-[14px] text-light-blue font-bold md:translate-y-5 md:text-2xl lg:-translate-x-1/2 dark:text-[#4AC8E0]">${job.company_name}</p>
+                  <p class="font-inter-700 text-[14px] text-light-blue font-bold md:translate-y-5 md:text-2xl lg:-translate-x-1/2 dark:text-[#4AC8E0]">${job.company_name}</p>
                 </div>
                 
-                <!-- City -->
                 <div class="flex justify-center col-start-4 row-start-2 space-x-2 md:items-center md:translate-y-0 md:space-x-0 md:relative md:col-start-auto md:row-start-auto">
                   <!-- Location Icon -->
-                  <svg  class=" w-2.5 h-4 md:h-5 md:w-4 md:translate-x-4" viewBox="0 0 15 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <svg  class=" w-2.5 h-4 md:h-5 md:w-4 md:translate-x-4 text-[#CACECB] dark:text-[#FFFFFF66]" viewBox="0 0 15 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <g clip-path="url(#clip0_120_91)">
-                    <path d="M7.5 0C3.3582 0 0 3.3582 0 7.5C0 10.5238 1.05352 11.3684 6.73047 19.5977C7.10277 20.1355 7.89883 20.1355 8.27109 19.5977C13.9453 11.3672 15 10.5234 15 7.5C15 3.3582 11.6406 0 7.5 0ZM7.5 10.5898C5.77617 10.5898 4.375 9.18828 4.375 7.46484C4.375 5.74141 5.77734 4.33984 7.5 4.33984C9.22266 4.33984 10.625 5.74141 10.625 7.46484C10.625 9.18828 9.22266 10.5898 7.5 10.5898Z" fill="#CACECB"/>
+                    <path d="M7.5 0C3.3582 0 0 3.3582 0 7.5C0 10.5238 1.05352 11.3684 6.73047 19.5977C7.10277 20.1355 7.89883 20.1355 8.27109 19.5977C13.9453 11.3672 15 10.5234 15 7.5C15 3.3582 11.6406 0 7.5 0ZM7.5 10.5898C5.77617 10.5898 4.375 9.18828 4.375 7.46484C4.375 5.74141 5.77734 4.33984 7.5 4.33984C9.22266 4.33984 10.625 5.74141 10.625 7.46484C10.625 9.18828 9.22266 10.5898 7.5 10.5898Z" fill="currentColor"/>
                     </g>
                     <defs>
                     <clipPath id="clip0_120_91">
-                    <rect width="15" height="20" fill="white"/>
+                    <rect width="15" height="20" fill="currentColor"/>
                     </clipPath>
                     </defs>
                     </svg>
+                <!-- City -->
                   <p class="font-inter-700 font-bold text-[#B3B3B3] text-[12px] md:absolute md:left-0 md:text-[20px] lg:text-2xl  dark:dark:text-dark-text-color">${job.city}</p>
                 </div>
 
                    <!-- Days Left -->
                   <div class="col-start-4 row-start-1 md:col-start-auto md:row-start-auto md:flex md:justify-center md:items-center">
-                    <div class="border px-2 rounded-[5px] bg-green-100 flex items-center justify-center ${setColor(job.status)} md:rounded-none md:h-7 md:w-40 dark:bg-transparent">
-                      <p class="font-semi-bold text-[11px]  font-semibold md:text-[13px] ">${remaining_days} يوم متبقي</p>
+                    <div class="border px-2 roundeed-[5px] bg-green-100 flex items-center justify-center ${setColor(job.status)}  md:rounded-none md:h-7 md:w-40 dark:bg-transparent">
+                      <p class="font-semi-bold text-[11px]  font-semibold md:text-[13px] ">${job.remaining_days} يوم متبقي</p>
                     </div>
                   </div>
                 <div class="flex justify-center mt-2 col-span-2 row-start  md:mt-0 md:justify-start md:row-start-auto md:col-auto">
                   <p class="font-inter-700 font-bold text-[#B3B3B3] text-[12px] md:text-[20px] lg:text-2xl dark:text-dark-text-color">انشاء: ${job.created_at}</p>
                 </div>
                 <div class="flex justify-end mt-2 pl-4 col-start-3 col-span-2 row-start-3 md:justify-start md:col-start-auto md:row-start-auto md:col-auto md:mt-0 md:pl-0 ">
-                  <p class="font-inter-700 font-bold text-[#B3B3B3] text-[12px] md:text-[20px] lg:text-2xl dark:text-dark-text-color">انهاء: ${job.end_date}</p>
+                  <p class="font-inter-700 font-bold text-[#B3B3B3] text-[12px] md:text-[20px] lg:text-2xl dark:text-dark-text-color">انهاء: ${job.end_at}</p>
                 </div>
-              </div>`
+              </div>
+              `
             }).join(' ');
         }
 
-        if (window.innerWidth >= 640 && data.length > 20) {
-            document.getElementById("main").appendChild(next_jobs_container)
-        } else if (window.innerWidth < 640 && data.length > 10) {
-            document.getElementById("main").appendChild(next_jobs_container)
-          }
+        if (hasMoreJobs) {
+            next_jobs_container.style.display = "block";
+        } else {
+            next_jobs_container.style.display = "none";
+        }
     } catch(error) 
     {
         if (error.response) {
@@ -202,7 +222,7 @@ function setColor(status) {
 
 function getJobsByFilters() {
     let filters = {}
-    const regexForDate = /^\d{4}-\d{2}-\d{2}$/;
+    const regexForDate = /^\d{4}\/\d{2}\/\d{2}$/;
 
     let job_title = document.getElementById("job_title").value.trim();
     let city = document.getElementById("city").value.trim();
@@ -245,13 +265,14 @@ function getJobsByFilters() {
 }
 
 async function getNextJobs() {
+   if (!hasMoreJobs) return;
     if (window.innerWidth >= 640) {
         // العرض 640 بكسل أو أكثر
         start+=20
         end+=20;
     } else {
         // العرض أقل من 640 بكسل
-        start+10;
+        start+=10;
         end+=10;
       }
 
@@ -266,4 +287,3 @@ getJobsInformation(accessToken, start, end, getJobsByFilters);
 
 // When Clicking on Search Icon
 search_icon.addEventListener("click", () => getJobsInformation(accessToken, start, end, getJobsByFilters)); 
-*/

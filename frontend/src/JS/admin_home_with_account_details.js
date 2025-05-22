@@ -1,5 +1,24 @@
+import axiosInstance from "./config.js";
+
 const params = new URLSearchParams(window.location.search);
 const id = params.get("id"); 
+let accessToken = localStorage.getItem("accessToken");
+
+
+document.addEventListener("DOMContentLoaded", async function () {
+    try {
+        const refreshResponse = await axiosInstance.get(`/api/v1/user/refresh`);
+        localStorage.setItem("accessToken", refreshResponse.data.accessToken);
+        let header = document.getElementById("header-container");
+        header.id = "user-header-container";
+
+        let accessToken = localStorage.getItem("accessToken");
+        getUserInfo(accessToken);
+    } catch(error) {
+        console.log("Error: " + error);
+    }
+})
+showInformationOfUser(accessToken,id );
 
 // when Click on and div
 async function showInformationOfUser (token,id) {
@@ -15,11 +34,35 @@ async function showInformationOfUser (token,id) {
         document.getElementById("logo_request").setAttribute("src", data.profile_image_url)
         document.getElementById("company_name_request").innerHTML = data.name;
         document.getElementById("site_request").setAttribute("href", data.website);
-        document.getElementById("email_request").setAttribute("href", data.email);
+        document.getElementById("site_request").textContent = data.website;
+        document.getElementById("email_request").setAttribute("href", `mailto:${data.email}`);
+        document.getElementById("email_request").textContent = data.email;
         document.getElementById("company_type_request").innerHTML = data.company_type;
         document.getElementById("address_request").innerHTML = data.address;
         document.getElementById("phone_request").innerHTML = data.phone;
+        document.getElementById("phone_request").setAttribute("href", `tel:${data.email}`);
         document.getElementById("description_request").innerHTML = data.description;
+        
+        document.getElementById("accept_request_btn").setAttribute("key", data.id);
+        document.getElementById("reject_request_btn").setAttribute("key", data.id);
+        let socialLinks = [
+            data.social_url_1,
+            data.social_url_2,
+            data.social_url_3,
+            data.social_url_4
+        ].filter(link => link);
+        
+
+        if(socialLinks.length > 0) {
+            socialLinks.forEach(link => {
+                const linkElement = document.createElement('a');
+                linkElement.href = link;
+                linkElement.className = 'font-light text-[12px] text-[#0000004D] dark:text-dark-text-color';
+                linkElement.textContent = extractCoreDomainName(link);
+                links_container.appendChild(linkElement);
+            });
+            
+        }
     } catch(error) { 
         if (error.response) {
             const status = error.response.status;
@@ -229,4 +272,28 @@ const reject_action =  async (token, id) => {
 document.getElementById("accept_request_btn").addEventListener("click", () => accept_action(token, id));
 document.getElementById("reject_request_btn").addEventListener("click", () => reject_action(token, id));
 
-// still to deal with links
+
+    // Extract Domain Name
+    function extractCoreDomainName(url) {
+  try {
+    if (!url.startsWith('http://') && !url.startsWith('https://')) {
+      url = 'http://' + url;
+    }
+    
+    const domain = new URL(url).hostname;
+    const cleanDomain = domain.replace(/^www\./, '');
+    const parts = cleanDomain.split('.');
+    
+    // إذا كان النطاق من نوع co.uk أو com.br إلخ
+    if (parts.length > 2 && parts[parts.length-2].length <= 3) {
+      return parts[parts.length-3];
+    }
+    
+    return parts[parts.length-2];
+  } catch (e) {
+    console.error('Invalid URL:', e);
+    return null;
+  }
+}
+
+showInformationOfUser(accessToken,id );
